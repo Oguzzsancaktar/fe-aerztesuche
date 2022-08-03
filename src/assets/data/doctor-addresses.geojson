@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.74847, 51.23129]
+      },
+      "properties": {
+        "state": "Alabama",
+        "name": "Montgomery",
+        "population": 199518
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.77887, 51.21858]
+      },
+      "properties": {
+        "state": "Alaska",
+        "name": "Juneau",
+        "population": 32094
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.43009, 51.19806]
+      },
+      "properties": {
+        "state": "Alaska",
+        "name": "Juneau",
+        "population": 32094
+      }
+    }
+  ]
+}
