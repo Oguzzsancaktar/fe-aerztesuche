@@ -1,0 +1,67 @@
+@use "src/variables" as c;
+
+.filter-component {
+  height: 60px;
+  width: 100%;
+  background: c.$white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .filters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: calc(100% - 165px);
+    overflow-x: auto;
+    // overflow-x: auto;
+    &__item {
+      cursor: pointer;
+      margin-left: 20px;
+
+      &:not(:first-child) {
+      }
+      .filters__item__relative {
+        position: relative;
+        .filter-text {
+          display: flex;
+          align-items: center;
+          color: c.$mine-shaft;
+
+          h3 {
+            font: normal normal normal 16px/19px Lato;
+            margin-right: 10px;
+          }
+
+          span {
+          }
+        }
+
+        .filter-list {
+          min-width: 200px;
+          position: fixed;
+          display: none;
+          background: c.$white 0% 0% no-repeat padding-box;
+          box-shadow: 0px 4px 10px #00000026;
+          z-index: 9999;
+          &.active {
+            display: block;
+          }
+          app-select-filter {
+          }
+        }
+      }
+    }
+  }
+
+  .filters__clear {
+    width: 165px;
+    padding-left: 20px;
+    p {
+      cursor: pointer;
+      font: normal normal normal 14px/17px Lato;
+      color: c.$casal;
+    }
+  }
+}

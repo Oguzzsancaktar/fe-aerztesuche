@@ -1,0 +1,9 @@
+<div class="direction-list">
+  <div class="direction-list__body">
+    <app-direction-item *ngFor="let direction of directions" [direction]="direction"></app-direction-item>
+  </div>
+  <div class="direction-list__footer">
+    <span class="direction-data-info">Ergebnisse 1-4 von insgesamt {{directions.length}}</span>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+@use "src/variables" as c;
+
+.select-filter {
+  &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid c.$alto;
+    }
+  }
+}

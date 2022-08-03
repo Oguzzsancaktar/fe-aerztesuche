@@ -1,0 +1,23 @@
+@use "src/variables" as c;
+
+.direction-list {
+  height: 100%;
+  box-shadow: 0px 4px 10px #0000000d;
+
+  &__body {
+    height: calc(100% - 65px);
+    overflow-y: auto;
+    border-bottom: 1px solid c.$alto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    background-color: c.$white;
+    height: 65px;
+    padding: 0 30px;
+    .direction-data-info {
+      color: c.$gray;
+    }
+  }
+}

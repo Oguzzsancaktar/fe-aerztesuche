@@ -1,0 +1,23 @@
+<div class="filter-component">
+
+  <div class="filters">
+    <div class="filters__item" *ngFor="let filter of tempFilterData; let i = index" (click)="toggleFilterSelects(i)">
+      <div class="filters__item__relative">
+        <div class="filter-text">
+          <h3>{{filter.name}}</h3>
+          <app-icon-expand-more></app-icon-expand-more>
+        </div>
+        <div class="filter-list" [ngClass]="{'active': i === activeIndex}">
+          <div class="filter-list-item">
+            <app-select-filter [filterOptions]="filter.values"></app-select-filter>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="filters__clear">
+    <p>Alle Filter zurücksetzen</p>
+  </div>
+</div>

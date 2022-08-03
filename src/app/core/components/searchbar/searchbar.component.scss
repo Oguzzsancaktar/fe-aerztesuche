@@ -1,0 +1,35 @@
+@use "src/variables" as c;
+
+.searchbar {
+  width: 100%;
+  height: 60px;
+  background: c.$white 0% 0% no-repeat padding-box;
+
+  box-shadow: 0px 4px 10px #0000000d;
+
+  .searchbar__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20.5px 30px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 19px;
+    border: none;
+    outline: none;
+    color: c.$mine-shaft;
+
+    &::placeholder {
+      color: c.$gray;
+    }
+  }
+
+  &__icon {
+    width: 26.3px;
+    height: 26.3px;
+    margin-left: 30px;
+  }
+}

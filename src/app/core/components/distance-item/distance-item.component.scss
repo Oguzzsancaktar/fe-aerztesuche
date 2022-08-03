@@ -1,0 +1,13 @@
+@use "src/variables" as c;
+
+.distance-item {
+  .distance__column {
+    .distance__icon {
+      margin-bottom: 15px;
+    }
+
+    .distance__text {
+      color: c.$blue-bayoux;
+    }
+  }
+}
