@@ -11,6 +11,8 @@ import { DirectionListComponent } from '../components/direction-list/direction-l
 import { DistanceItemComponent } from '../components/distance-item/distance-item.component';
 import { FiltersComponent } from '../components/filters/filters.component';
 import { IconClusterComponent } from '../components/icons/icon-cluster/icon-cluster.component';
+import { IconCloseComponent } from '../components/icons/icon-close/icon-close.component';
+
 import { IconDirectionComponent } from '../components/icons/icon-direction/icon-direction.component';
 import { IconExpandMoreComponent } from '../components/icons/icon-expand-more/icon-expand-more.component';
 import { IconGlobeComponent } from '../components/icons/icon-globe/icon-globe.component';
@@ -20,6 +22,9 @@ import { MapComponent } from '../components/map/map.component';
 import { SearchbarComponent } from '../components/searchbar/searchbar.component';
 import { SelectFilterItemComponent } from '../components/select-filter-item/select-filter-item.component';
 import { SelectFilterComponent } from '../components/select-filter/select-filter.component';
+import { DoctorDetailModalComponent } from '../components/modals/doctor-detail-modal/doctor-detail-modal.component';
+import { HeaderTextSectionComponent } from '../components/header-text-section/header-text-section.component';
+import { OfficeHoursComponent } from '../components/office-hours/office-hours.component';
 
 @NgModule({
   imports: [
@@ -30,11 +35,16 @@ import { SelectFilterComponent } from '../components/select-filter/select-filter
     RouterModule,
   ],
   declarations: [
-    ButtonComponent,
-    SearchbarComponent,
     IconSearchComponent,
     IconClusterComponent,
     IconDirectionComponent,
+    IconExpandMoreComponent,
+    IconLocalPhoneComponent,
+    IconCloseComponent,
+    IconGlobeComponent,
+
+    ButtonComponent,
+    SearchbarComponent,
     DirectionListComponent,
     DirectionItemComponent,
     DistanceItemComponent,
@@ -42,17 +52,22 @@ import { SelectFilterComponent } from '../components/select-filter/select-filter
     SelectFilterComponent,
     FiltersComponent,
     SelectFilterItemComponent,
-    IconExpandMoreComponent,
-    IconLocalPhoneComponent,
-    IconGlobeComponent,
     MapComponent,
+    DoctorDetailModalComponent,
+    HeaderTextSectionComponent,
+    OfficeHoursComponent,
   ],
   exports: [
-    ButtonComponent,
-    SearchbarComponent,
     IconSearchComponent,
     IconClusterComponent,
     IconDirectionComponent,
+    IconExpandMoreComponent,
+    IconLocalPhoneComponent,
+    IconCloseComponent,
+    IconGlobeComponent,
+
+    ButtonComponent,
+    SearchbarComponent,
     DirectionListComponent,
     DirectionItemComponent,
     DistanceItemComponent,
@@ -60,10 +75,10 @@ import { SelectFilterComponent } from '../components/select-filter/select-filter
     SelectFilterComponent,
     FiltersComponent,
     SelectFilterItemComponent,
-    IconExpandMoreComponent,
-    IconLocalPhoneComponent,
-    IconGlobeComponent,
     MapComponent,
+    DoctorDetailModalComponent,
+    HeaderTextSectionComponent,
+    OfficeHoursComponent,
   ],
 })
 export class SharedModule {}

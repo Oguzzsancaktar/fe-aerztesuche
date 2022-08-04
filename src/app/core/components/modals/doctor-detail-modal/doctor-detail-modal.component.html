@@ -1,0 +1,22 @@
+<div class="app-doctor-detail-modal {{(isDoctorDetailModalOpen$ | async) ? 'show-modal' : 'hide-modal'}}" ng>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"></h5>
+      <button type="button" class="close" (click)="close()">
+        <app-icon-close></app-icon-close>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="column">
+        <div class="detail-modal-item">
+          <app-direction-item [doctor]="subscription_doctor_detail$ | async"></app-direction-item>
+        </div>
+        <div class="detail-modal-item">
+          <app-office-hours></app-office-hours>
+        </div>
+        <div class="detail-modal-item">
+          <app-header-text-section></app-header-text-section>
+        </div>
+      </div>
+    </div>
+  </div>

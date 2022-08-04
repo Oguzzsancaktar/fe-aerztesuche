@@ -1,19 +1,19 @@
 <div class="direction-item">
-  <div class="direction-item__container">
+  <div class="direction-item__container" *ngIf="doctor">
     <div class="direction-item__row">
       <div class="direction-item__row__item">
-        <app-distance-item [distance]="direction.distance"></app-distance-item>
+        <app-distance-item [distance]="doctor.properties.distance"></app-distance-item>
       </div>
       <div class="direction-item__row__item">
         <div class="column">
           <div class="column__item">
             <h3 class="doctor-name">
-              {{ direction.name }}
+              {{ doctor.properties.name }}
             </h3>
           </div>
           <div class="column__item">
             <p class="address">
-              {{ direction.address }}
+              {{ doctor.properties.address }}
             </p>
           </div>
         </div>
@@ -23,7 +23,8 @@
         <div class="colum">
           <div class="column__item">
             <div class="item-button">
-              <app-button [text]="direction.speciality" backgroundColor="#4c6085" textColor="white"></app-button>
+              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white"
+                (click)="openDoctorDetailModal(doctor.id)"></app-button>
             </div>
           </div>
           <div class="column__item row">
@@ -31,7 +32,7 @@
               <app-icon-local-phone></app-icon-local-phone>
             </div>
             <p class="contact">
-              {{ direction.phone }}
+              {{ doctor.properties.phone }}
             </p>
           </div>
 
@@ -40,7 +41,7 @@
               <app-icon-globe></app-icon-globe>
             </div>
             <p class="contact">
-              {{ direction.website }}
+              {{ doctor.properties.website }}
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from 'src/app/marker.service';
 
-const iconRetinaUrl = 'assets/Icon material-location-on.svg';
+const iconRetinaUrl = 'assets/icon-material-location-on-red.svg';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
 const iconDefault = L.icon({

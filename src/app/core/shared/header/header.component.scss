@@ -18,5 +18,9 @@
     letter-spacing: 0px;
     width: 100%;
     max-width: c.$app-normal-max-width;
+
+    @media screen and (max-width: c.$media-xl-min-width) {
+      max-width: calc(100% - 60px);
+    }
   }
 }

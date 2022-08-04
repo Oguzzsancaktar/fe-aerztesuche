@@ -1,0 +1,53 @@
+@use "src/variables" as c;
+
+.app-doctor-detail-modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background-color: #00000027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.show-modal {
+    display: flex;
+  }
+
+  &.hide-modal {
+    display: none;
+  }
+  .modal-content {
+    width: c.$app-medium-modal-width;
+    max-width: c.$app-medium-modal-max-width;
+    background-color: c.$white;
+    position: relative;
+    .modal-header {
+      display: flex;
+      .modal-title {
+      }
+
+      .close {
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        span {
+        }
+      }
+    }
+
+    .modal-body {
+      .column {
+        .detail-modal-item {
+          app-direction-item {
+          }
+        }
+      }
+    }
+  }
+}

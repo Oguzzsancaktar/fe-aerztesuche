@@ -3,6 +3,11 @@
 .app-root {
   background-color: c.$wild-sand;
   height: 100vh;
+
+  @media screen and (max-width: c.$media-xl-min-width) {
+    height: auto;
+  }
+
   &__container {
     max-width: c.$app-normal-max-width;
     width: 100%;

@@ -1,40 +1,140 @@
 {
-  "type": "FeatureCollection",
-  "features": [
+  "name": "DoctorList",
+  "doctors": [
     {
-      "type": "Feature",
+      "id": 1,
       "geometry": {
         "type": "Point",
         "coordinates": [6.74847, 51.23129]
       },
       "properties": {
-        "state": "Alabama",
-        "name": "Montgomery",
-        "population": 199518
+        "name": "Dr. med. Müller, Cord",
+        "address": "Cheruskerstr. 11140545 Düsseldorf",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,2 km"
       }
     },
     {
-      "type": "Feature",
+      "id": 2,
       "geometry": {
         "type": "Point",
         "coordinates": [6.77887, 51.21858]
       },
       "properties": {
-        "state": "Alaska",
-        "name": "Juneau",
-        "population": 32094
+        "name": "Hanno Peters",
+        "address": "Königsallee 6140215 Düsseldorf",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,0 km"
       }
     },
+
     {
-      "type": "Feature",
+      "id": 3,
       "geometry": {
         "type": "Point",
         "coordinates": [6.43009, 51.19806]
       },
       "properties": {
-        "state": "Alaska",
-        "name": "Juneau",
-        "population": 32094
+        "name": "Dr. Med. Peters, kay",
+        "address": "Viersener Str. 50-5241061 Mönchengladbach",
+        "speciality": "Allgemein Mediziner",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "0,2 km"
+      }
+    },
+    {
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.00945, 51.10511]
+      },
+      "properties": {
+        "name": "Dr. med. Maaßen, Andrea",
+        "address": "Bahnhofstr. 13b42799 Leichlingen",
+        "speciality": "Hausarzt",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,1 km"
+      }
+    },
+    {
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.43657, 51.1954]
+      },
+      "properties": {
+        "name": "Dr. med. Maaß, Reinhard",
+        "address": "Croonsallee 2941061 Mönchengladbach",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,4 km"
+      }
+    },
+    {
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.56609, 51.320938]
+      },
+      "properties": {
+        "name": "Dr. med. Fell, Michael",
+        "address": "Lutherplatz 4047805 Krefeld",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,2 km"
+      }
+    },
+    {
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.76776, 51.51483]
+      },
+      "properties": {
+        "name": "Priv.Doz. Dr. med. Fellmer, Peter",
+        "address": "Fahrner Straße 13347169 Duisburg",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,5 km"
+      }
+    },
+    {
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.08277, 51.17165]
+      },
+      "properties": {
+        "name": "Michalik, Rukiye",
+        "address": "Kölner Str. 10542651 Solingen",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "1,7 km"
+      }
+    },
+    {
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.324068546295166, 51.515403747558594]
+      },
+      "properties": {
+        "name": "Dr. med. Michaelis, Markus",
+        "address": "Südwall 647608 Geldern",
+        "speciality": "Orthopäde",
+        "phone": "+49 211 12 3456",
+        "website": "www.musterarzt.de",
+        "distance": "2,0 km"
       }
     }
   ]

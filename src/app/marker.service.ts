@@ -6,7 +6,7 @@ import * as L from 'leaflet';
   providedIn: 'root',
 })
 export class MarkerService {
-  capitals: string = '/assets/data/doctor-addresses.geojson';
+  doctors: string = '/assets/data/doctor-addresses.geojson';
 
   constructor(private http: HttpClient) {}
 
@@ -15,8 +15,8 @@ export class MarkerService {
   }
 
   makeCapitalMarkers(map: L.Map): void {
-    this.http.get(this.capitals).subscribe((res: any) => {
-      for (const c of res.features) {
+    this.http.get(this.doctors).subscribe((res: any) => {
+      for (const c of res.doctors) {
         const lon = c.geometry.coordinates[0];
         const lat = c.geometry.coordinates[1];
         const marker = L.marker([lat, lon]);
@@ -27,7 +27,7 @@ export class MarkerService {
   }
 
   makeCapitalCircleMarkers(map: L.Map): void {
-    this.http.get(this.capitals).subscribe((res: any) => {
+    this.http.get(this.doctors).subscribe((res: any) => {
       const maxPop = Math.max(
         ...res.features.map((x: any) => x.properties.population),
         0

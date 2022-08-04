@@ -17,5 +17,23 @@ $monarch: #99071d;
 // Variables SIZES Start
 $app-normal-max-width: 1440px;
 
+$app-medium-modal-width: 100%;
+$app-medium-modal-max-width: 840px;
+
 // Variables SIZES End
 // Variables SIZES End
+
+// Query Breakpoints Start
+// Query Breakpoints Start
+
+// Small devices (landscape phones, 576px and up)
+$media-sm-min-width: 576px;
+// Medium devices (tablets, 768px and up)
+$media-md-min-width: 768px;
+// Large devices (desktops, 992px and up)
+$media-lg-min-width: 992px;
+// Extra large devices (large desktops, 1200px and up)
+$media-xl-min-width: 1200px;
+
+// Query Breakpoints End
+// Query Breakpoints End

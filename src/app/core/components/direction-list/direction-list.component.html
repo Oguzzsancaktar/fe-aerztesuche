@@ -1,9 +1,10 @@
 <div class="direction-list">
   <div class="direction-list__body">
-    <app-direction-item *ngFor="let direction of directions" [direction]="direction"></app-direction-item>
+    <app-direction-item *ngFor="let doctor of subscription_doctor_list$" [doctor]="doctor">
+    </app-direction-item>
   </div>
   <div class="direction-list__footer">
-    <span class="direction-data-info">Ergebnisse 1-4 von insgesamt {{directions.length}}</span>
+    <span class="direction-data-info">Ergebnisse 1-4 von insgesamt {{subscription_doctor_list$.length}}</span>
   </div>
 
 </div>
