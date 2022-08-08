@@ -1,10 +1,9 @@
 <div class="direction-item">
   <div class="direction-item__container" *ngIf="doctor">
     <div class="direction-item__row">
-      <div class="direction-item__row__item">
+      <div class="direction-item__row__item row">
         <app-distance-item [distance]="doctor.properties.distance"></app-distance-item>
-      </div>
-      <div class="direction-item__row__item">
+
         <div class="column">
           <div class="column__item">
             <h3 class="doctor-name">

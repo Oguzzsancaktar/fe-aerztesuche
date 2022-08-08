@@ -16,6 +16,15 @@
       flex-direction: row;
       &__item {
         height: 100%;
+
+        &.row {
+          display: flex;
+          align-items: center;
+
+          .column {
+            margin-left: 25px;
+          }
+        }
         .column {
           height: 100%;
           &__item {

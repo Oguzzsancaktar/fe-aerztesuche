@@ -1,0 +1,43 @@
+@use "src/variables" as c;
+
+.app-office-hours {
+  padding: 30px;
+  border-bottom: 1px solid c.$alto;
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .head {
+      .app-title-fourth {
+        margin-bottom: 15px;
+      }
+    }
+
+    .body {
+      width: 100%;
+
+      .office-hour-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        .office-hour-list-item {
+          .column {
+            .office-hour-list-item-title {
+              .app-title-fourth {
+              }
+            }
+
+            .office-hour-list-item-content {
+              .office-hour-list-item-content-item-time {
+                .app-title-fifth {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
