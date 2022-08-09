@@ -13,3 +13,8 @@ export const selectDoctorDetailModalIsOpen = createSelector(
   selectAppState,
   (state: IDoctorDetailModalState) => state.isModalOpen
 );
+
+export const selectDoctorDetailModalDoctorId = createSelector(
+  selectAppState,
+  (state: IDoctorDetailModalState) => state.selectedDoctorId
+);

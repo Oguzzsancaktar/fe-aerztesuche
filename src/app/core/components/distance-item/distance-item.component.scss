@@ -8,6 +8,9 @@
 
     .distance__text {
       color: c.$blue-bayoux;
+      &.active {
+        color: c.$monarch;
+      }
     }
   }
 }

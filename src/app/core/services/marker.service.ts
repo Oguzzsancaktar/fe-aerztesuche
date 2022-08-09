@@ -1,14 +1,23 @@
+import {
+  selectDoctorDetailModalDoctorId,
+  selectDoctorDetailModalState,
+} from './../../store/selectors/doctor-detail-modal.selectors';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import { IAppState } from '../../store/state/app.state';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { OpenDoctorDetailModal } from '../../store/actions/doctor-detail-modal.actions';
 import { DoctorDetailModalService } from './doctor-detail-modal.service';
+
+const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
+const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
 
 @Injectable()
 export class MarkerService {
   doctors: string = '/assets/data/doctor-addresses.geojson';
+
+  selectedDoctorId$ = this._store.pipe(select(selectDoctorDetailModalDoctorId));
 
   constructor(
     private http: HttpClient,
@@ -22,12 +31,15 @@ export class MarkerService {
 
   makeCapitalMarkers(map: L.Map): void {
     this.http.get(this.doctors).subscribe((res: any) => {
-      for (const c of res.doctors) {
-        const lon = c.geometry.coordinates[0];
-        const lat = c.geometry.coordinates[1];
-        const marker = L.marker([lat, lon]).on('click', () => {
+      for (const doctor of res.doctors) {
+        const lon = doctor.geometry.coordinates[0];
+        const lat = doctor.geometry.coordinates[1];
+
+        const marker = L.marker([lat, lon]);
+
+        marker.on('click', (x) => {
           this._doctorDetailModalService.openDoctorDetailModal(
-            c.id,
+            doctor.id,
             map,
             lat,
             lon

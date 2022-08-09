@@ -1,9 +1,12 @@
 <div class="distance-item">
   <div class="distance__column">
-    <div class="distance__icon">
+    <div class="distance__icon" *ngIf="!isActive">
       <app-icon-direction></app-icon-direction>
     </div>
-    <div class="distance__text">
+    <div class="distance__icon" *ngIf="isActive">
+      <app-icon-direction-active></app-icon-direction-active>
+    </div>
+    <div class="distance__text" [ngClass]="isActive ?'active' :''">
       {{distance}}
     </div>
   </div>

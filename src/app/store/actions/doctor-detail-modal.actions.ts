@@ -7,9 +7,7 @@ export enum EDoctorDetailModalActions {
 
 export class OpenDoctorDetailModal implements Action {
   public readonly type = EDoctorDetailModalActions.OPEN_DOCTOR_DETAIL_MODAL;
-  constructor(public payload: number) {
-    console.log('open modal called');
-  }
+  constructor(public payload: number) {}
 }
 
 export class CloseDoctorDetailModal implements Action {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import IDoctorDetail from '../../models/doctor/IDoctorDetail';
 import { DoctorDetailModalService } from '../../services/doctor-detail-modal.service';
@@ -9,6 +9,7 @@ import { DoctorDetailModalService } from '../../services/doctor-detail-modal.ser
   styleUrls: ['./direction-list.component.scss'],
 })
 export class DirectionListComponent implements OnInit {
+  @Input() map: any;
   public subscription_doctor_list$: IDoctorDetail[] = [];
 
   constructor(private _doctorDetailModalService: DoctorDetailModalService) {

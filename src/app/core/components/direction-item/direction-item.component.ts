@@ -1,10 +1,12 @@
+import { selectDoctorDetailModalDoctorId } from './../../../store/selectors/doctor-detail-modal.selectors';
 import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-modal.service';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IDoctorDetailModalState } from 'src/app/core/models';
 import { Component, Input, OnInit } from '@angular/core';
 import IDoctorDetail from '../../models/doctor/IDoctorDetail';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { OpenDoctorDetailModal } from 'src/app/store/actions/doctor-detail-modal.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-direction-item',
@@ -12,12 +14,24 @@ import { OpenDoctorDetailModal } from 'src/app/store/actions/doctor-detail-modal
   styleUrls: ['./direction-item.component.scss'],
 })
 export class DirectionItemComponent implements OnInit {
+  @Input() map: any;
   @Input() doctor?: IDoctorDetail | null;
 
-  constructor(private _doctorDetailModalService: DoctorDetailModalService) {}
+  selectedDoctorId$: Observable<IDoctorDetailModalState['selectedDoctorId']> =
+    this._store.pipe(select(selectDoctorDetailModalDoctorId));
+
+  constructor(
+    private _doctorDetailModalService: DoctorDetailModalService,
+    public _store: Store<IAppState>
+  ) {}
 
   openDoctorDetailModal(id: number) {
-    // this._doctorDetailModalService.openDoctorDetailModal(id, ,this.doctor?.geometry.coordinates[0],this.doctor?.geometry.coordinates[1]);
+    this._doctorDetailModalService.openDoctorDetailModal(
+      id,
+      this.map,
+      this.doctor?.geometry.coordinates[1]!,
+      this.doctor?.geometry.coordinates[0]!
+    );
   }
 
   ngOnInit(): void {}

@@ -1,8 +1,10 @@
-<div *ngIf="doctor" class="direction-item" (click)="openDoctorDetailModal(doctor.id)">
+<div *ngIf="doctor" class="direction-item" [ngClass]="doctor.id === (selectedDoctorId$ | async) ?'active' :''"
+  (click)="openDoctorDetailModal(doctor.id)">
   <div class="direction-item__container">
     <div class="direction-item__row">
       <div class="direction-item__row__item row">
-        <app-distance-item [distance]="doctor.properties.locations[0].distance"></app-distance-item>
+        <app-distance-item [distance]="doctor.properties.locations[0].distance"
+          [isActive]="doctor.id === (selectedDoctorId$ | async)"></app-distance-item>
 
         <div class="column">
           <div class="column__item">

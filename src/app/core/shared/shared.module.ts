@@ -30,6 +30,7 @@ import { OfficeHoursComponent } from '../components/office-hours/office-hours.co
 import { appReducers } from 'src/app/store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { IconDirectionActiveComponent } from '../components/icons/icon-direction-active/icon-direction-active.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     IconSearchComponent,
     IconClusterComponent,
     IconDirectionComponent,
+    IconDirectionActiveComponent,
     IconExpandMoreComponent,
     IconLocalPhoneComponent,
     IconCloseComponent,

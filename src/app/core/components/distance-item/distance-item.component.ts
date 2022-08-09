@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DistanceItemComponent implements OnInit {
   @Input() distance!: string;
+  @Input() isActive: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
