@@ -1,3 +1,5 @@
+import { DoctorDetailModalEffects } from './../../store/effects/doctor-detail-modal.effects';
+import { StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +27,9 @@ import { SelectFilterComponent } from '../components/select-filter/select-filter
 import { DoctorDetailModalComponent } from '../components/modals/doctor-detail-modal/doctor-detail-modal.component';
 import { HeaderTextSectionComponent } from '../components/header-text-section/header-text-section.component';
 import { OfficeHoursComponent } from '../components/office-hours/office-hours.component';
+import { appReducers } from 'src/app/store/reducers/app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   imports: [
@@ -33,6 +38,9 @@ import { OfficeHoursComponent } from '../components/office-hours/office-hours.co
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([DoctorDetailModalEffects]),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
   ],
   declarations: [
     IconSearchComponent,

@@ -1,3 +1,4 @@
+import { MarkerService } from '../../services/marker.service';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
@@ -7,6 +8,6 @@ import { DoctorDetailModalService } from '../../services/doctor-detail-modal.ser
 @NgModule({
   declarations: [HomeComponent],
   imports: [HomeRoutingModule, SharedModule],
-  providers: [DoctorDetailModalService],
+  providers: [DoctorDetailModalService, MarkerService],
 })
 export class HomeModule {}

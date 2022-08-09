@@ -1,12 +1,15 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
-import { MarkerService } from 'src/app/marker.service';
+import { MarkerService } from 'src/app/core/services/marker.service';
+import 'leaflet.markercluster';
 
-const iconRetinaUrl = 'assets/icon-material-location-on-red.svg';
+const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
+const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
+
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
 const iconDefault = L.icon({
-  iconRetinaUrl,
+  iconRetinaUrl: iconRetinaUrlBlue,
   iconUrl,
   shadowUrl,
   iconSize: [25, 41],
@@ -48,8 +51,6 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makeCapitalMarkers(this.map);
-    // this.markerService.makeCapitalCircleMarkers(this.map);
-    // Change the position of the Zoom Control to a newly created placeholder.
     this.map.zoomControl.setPosition('bottomright');
     L.control.scale({ position: 'bottomright' }).addTo(this.map);
   }

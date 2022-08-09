@@ -1,4 +1,4 @@
-import IDirection from './IDirection';
+import IDoctorDirection from './IDoctorDirection';
 
 export default interface IDoctorDetail {
   id: number;
@@ -6,5 +6,5 @@ export default interface IDoctorDetail {
     type: string;
     coordinates: number[];
   };
-  properties: IDirection;
+  properties: IDoctorDirection;
 }

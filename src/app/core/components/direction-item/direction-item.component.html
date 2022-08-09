@@ -1,8 +1,8 @@
-<div class="direction-item">
-  <div class="direction-item__container" *ngIf="doctor">
+<div *ngIf="doctor" class="direction-item" (click)="openDoctorDetailModal(doctor.id)">
+  <div class="direction-item__container">
     <div class="direction-item__row">
       <div class="direction-item__row__item row">
-        <app-distance-item [distance]="doctor.properties.distance"></app-distance-item>
+        <app-distance-item [distance]="doctor.properties.locations[0].distance"></app-distance-item>
 
         <div class="column">
           <div class="column__item">
@@ -12,7 +12,7 @@
           </div>
           <div class="column__item">
             <p class="address">
-              {{ doctor.properties.address }}
+              {{ doctor.properties.locations[0].address }}
             </p>
           </div>
         </div>
@@ -22,8 +22,8 @@
         <div class="colum">
           <div class="column__item">
             <div class="item-button">
-              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white"
-                (click)="openDoctorDetailModal(doctor.id)"></app-button>
+              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white">
+              </app-button>
             </div>
           </div>
           <div class="column__item row">

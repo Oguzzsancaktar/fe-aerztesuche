@@ -9,11 +9,55 @@
       },
       "properties": {
         "name": "Dr. med. Müller, Cord",
-        "address": "Cheruskerstr. 11140545 Düsseldorf",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,2 km"
+        "locations": [
+          {
+            "address": "Cheruskerstr. 11140545 Düsseldorf",
+            "distance": "1,2 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -24,11 +68,55 @@
       },
       "properties": {
         "name": "Hanno Peters",
-        "address": "Königsallee 6140215 Düsseldorf",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,0 km"
+        "locations": [
+          {
+            "address": "Cheruskerstr. 11140545 Düsseldorf",
+            "distance": "1,0 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
 
@@ -40,11 +128,55 @@
       },
       "properties": {
         "name": "Dr. Med. Peters, kay",
-        "address": "Viersener Str. 50-5241061 Mönchengladbach",
         "speciality": "Allgemein Mediziner",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "0,2 km"
+        "locations": [
+          {
+            "address": "Viersener Str. 50-5241061 Mönchengladbach",
+            "distance": "0,2 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -55,11 +187,55 @@
       },
       "properties": {
         "name": "Dr. med. Maaßen, Andrea",
-        "address": "Bahnhofstr. 13b42799 Leichlingen",
         "speciality": "Hausarzt",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,1 km"
+        "locations": [
+          {
+            "address": "Bahnhofstr. 13b42799 Leichlingen",
+            "distance": "1,1 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -70,11 +246,55 @@
       },
       "properties": {
         "name": "Dr. med. Maaß, Reinhard",
-        "address": "Croonsallee 2941061 Mönchengladbach",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,4 km"
+        "locations": [
+          {
+            "address": "Croonsallee 2941061 Mönchengladbach",
+            "distance": "1,4 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -85,11 +305,55 @@
       },
       "properties": {
         "name": "Dr. med. Fell, Michael",
-        "address": "Lutherplatz 4047805 Krefeld",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,2 km"
+        "locations": [
+          {
+            "address": "Lutherplatz 4047805 Krefeld",
+            "distance": "1,2 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -100,11 +364,55 @@
       },
       "properties": {
         "name": "Priv.Doz. Dr. med. Fellmer, Peter",
-        "address": "Fahrner Straße 13347169 Duisburg",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,5 km"
+        "locations": [
+          {
+            "address": "Fahrner Straße 13347169 Duisburg",
+            "distance": "1,5 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -115,11 +423,55 @@
       },
       "properties": {
         "name": "Michalik, Rukiye",
-        "address": "Kölner Str. 10542651 Solingen",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "1,7 km"
+        "locations": [
+          {
+            "address": "Kölner Str. 10542651 Solingen",
+            "distance": "1,7 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -130,11 +482,55 @@
       },
       "properties": {
         "name": "Dr. med. Michaelis, Markus",
-        "address": "Südwall 647608 Geldern",
         "speciality": "Orthopäde",
         "phone": "+49 211 12 3456",
         "website": "www.musterarzt.de",
-        "distance": "2,0 km"
+        "locations": [
+          {
+            "address": "Südwall 647608 Geldern",
+            "distance": "2,0 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ]
+          }
+        ]
       }
     }
   ]

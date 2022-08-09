@@ -4,6 +4,13 @@
   border-bottom: 1px solid c.$alto;
   background: c.$white;
   padding: 30px;
+  cursor: pointer;
+  transition: 0.4s ease-in-out background;
+
+  &:hover {
+    background: c.$alto;
+    transition: 0.4s ease-in-out background;
+  }
 
   .direction-item__container {
     height: 100%;

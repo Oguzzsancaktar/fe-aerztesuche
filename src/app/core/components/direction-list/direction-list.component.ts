@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import IDoctorDetail from '../../models/IDoctorDetail';
+import IDoctorDetail from '../../models/doctor/IDoctorDetail';
 import { DoctorDetailModalService } from '../../services/doctor-detail-modal.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class DirectionListComponent implements OnInit {
 
   constructor(private _doctorDetailModalService: DoctorDetailModalService) {
     this._doctorDetailModalService.getDoctorList().subscribe((item) => {
-      this.subscription_doctor_list$ = item.doctors;
+      this.subscription_doctor_list$ = item.body.doctors;
     });
   }
 
