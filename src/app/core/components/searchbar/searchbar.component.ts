@@ -12,7 +12,7 @@ export class SearchbarComponent implements OnInit {
   constructor() {}
 
   handleFilterIconClick() {
-    this.handleFilterSectionEmitter.emit(true);
+    this.handleFilterSectionEmitter.emit(!this.showFilterSection);
   }
 
   ngOnInit(): void {}
