@@ -1,11 +1,20 @@
 <div class="searchbar">
   <div class="searchbar__container">
-    <input
-      class="searchbar__input"
-      placeholder="Suchbegriff eingeben: z.B.: Müller"
-    />
-    <div class="searchbar__icon">
-      <app-icon-cluster></app-icon-cluster>
+    <div class="searchbar__layout">
+      <div class="searchar__layout__item icon">
+        <div class="searchbar__toogle-filters-icon" (click)="handleFilterIconClick()"
+          [ngStyle]="{'backgroundColor': showFilterSection ? '#4c6085' : 'white'}">
+          <app-icon-show-filters *ngIf="!showFilterSection"></app-icon-show-filters>
+          <app-icon-show-filters-white *ngIf="showFilterSection"></app-icon-show-filters-white>
+
+        </div>
+      </div>
+      <div class="searchar__layout__item">
+        <input class="searchbar__input" placeholder="Suchbegriff eingeben: z.B.: Müller" />
+        <div class="searchbar__icon">
+          <app-icon-cluster></app-icon-cluster>
+        </div>
+      </div>
     </div>
   </div>
 </div>

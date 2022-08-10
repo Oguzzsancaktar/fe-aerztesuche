@@ -32,6 +32,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { IconDirectionActiveComponent } from '../components/icons/icon-direction-active/icon-direction-active.component';
 import { DoctorLocationSlider } from '../components/doctor-location-slider/doctor-location-slider.component';
+import { IconShowFiltersComponent } from '../components/icons/icon-show-filters/icon-show-filters.component';
+import { LeftFilterSectionComponent } from '../components/left-filter-section/left-filter-section.component';
+import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-filters-white/icon-show-filters-white.component';
 
 @NgModule({
   imports: [
@@ -68,6 +71,9 @@ import { DoctorLocationSlider } from '../components/doctor-location-slider/docto
     HeaderTextSectionComponent,
     OfficeHoursComponent,
     DoctorLocationSlider,
+    IconShowFiltersComponent,
+    LeftFilterSectionComponent,
+    IconShowFiltersWhiteComponent,
   ],
   exports: [
     IconSearchComponent,
@@ -92,6 +98,9 @@ import { DoctorLocationSlider } from '../components/doctor-location-slider/docto
     HeaderTextSectionComponent,
     OfficeHoursComponent,
     DoctorLocationSlider,
+    IconShowFiltersComponent,
+    LeftFilterSectionComponent,
+    IconShowFiltersWhiteComponent,
   ],
 })
 export class SharedModule {}

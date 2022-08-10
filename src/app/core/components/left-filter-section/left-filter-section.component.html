@@ -1,0 +1,48 @@
+<div class="app-left-filter-section">
+  <div class="section-container">
+    <div class="section-layout">
+      <div class="head">
+        <div class="row">
+          <h4 class="head-title app-title-fourth">Filter</h4>
+
+          <div class="close-icon" (click)="handleCloseIconClick()">
+            <app-icon-close></app-icon-close>
+          </div>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="filters__item" *ngFor="let filter of tempFilterData; let i = index"
+          (click)="toggleFilterSelects(i)">
+          <div class="filters__item__relative">
+            <div class="filter-text">
+              <h3>{{filter.name}}</h3>
+              <app-icon-expand-more></app-icon-expand-more>
+            </div>
+            <div class="filter-list" [ngClass]="{'active': i === activeIndex}">
+              <div class="filter-list-item">
+                <app-select-filter [filterOptions]="filter.values"></app-select-filter>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="foot">
+        <div class="row">
+
+          <div class="row-item">
+            <app-button backgroundColor="transparent" text="Alle Filter zurücksetzen" border="1px solid #4C6085"
+              textColor="#4C6085">
+            </app-button>
+          </div>
+          <div class="row-item">
+            <app-button backgroundColor="#4C6085" text="Anwenden" border="1px solid #4C6085" textColor="white">
+            </app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

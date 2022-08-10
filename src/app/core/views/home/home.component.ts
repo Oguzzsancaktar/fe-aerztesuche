@@ -17,6 +17,7 @@ import { MarkerService } from '../../services/marker.service';
 })
 export class HomeComponent implements AfterViewInit {
   public map: any;
+  showFilterSection: boolean = false;
 
   doctorDetailModalState$ = this._store.pipe(
     select(selectDoctorDetailModalState)
@@ -44,6 +45,10 @@ export class HomeComponent implements AfterViewInit {
     );
 
     googleStreets.addTo(this.map);
+  }
+
+  handleFilterSection(show: boolean) {
+    this.showFilterSection = show;
   }
 
   ngAfterViewInit(): void {

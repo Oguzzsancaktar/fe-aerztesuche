@@ -4,10 +4,11 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { DoctorDetailModalService } from '../../services/doctor-detail-modal.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [HomeRoutingModule, SharedModule],
+  imports: [HomeRoutingModule, SharedModule, CommonModule],
   providers: [DoctorDetailModalService, MarkerService],
 })
 export class HomeModule {}

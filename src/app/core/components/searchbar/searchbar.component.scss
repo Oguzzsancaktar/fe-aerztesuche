@@ -3,33 +3,41 @@
 .searchbar {
   width: 100%;
   height: 60px;
-  background: c.$white 0% 0% no-repeat padding-box;
-
-  box-shadow: 0px 4px 10px #0000000d;
-
   .searchbar__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: c.$white;
+    .searchbar__layout {
+      display: flex;
+      .searchar__layout__item {
+        display: flex;
+        align-items: center;
+        display: flex;
+        width: calc(100% - 60px);
 
-    padding: 20.5px 30px;
-  }
+        &.icon {
+          cursor: pointer;
+          width: 60px;
+        }
+        .searchbar__toogle-filters-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          transition: 0.4s;
+          app-icon-show-filters {
+          }
+        }
+        .searchbar__input {
+          border: none;
+          outline: none;
+          height: 20px;
+          width: calc(100% - 60px);
+        }
 
-  &__input {
-    width: 100%;
-    height: 19px;
-    border: none;
-    outline: none;
-    color: c.$mine-shaft;
-
-    &::placeholder {
-      color: c.$gray;
+        .searchbar__icon {
+          margin: 0 30px;
+        }
+      }
     }
-  }
-
-  &__icon {
-    width: 26.3px;
-    height: 26.3px;
-    margin-left: 30px;
   }
 }
