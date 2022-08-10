@@ -14,12 +14,16 @@ export class LeftFilterSectionComponent implements OnInit {
       name: 'Fachgebiet',
       values: [
         {
-          label: 'Above',
-          value: 'above',
+          label: 'Ortophädie',
+          value: 'Ortophädie',
         },
         {
-          label: 'Below',
-          value: 'below',
+          label: 'Chirotherapie',
+          value: 'Chirotherapie',
+        },
+        {
+          label: 'Fachärtzlich tätig',
+          value: 'Fachärtzlich tätig',
         },
       ],
     },
@@ -28,15 +32,15 @@ export class LeftFilterSectionComponent implements OnInit {
       values: [
         {
           label: 'Stufenloser Zugang (3)',
-          value: 'zugang',
+          value: 'Stufenloser Zugang (3)',
         },
         {
-          label: 'Aufzug',
-          value: 'aufzug',
+          label: 'Aufzug (10)',
+          value: 'Aufzug (10)',
         },
         {
-          label: 'Rampe',
-          value: 'rampe',
+          label: 'Rampe (1)',
+          value: 'Rampe (1)',
         },
       ],
     },
@@ -44,12 +48,12 @@ export class LeftFilterSectionComponent implements OnInit {
       name: 'Zusatzbezeichnung',
       values: [
         {
-          label: 'Above',
-          value: 'above',
+          label: 'Lorem Ipsum (3)',
+          value: 'Lorem Ipsum (3)',
         },
         {
-          label: 'Below',
-          value: 'below',
+          label: 'Dolor Sit Amet',
+          value: 'Dolor Sit Amet',
         },
       ],
     },
@@ -57,12 +61,8 @@ export class LeftFilterSectionComponent implements OnInit {
       name: 'Sonderleistung',
       values: [
         {
-          label: 'Above',
-          value: 'above',
-        },
-        {
-          label: 'Below',
-          value: 'below',
+          label: 'Test-Bezeichnung',
+          value: 'Test-Bezeichnung',
         },
       ],
     },
@@ -70,12 +70,12 @@ export class LeftFilterSectionComponent implements OnInit {
       name: 'Sprachen',
       values: [
         {
-          label: 'Above',
-          value: 'above',
+          label: 'Englisches',
+          value: 'Englisches',
         },
         {
-          label: 'Below',
-          value: 'below',
+          label: 'German',
+          value: 'German',
         },
       ],
     },
@@ -83,12 +83,12 @@ export class LeftFilterSectionComponent implements OnInit {
       name: 'Öffnungszeiten',
       values: [
         {
-          label: 'Above',
-          value: 'above',
+          label: 'Mo-Fr: 8:00 - 17:00',
+          value: 'Mo-Fr: 8:00 - 17:00',
         },
         {
-          label: 'Below',
-          value: 'below',
+          label: 'Sa: 8:00 - 12:00',
+          value: 'Sa: 8:00 - 12:00',
         },
       ],
     },

@@ -16,7 +16,7 @@
           (click)="toggleFilterSelects(i)">
           <div class="filters__item__relative">
             <div class="filter-text">
-              <h3>{{filter.name}}</h3>
+              <h4 class="app-title-fourth">{{filter.name}}</h4>
               <app-icon-expand-more></app-icon-expand-more>
             </div>
             <div class="filter-list" [ngClass]="{'active': i === activeIndex}">

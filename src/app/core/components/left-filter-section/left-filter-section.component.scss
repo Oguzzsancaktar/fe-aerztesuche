@@ -41,9 +41,11 @@
               align-items: center;
               color: c.$mine-shaft;
 
-              h3 {
+              h4.app-title-fourth {
+                margin-left: 20px;
                 font: normal normal normal 16px/19px Lato;
                 margin-right: 10px;
+                color: c.$blue-bayoux;
               }
 
               span {
@@ -56,8 +58,6 @@
               background: c.$white 0% 0% no-repeat padding-box;
               &.active {
                 display: block;
-              }
-              app-select-filter {
               }
             }
           }
