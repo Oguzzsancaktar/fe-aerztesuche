@@ -34,6 +34,7 @@
       .filters {
         height: calc(100% - 60px - 60px);
         &__item {
+          margin-bottom: 10px;
           cursor: pointer;
           .filters__item__relative {
             .filter-text {
