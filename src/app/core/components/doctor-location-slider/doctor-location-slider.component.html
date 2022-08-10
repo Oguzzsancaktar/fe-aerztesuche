@@ -1,0 +1,40 @@
+<div class="app-doctor-location-slider">
+  <div class="header-section">
+    <h4 class="app-header-fourth">Adressen</h4>
+  </div>
+
+  <div class="slide-section">
+    <ul class="location-list">
+      <li class="location-list__item" *ngFor="let location of doctorDetail?.properties?.locations; let i = index"
+        (click)="handleSlideChange(i)" [ngClass]="i === activeSlideNumber ? 'active' : ''">
+        {{location.address}}
+
+        <div class="paddy">
+
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content-section">
+    <div class="content-section__item">
+      <app-office-hours headerText="Sprechstunden"
+        [contentData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.workingHours">
+      </app-office-hours>
+    </div>
+
+    <div class="content-section__item">
+      <app-office-hours headerText="Offene Sprechstunden"
+        [contentData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.openWorkingHours">
+      </app-office-hours>
+
+    </div>
+
+    <div class="content-section__item"
+      *ngFor="let information of ((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.informations">
+      <app-header-text-section [headerText]="information.title" [contentDescription]="information.content">
+      </app-header-text-section>
+    </div>
+
+  </div>
+</div>

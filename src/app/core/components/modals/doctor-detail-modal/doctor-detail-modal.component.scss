@@ -23,6 +23,8 @@
     max-width: c.$app-medium-modal-max-width;
     background-color: c.$white;
     position: relative;
+    max-height: 800px;
+    overflow-y: auto;
     .modal-header {
       display: flex;
       padding-top: 50px;
@@ -47,6 +49,13 @@
       .column {
         .detail-modal-item {
           app-direction-item {
+          }
+
+          &.two-section {
+            display: flex;
+            .section {
+              width: 100%;
+            }
           }
         }
       }

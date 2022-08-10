@@ -1,7 +1,11 @@
+@use "src/variables" as c;
+
 .app-header-text-section {
   padding: 30px;
+
   &__container {
     .app-header-text-section__title {
+      color: c.$blue-bayoux;
     }
 
     .app-header-text-section__description {

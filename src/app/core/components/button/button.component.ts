@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
   @Input() text: string = '!!!';
   @Input() backgroundColor: string = 'red';
   @Input() textColor: string = 'black';
+  @Input() cursorType: string = 'pointer';
 
   @Output() btnClick = new EventEmitter();
 

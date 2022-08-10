@@ -62,6 +62,10 @@ export class DoctorDetailModalService {
     );
   }
 
+  getDoctorDetail(doctorId: number) {
+    return this.doctorList;
+  }
+
   findSelectedDoctor(doctorId: number) {
     this.http.get(this.doctors).subscribe((res: any) => {
       const direction: IDirection = res.doctors.find(

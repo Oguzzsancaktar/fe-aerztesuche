@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 export class DirectionItemComponent implements OnInit {
   @Input() map: any;
   @Input() doctor?: IDoctorDetail | null;
+  @Input() isForModal: boolean = false;
 
   selectedDoctorId$: Observable<IDoctorDetailModalState['selectedDoctorId']> =
     this._store.pipe(select(selectDoctorDetailModalDoctorId));
@@ -26,12 +27,14 @@ export class DirectionItemComponent implements OnInit {
   ) {}
 
   openDoctorDetailModal(id: number) {
-    this._doctorDetailModalService.openDoctorDetailModal(
-      id,
-      this.map,
-      this.doctor?.geometry.coordinates[1]!,
-      this.doctor?.geometry.coordinates[0]!
-    );
+    if (!this.isForModal) {
+      this._doctorDetailModalService.openDoctorDetailModal(
+        id,
+        this.map,
+        this.doctor?.geometry.coordinates[1]!,
+        this.doctor?.geometry.coordinates[0]!
+      );
+    }
   }
 
   ngOnInit(): void {}

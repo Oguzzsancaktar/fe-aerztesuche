@@ -31,6 +31,7 @@ import { appReducers } from 'src/app/store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { IconDirectionActiveComponent } from '../components/icons/icon-direction-active/icon-direction-active.component';
+import { DoctorLocationSlider } from '../components/doctor-location-slider/doctor-location-slider.component';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import { IconDirectionActiveComponent } from '../components/icons/icon-direction
     DoctorDetailModalComponent,
     HeaderTextSectionComponent,
     OfficeHoursComponent,
+    DoctorLocationSlider,
   ],
   exports: [
     IconSearchComponent,
@@ -89,6 +91,7 @@ import { IconDirectionActiveComponent } from '../components/icons/icon-direction
     DoctorDetailModalComponent,
     HeaderTextSectionComponent,
     OfficeHoursComponent,
+    DoctorLocationSlider,
   ],
 })
 export class SharedModule {}

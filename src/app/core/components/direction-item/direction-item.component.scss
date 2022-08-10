@@ -16,6 +16,12 @@
     background: c.$alto;
     transition: 0.4s ease-in-out background;
   }
+  &.hover-disable {
+    cursor: default;
+    &:hover {
+      background: c.$white;
+    }
+  }
 
   .direction-item__container {
     height: 100%;

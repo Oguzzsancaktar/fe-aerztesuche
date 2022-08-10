@@ -1,10 +1,11 @@
-<div *ngIf="doctor" class="direction-item" [ngClass]="doctor.id === (selectedDoctorId$ | async) ?'active' :''"
-  (click)="openDoctorDetailModal(doctor.id)">
+<div *ngIf="doctor" class="direction-item"
+  [ngClass]="(doctor.id === (selectedDoctorId$ | async) && !isForModal )?'active' :''"
+  [ngClass]="isForModal ?'hover-disable' :''" (click)="openDoctorDetailModal(doctor.id)">
   <div class="direction-item__container">
     <div class="direction-item__row">
       <div class="direction-item__row__item row">
         <app-distance-item [distance]="doctor.properties.locations[0].distance"
-          [isActive]="doctor.id === (selectedDoctorId$ | async)"></app-distance-item>
+          [isActive]="(doctor.id === (selectedDoctorId$ | async) && !isForModal )"></app-distance-item>
 
         <div class="column">
           <div class="column__item">
@@ -24,7 +25,8 @@
         <div class="colum">
           <div class="column__item">
             <div class="item-button">
-              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white">
+              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white"
+                cursorType="default">
               </app-button>
             </div>
           </div>

@@ -6,4 +6,5 @@ export default interface IDoctorLocation {
   distance: string;
   informations: ITitleContentInformation[];
   workingHours: IDoctorWorkingHours[];
+  openWorkingHours: IDoctorWorkingHours[];
 }

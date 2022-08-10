@@ -257,6 +257,7 @@ caption {
 ul,
 menu,
 dir {
+  list-style: none;
   display: block;
   list-style-type: disc;
   -webkit-margin-before: 1__qem;
@@ -1030,6 +1031,10 @@ dialog::backdrop {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.1);
+}
+ul {
+  padding: 0;
+  list-style: none;
 }
 
 h1,

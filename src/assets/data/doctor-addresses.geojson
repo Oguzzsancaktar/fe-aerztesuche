@@ -23,17 +23,17 @@
               },
               {
                 "title": "Medizinisches Versorgungszentrum mit",
-                "value": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
               }
             ],
             "workingHours": [
               {
                 "day": "Montag",
-                "time": "8:00 - 17:00"
+                "time": "8:00 - 11:00"
               },
               {
                 "day": "Dienstag",
-                "time": "8:00 - 17:00"
+                "time": "12:00 - 15:00"
               },
               {
                 "day": "Mittwoch",
@@ -49,11 +49,190 @@
               },
               {
                 "day": "Samstag",
+                "time": "10:00 - 12:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ],
+            "openWorkingHours": [
+              {
+                "day": "Montag",
+                "time": "9:00 - 14:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "10:00 - 12:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "-"
+              }
+            ]
+          },
+
+          {
+            "address": "Cheruskerstr. 11140545 Düsseldorf 2",
+            "distance": "1,2 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie,Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "content": "Psychologische Psychotherapie, für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "-"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "-"
+              },
+              {
+                "day": "Samstag",
                 "time": "8:00 - 17:00"
               },
               {
                 "day": "Sonntag",
                 "time": "8:00 - 17:00"
+              }
+            ],
+            "openWorkingHours": [
+              {
+                "day": "Montag",
+                "time": "9:00 - 14:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "10:00 - 12:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "-"
+              }
+            ]
+          },
+          {
+            "address": "Cheruskerstr. 11140545 Düsseldorf 3",
+            "distance": "1,2 km",
+            "informations": [
+              {
+                "title": "Tätigkeitsbereiche",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene Verhaltenstherapie für Kinder und Jugendliche Psychotherapie für Kinder, Jugendliche und Erwachsene"
+              },
+              {
+                "title": "Medizinisches Versorgungszentrum mit",
+                "content": "Psychologische Psychotherapie, Verhaltenstherapie Verhaltenstherapie für Erwachsene"
+              }
+            ],
+            "workingHours": [
+              {
+                "day": "Montag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "-"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "-"
+              },
+              {
+                "day": "Sonntag",
+                "time": "8:00 - 17:00"
+              }
+            ],
+            "openWorkingHours": [
+              {
+                "day": "Montag",
+                "time": "9:00 - 14:00"
+              },
+              {
+                "day": "Dienstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Mittwoch",
+                "time": "10:00 - 12:00"
+              },
+              {
+                "day": "Donnerstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Freitag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Samstag",
+                "time": "8:00 - 17:00"
+              },
+              {
+                "day": "Sonntag",
+                "time": "-"
               }
             ]
           }

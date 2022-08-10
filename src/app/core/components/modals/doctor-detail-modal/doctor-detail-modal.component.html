@@ -1,4 +1,6 @@
-<div class="app-doctor-detail-modal {{(isDoctorDetailModalOpen$ | async) ? 'show-modal' : 'hide-modal'}}" ng>
+<div class="app-doctor-detail-modal {{
+    (isDoctorDetailModalOpen$ | async) ? 'show-modal' : 'hide-modal'
+  }}" #doctorDetailModal>
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title"></h5>
@@ -9,14 +11,28 @@
     <div class="modal-body">
       <div class="column">
         <div class="detail-modal-item">
-          <!-- <app-direction-item [doctor]="subscription_doctor_detail$ | async"></app-direction-item> -->
+          <app-direction-item [isForModal]="true" [doctor]="_doctorDetail"></app-direction-item>
         </div>
+
+        <div class="detail-modal-item two-section">
+          <div class="section">
+            <app-header-text-section headerText="Tätigkeitsbereiche"
+              contentDescription="• Facharzt für Orthopädie • Chirotherapie • Kinder-Orthopädie • fachärztlich tätig">
+            </app-header-text-section>
+          </div>
+
+          <div class="section">
+            <app-header-text-section headerText="Fremdsprachenkenntnisse" contentDescription="• Englisch">
+            </app-header-text-section>
+          </div>
+        </div>
+
         <div class="detail-modal-item">
-          <app-office-hours></app-office-hours>
+          <app-doctor-location-slider [doctorDetail]="_doctorDetail"></app-doctor-location-slider>
         </div>
-        <div class="detail-modal-item">
-          <app-header-text-section></app-header-text-section>
-        </div>
+
+
       </div>
     </div>
   </div>
+</div>

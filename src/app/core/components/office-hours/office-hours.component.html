@@ -1,176 +1,33 @@
 <div class="app-office-hours">
   <div class="column">
     <div class="head">
-      <h4 class="app-title-fourth">Sprechstunden</h4>
+      <h4 class="app-title-fourth">{{headerText}}</h4>
     </div>
     <div class="body">
-      <div class="office-hour-list">
-        <div class="office-hour-list-item">
+      <ul class="office-hour-list">
+
+        <li class="office-hour-list-item" *ngFor="let dayData of contentData">
           <div class="column">
             <div class="office-hour-list-item-title">
 
               <h5 class="app-title-fifth">
-                Montag
+                {{dayData.day}}
               </h5>
             </div>
             <div class="office-hour-list-item-content">
               <div class="office-hour-list-item-content-item-time">
                 <span class="app-title-fifth">
-                  08:00
+                  {{dayData.time}}
                 </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                  13:30
-                </span>
+
               </div>
             </div>
           </div>
-        </div>
+        </li>
 
 
 
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Dienstag
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                  14:00
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                  16:30
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Mittwoch
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                  08:00
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                  13:30
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Donnerstag
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                  14:00
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                  16:30
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Freitag
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Samstag
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                  08:00
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                  13:30
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="office-hour-list-item">
-          <div class="column">
-            <div class="office-hour-list-item-title">
-
-              <h5 class="app-title-fifth">
-                Sonntag
-              </h5>
-            </div>
-            <div class="office-hour-list-item-content">
-              <div class="office-hour-list-item-content-item-time">
-                <span class="app-title-fifth">
-                </span>
-                <span class="app-title-fifth">
-                  -
-                </span>
-                <span class="app-title-fifth">
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </ul>
     </div>
   </div>
 </div>
