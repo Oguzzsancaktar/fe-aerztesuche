@@ -1,12 +1,12 @@
 import { selectDoctorDetailModalDoctorId } from './../../../store/selectors/doctor-detail-modal.selectors';
 import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-modal.service';
 import { IAppState } from 'src/app/store/state/app.state';
-import { IDoctorDetailModalState } from 'src/app/core/models';
+import { IDoctorDetailModalState, IPlace } from 'src/app/core/models';
 import { Component, Input, OnInit } from '@angular/core';
 import IDoctorDetail from '../../models/doctor/IDoctorDetail';
 import { Store, select } from '@ngrx/store';
-import { OpenDoctorDetailModal } from 'src/app/store/actions/doctor-detail-modal.actions';
 import { Observable } from 'rxjs';
+import EGender from '../../models/Enumeration/EGender';
 
 @Component({
   selector: 'app-direction-item',
@@ -15,11 +15,16 @@ import { Observable } from 'rxjs';
 })
 export class DirectionItemComponent implements OnInit {
   @Input() map: any;
-  @Input() doctor?: IDoctorDetail | null;
+  @Input() doctor?: IPlace | null;
   @Input() isForModal: boolean = false;
 
   selectedDoctorId$: Observable<IDoctorDetailModalState['selectedDoctorId']> =
     this._store.pipe(select(selectDoctorDetailModalDoctorId));
+
+  // TODO make it util
+  findGenderAdditional(gender: number) {
+    return EGender[gender];
+  }
 
   constructor(
     private _doctorDetailModalService: DoctorDetailModalService,
@@ -31,8 +36,8 @@ export class DirectionItemComponent implements OnInit {
       this._doctorDetailModalService.openDoctorDetailModal(
         id,
         this.map,
-        this.doctor?.geometry.coordinates[1]!,
-        this.doctor?.geometry.coordinates[0]!
+        this.doctor?.place.latitude!,
+        this.doctor?.place.longitute!
       );
     }
   }

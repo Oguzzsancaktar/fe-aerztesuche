@@ -11,24 +11,19 @@
     <div class="modal-body">
       <div class="column">
         <div class="detail-modal-item">
-          <app-direction-item [isForModal]="true" [doctor]="_doctorDetail"></app-direction-item>
+          <app-direction-item [isForModal]="true" [doctor]="doctorDetailModalSelectedPlace$ | async">
+          </app-direction-item>
         </div>
 
-        <div class="detail-modal-item two-section">
+        <div class="detail-modal-item" *ngIf=" (doctorDetail$?.fremdsprachen || []).length > 0">
           <div class="section">
-            <app-header-text-section headerText="Tätigkeitsbereiche"
-              contentDescription="• Facharzt für Orthopädie • Chirotherapie • Kinder-Orthopädie • fachärztlich tätig">
-            </app-header-text-section>
-          </div>
-
-          <div class="section">
-            <app-header-text-section headerText="Fremdsprachenkenntnisse" contentDescription="• Englisch">
-            </app-header-text-section>
+            <app-language-list headerText="Fremdsprachen" [languages]="doctorDetail$?.fremdsprachen">
+            </app-language-list>
           </div>
         </div>
 
         <div class="detail-modal-item">
-          <app-doctor-location-slider [doctorDetail]="_doctorDetail"></app-doctor-location-slider>
+          <app-doctor-location-slider [doctorDetail]="doctorDetail$"></app-doctor-location-slider>
         </div>
 
 

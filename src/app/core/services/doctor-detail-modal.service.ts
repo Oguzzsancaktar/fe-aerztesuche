@@ -1,3 +1,4 @@
+import { PlaceService } from './place.service';
 import { IDoctorDetail } from 'src/app/core/models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,14 +9,17 @@ import {
   CloseDoctorDetailModal,
   OpenDoctorDetailModal,
 } from 'src/app/store/actions/doctor-detail-modal.actions';
+
 import { IAppState } from 'src/app/store/state/app.state';
 import IDirection from '../models/doctor/IDoctorDirection';
+import { environment } from 'src/environments/environment';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
 
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
+
 const iconDefault = L.icon({
   iconRetinaUrl: iconRetinaUrlBlue,
   iconUrl,
@@ -42,36 +46,19 @@ const iconUpdated = L.icon({
   providedIn: 'root',
 })
 export class DoctorDetailModalService {
-  doctors: string = '/assets/data/doctor-addresses.geojson';
-
   doctorList: Subject<any> = new Subject<any>();
   selectedDoctor: Subject<any> = new Subject<any>();
   isDoctorDetailModalOpen: Subject<any> = new Subject<any>();
 
-  constructor(private http: HttpClient, private _store: Store<IAppState>) {
-    this.http.get(this.doctors).subscribe((res: any) => {
-      this.doctorList = res.doctors;
-    });
-  }
+  constructor(
+    private http: HttpClient,
+    private _store: Store<IAppState>,
+    private _placeService: PlaceService
+  ) {}
 
-  getDoctorList() {
-    return this.http.get<any>(this.doctors, { observe: 'response' }).pipe(
-      map((item) => {
-        return item;
-      })
-    );
-  }
-
-  getDoctorDetail(doctorId: number) {
-    return this.doctorList;
-  }
-
-  findSelectedDoctor(doctorId: number) {
-    this.http.get(this.doctors).subscribe((res: any) => {
-      const direction: IDirection = res.doctors.find(
-        (doctor: any) => doctor.id === doctorId
-      );
-      this.selectedDoctor.next(direction);
+  getDoctorDetailById(doctorId: number) {
+    return this.http.get<any>(`${environment.baseUrl}/person/${doctorId}`, {
+      observe: 'response',
     });
   }
 
@@ -81,11 +68,13 @@ export class DoctorDetailModalService {
     lat: number,
     lon: number
   ) {
-    this._store.dispatch(new OpenDoctorDetailModal(doctorId));
-    // map.setZoom(14);
-    // panto bug
+    this._store.dispatch(
+      new OpenDoctorDetailModal({
+        selectedDoctorId: doctorId,
+        selectedDoctorPlace: this._placeService.findPlaceWithLonLat(lon, lat),
+      })
+    );
     map.setView(new L.LatLng(lat, lon), 15, { animate: true });
-
     const marker = L.marker([lat, lon], {
       icon: iconUpdated,
     });

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import IDoctorDetail from '../../models/doctor/IDoctorDetail';
-import { DoctorDetailModalService } from '../../services/doctor-detail-modal.service';
+import { IPlace } from '../../models';
+import { PlaceService } from '../../services/place.service';
 
 @Component({
   selector: 'app-direction-list',
@@ -10,15 +9,13 @@ import { DoctorDetailModalService } from '../../services/doctor-detail-modal.ser
 })
 export class DirectionListComponent implements OnInit {
   @Input() map: any;
-  public subscription_doctor_list$: IDoctorDetail[] = [];
+  public subscription_place_list$: IPlace[] = [];
 
-  constructor(private _doctorDetailModalService: DoctorDetailModalService) {
-    this._doctorDetailModalService.getDoctorList().subscribe((item) => {
-      this.subscription_doctor_list$ = item.body.doctors;
+  constructor(private _placeService: PlaceService) {
+    this._placeService.getPlaceList().subscribe((item) => {
+      this.subscription_place_list$ = item.body;
     });
   }
 
-  ngOnInit(): void {
-    setInterval(() => {}, 1000);
-  }
+  ngOnInit(): void {}
 }

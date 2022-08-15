@@ -1,3 +1,4 @@
+import { PlaceService } from './../../services/place.service';
 import { MarkerService } from '../../services/marker.service';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
@@ -9,6 +10,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [HomeComponent],
   imports: [HomeRoutingModule, SharedModule, CommonModule],
-  providers: [DoctorDetailModalService, MarkerService],
+  providers: [DoctorDetailModalService, MarkerService, PlaceService],
 })
 export class HomeModule {}

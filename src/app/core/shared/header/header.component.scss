@@ -18,9 +18,10 @@
     letter-spacing: 0px;
     width: 100%;
     max-width: c.$app-normal-max-width;
-
+    margin: 0 20px;
     @media screen and (max-width: c.$media-xl-min-width) {
       max-width: calc(100% - 60px);
+      margin: auto;
     }
   }
 }

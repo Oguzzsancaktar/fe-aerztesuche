@@ -17,7 +17,8 @@ export const openDoctorDetailModalReducer = (
       return {
         ...state,
         isModalOpen: true,
-        selectedDoctorId: action.payload,
+        selectedDoctorId: action.payload.selectedDoctorId,
+        selectedDoctorPlace: action.payload.selectedDoctorPlace,
       };
     }
     case EDoctorDetailModalActions.CLOSE_DOCTOR_DETAIL_MODAL: {
@@ -25,6 +26,7 @@ export const openDoctorDetailModalReducer = (
         ...state,
         isModalOpen: false,
         selectedDoctorId: undefined,
+        selectedDoctorPlace: undefined,
       };
     }
     default:

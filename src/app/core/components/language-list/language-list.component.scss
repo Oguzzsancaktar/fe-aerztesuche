@@ -1,0 +1,17 @@
+@use "src/variables" as c;
+
+.app-language-list-section {
+  padding: 30px;
+
+  &__container {
+    .app-language-list-section__title {
+      color: c.$blue-bayoux;
+    }
+
+    .language-list {
+      list-style: square;
+      .language-list-item {
+      }
+    }
+  }
+}

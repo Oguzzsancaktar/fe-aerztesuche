@@ -1,0 +1,13 @@
+<div class="app-accessibility-list-section">
+  <div class="app-accessibility-list-section__container">
+    <h4 class="app-accessibility-list-section__title app-tittle-fourth">
+      Angebote für Menschen mit Behinderung (Barrierefreiheit)
+    </h4>
+
+    <ul class="accessibility-list">
+      <li class="accessibility-list-item" *ngFor="let accessibility of accessibilityList">
+        {{accessibility.bezeichnung}}
+      </li>
+    </ul>
+  </div>
+</div>

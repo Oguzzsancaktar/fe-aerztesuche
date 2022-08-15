@@ -1,7 +1,8 @@
-import { CloseDoctorDetailModal } from './../../../../store/actions/doctor-detail-modal.actions';
 import {
   selectDoctorDetailModalIsOpen,
   selectDoctorDetailModalDoctorId,
+  selectDoctorDetailModalState,
+  selectDoctorDetailModalPlace,
 } from './../../../../store/selectors/doctor-detail-modal.selectors';
 import { Store, select } from '@ngrx/store';
 import {
@@ -13,9 +14,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IDoctorDetail, IDoctorDetailModalState } from 'src/app/core/models';
+import {
+  IDoctorDetail,
+  IDoctorDetailModalState,
+  IPlace,
+} from 'src/app/core/models';
 import { IAppState } from 'src/app/store/state/app.state';
 import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-modal.service';
+import { PlaceService } from 'src/app/core/services/place.service';
 
 @Component({
   selector: 'app-doctor-detail-modal',
@@ -26,7 +32,8 @@ export class DoctorDetailModalComponent implements OnInit {
   @Input() map: any;
   @ViewChild('doctorDetailModal') doctorDetailModal: ElementRef | undefined;
 
-  _doctorDetail: IDoctorDetail | undefined;
+  doctorDetail$: IDoctorDetail | undefined;
+  doctorDirection$: IPlace | undefined;
 
   public isDoctorDetailModalOpen$: Observable<
     IDoctorDetailModalState['isModalOpen']
@@ -36,9 +43,14 @@ export class DoctorDetailModalComponent implements OnInit {
     IDoctorDetailModalState['selectedDoctorId']
   >;
 
+  public doctorDetailModalSelectedPlace$: Observable<
+    IDoctorDetailModalState['selectedDoctorPlace']
+  >;
+
   constructor(
     private _store: Store<IAppState>,
     private _doctorDetailModalService: DoctorDetailModalService,
+    private _placeService: PlaceService,
     private renderer: Renderer2
   ) {
     this.isDoctorDetailModalOpen$ = this._store.pipe(
@@ -47,6 +59,10 @@ export class DoctorDetailModalComponent implements OnInit {
 
     this.doctorDetailModalDoctorId$ = this._store.pipe(
       select(selectDoctorDetailModalDoctorId)
+    );
+
+    this.doctorDetailModalSelectedPlace$ = this._store.pipe(
+      select(selectDoctorDetailModalPlace)
     );
   }
 
@@ -59,13 +75,13 @@ export class DoctorDetailModalComponent implements OnInit {
 
     this.doctorDetailModalDoctorId$.subscribe((doctorId) => {
       if (doctorId) {
-        this._doctorDetail =
-          // TODO
-          //@ts-ignore
-          this._doctorDetailModalService
-            .getDoctorDetail(doctorId)
-            //@ts-ignore
-            .find((doctor) => doctor.id === doctorId);
+        this._doctorDetailModalService
+          .getDoctorDetailById(doctorId)
+          .subscribe((doctorDetail) => {
+            console.log('doctorDetail$', doctorDetail.body);
+
+            this.doctorDetail$ = doctorDetail.body;
+          });
       }
     });
   }

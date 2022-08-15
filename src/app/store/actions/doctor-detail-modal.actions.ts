@@ -1,3 +1,4 @@
+import { IDoctorDetailModalState } from 'src/app/core/models';
 import { Action } from '@ngrx/store';
 
 export enum EDoctorDetailModalActions {
@@ -7,7 +8,12 @@ export enum EDoctorDetailModalActions {
 
 export class OpenDoctorDetailModal implements Action {
   public readonly type = EDoctorDetailModalActions.OPEN_DOCTOR_DETAIL_MODAL;
-  constructor(public payload: number) {}
+  constructor(
+    public payload: Pick<
+      IDoctorDetailModalState,
+      'selectedDoctorId' | 'selectedDoctorPlace'
+    >
+  ) {}
 }
 
 export class CloseDoctorDetailModal implements Action {

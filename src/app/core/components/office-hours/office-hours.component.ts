@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IDoctorWorkingHours } from '../../models';
+import IDoctorTermine from '../../models/doctor/IDoctorTermine';
 
 @Component({
   selector: 'app-office-hours',
@@ -8,7 +8,7 @@ import { IDoctorWorkingHours } from '../../models';
 })
 export class OfficeHoursComponent implements OnInit {
   @Input() headerText?: string;
-  @Input() contentData?: IDoctorWorkingHours[];
+  @Input() contentData?: IDoctorTermine[];
 
   constructor() {}
 

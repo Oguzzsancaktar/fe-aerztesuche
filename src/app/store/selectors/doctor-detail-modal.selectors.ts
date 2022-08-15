@@ -18,3 +18,8 @@ export const selectDoctorDetailModalDoctorId = createSelector(
   selectAppState,
   (state: IDoctorDetailModalState) => state.selectedDoctorId
 );
+
+export const selectDoctorDetailModalPlace = createSelector(
+  selectAppState,
+  (state: IDoctorDetailModalState) => state.selectedDoctorPlace
+);

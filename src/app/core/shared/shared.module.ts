@@ -1,3 +1,4 @@
+import { LanguageListComponent } from './../components/language-list/language-list.component';
 import { DoctorDetailModalEffects } from './../../store/effects/doctor-detail-modal.effects';
 import { StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
@@ -35,6 +36,9 @@ import { DoctorLocationSlider } from '../components/doctor-location-slider/docto
 import { IconShowFiltersComponent } from '../components/icons/icon-show-filters/icon-show-filters.component';
 import { LeftFilterSectionComponent } from '../components/left-filter-section/left-filter-section.component';
 import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-filters-white/icon-show-filters-white.component';
+import { IconMailComponent } from '../components/icons/icon-mail/icon-mail.component';
+import { ActivityAreaListComponent } from '../components/areas-of-activity-list/activity-area-list.component';
+import { AccessibilityListComponent } from '../components/accessibility-list/accessibility-list.component';
 
 @NgModule({
   imports: [
@@ -56,6 +60,7 @@ import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-fil
     IconLocalPhoneComponent,
     IconCloseComponent,
     IconGlobeComponent,
+    IconMailComponent,
 
     ButtonComponent,
     SearchbarComponent,
@@ -74,6 +79,9 @@ import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-fil
     IconShowFiltersComponent,
     LeftFilterSectionComponent,
     IconShowFiltersWhiteComponent,
+    LanguageListComponent,
+    ActivityAreaListComponent,
+    AccessibilityListComponent,
   ],
   exports: [
     IconSearchComponent,
@@ -83,6 +91,7 @@ import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-fil
     IconLocalPhoneComponent,
     IconCloseComponent,
     IconGlobeComponent,
+    IconMailComponent,
 
     ButtonComponent,
     SearchbarComponent,
@@ -101,6 +110,9 @@ import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-fil
     IconShowFiltersComponent,
     LeftFilterSectionComponent,
     IconShowFiltersWhiteComponent,
+    LanguageListComponent,
+    ActivityAreaListComponent,
+    AccessibilityListComponent,
   ],
 })
 export class SharedModule {}

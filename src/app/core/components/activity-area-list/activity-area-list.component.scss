@@ -1,0 +1,17 @@
+@use "src/variables" as c;
+
+.app-activity-area-list-section {
+  padding: 30px;
+
+  &__container {
+    .app-activity-area-list-section__title {
+      color: c.$blue-bayoux;
+    }
+
+    .activity-area-list {
+      list-style: square;
+      .activity-area-list-item {
+      }
+    }
+  }
+}

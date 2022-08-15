@@ -4,18 +4,19 @@
   <div class="direction-item__container">
     <div class="direction-item__row">
       <div class="direction-item__row__item row">
-        <app-distance-item [distance]="doctor.properties.locations[0].distance"
-          [isActive]="(doctor.id === (selectedDoctorId$ | async) && !isForModal )"></app-distance-item>
+        <app-distance-item [distance]="doctor.distance.toFixed(2) + 'km'"
+          [isActive]="(doctor.id === (selectedDoctorId$ | async) && !isForModal )">
+        </app-distance-item>
 
         <div class="column">
           <div class="column__item">
             <h3 class="doctor-name">
-              {{ doctor.properties.name }}
+              {{findGenderAdditional(doctor.geschlect)}} {{doctor.title}} {{ doctor.nachname }} {{ doctor.vorname }}
             </h3>
           </div>
           <div class="column__item">
             <p class="address">
-              {{ doctor.properties.locations[0].address }}
+              {{ doctor.strasse}} {{ doctor.plz}} {{ doctor.ort}}
             </p>
           </div>
         </div>
@@ -25,26 +26,34 @@
         <div class="colum">
           <div class="column__item">
             <div class="item-button">
-              <app-button [text]="doctor.properties.speciality" backgroundColor="#4c6085" textColor="white"
-                cursorType="default">
+              <app-button text="speciality" backgroundColor="#4c6085" textColor="white" cursorType="default">
               </app-button>
             </div>
           </div>
-          <div class="column__item row">
+          <div class="column__item row" *ngFor="let telephone of doctor.phone">
             <div class="icon">
               <app-icon-local-phone></app-icon-local-phone>
             </div>
             <p class="contact">
-              {{ doctor.properties.phone }}
+              ({{telephone.telefonvorwahl}}) {{telephone.telefonnummer}}
             </p>
           </div>
 
-          <div class="column__item row">
+          <div class="column__item row" *ngFor="let email of doctor.email">
+            <div class="icon">
+              <app-icon-mail></app-icon-mail>
+            </div>
+            <p class="contact">
+              {{email.emailAddress}}
+            </p>
+          </div>
+
+          <div class="column__item row" *ngFor="let website of doctor.homePage">
             <div class="icon">
               <app-icon-globe></app-icon-globe>
             </div>
             <p class="contact">
-              {{ doctor.properties.website }}
+              {{website.webSite}}
             </p>
           </div>
         </div>
