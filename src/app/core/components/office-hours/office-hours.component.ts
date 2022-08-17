@@ -16,17 +16,12 @@ export class OfficeHoursComponent implements OnInit {
 
   constructor() {
     this.headerText = ESpretchzeitArt[this.officeHoursData?.sprechzeitArt];
-
-    console.log(
-      this.headerText,
-      ESpretchzeitArt[this.officeHoursData?.sprechzeitArt],
-      this.officeHoursData?.sprechzeitArt
-    );
   }
 
   ngOnInit(): void {
     this.headerText = ESpretchzeitArt[this.officeHoursData?.sprechzeitArt]
       .split('_')
-      .join(' ');
+      .join(' ')
+      .toLocaleLowerCase();
   }
 }
