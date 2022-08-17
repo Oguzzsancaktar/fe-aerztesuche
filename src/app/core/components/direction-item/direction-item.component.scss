@@ -43,7 +43,11 @@
           }
 
           &:last-child {
+            display: flex;
+            align-items: flex-start;
+            height: 100%;
             width: calc(100% - 280px);
+            margin-left: 10px;
           }
 
           .column {
