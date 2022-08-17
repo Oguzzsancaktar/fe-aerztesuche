@@ -38,6 +38,13 @@
         &.row {
           display: flex;
           align-items: center;
+          &:first-child {
+            width: 280px;
+          }
+
+          &:last-child {
+            width: calc(100% - 280px);
+          }
 
           .column {
             margin-left: 25px;
@@ -48,13 +55,15 @@
           &__item {
             height: 100%;
 
-            &:first-child {
-              height: 32px;
-            }
             margin: 2.5px 0;
 
             .icon {
               margin-right: 5px;
+            }
+
+            .contact {
+              text-align: left;
+              font-size: 12px;
             }
             .item-button {
               height: 100%;
@@ -63,12 +72,14 @@
             }
 
             .doctor-name {
+              height: 20px;
               text-align: left;
               font-size: 16px;
               font-weight: bold;
               color: c.$mine-shaft;
               font: normal normal 900 16px/19px Lato;
               letter-spacing: 0px;
+              margin-bottom: 20px;
             }
 
             .address {
@@ -83,7 +94,6 @@
             &.row {
               display: flex;
               align-items: center;
-              justify-content: center;
             }
           }
         }
