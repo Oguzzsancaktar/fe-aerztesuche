@@ -24,6 +24,9 @@
         align-items: center;
         width: 100%;
         .office-hour-list-item {
+          &:not(:last-child) {
+            margin-right: 15px;
+          }
           .column {
             .office-hour-list-item-title {
               .app-title-fifth {
