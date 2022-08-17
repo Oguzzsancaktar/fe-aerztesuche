@@ -42,9 +42,9 @@
 
 
     <div class="content-section__item"
-      *ngFor="let sprechzeiten of (((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten; let i = index">
+      *ngFor="let sprechzeiten of (((doctorDetail?.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten; let i = index">
       <app-office-hours headerText="Sprechstunden"
-        [officeHoursData]="(((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten[i]">
+        [officeHoursData]="(((doctorDetail?.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten[i]">
       </app-office-hours>
     </div>
 

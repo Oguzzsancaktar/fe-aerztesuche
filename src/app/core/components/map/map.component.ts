@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import * as L from 'leaflet';
-import 'leaflet.markercluster';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
