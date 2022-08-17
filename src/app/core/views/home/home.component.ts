@@ -32,8 +32,8 @@ export class HomeComponent implements AfterViewInit {
   private initMap(): void {
     this.map = L.map('map', {
       attributionControl: false,
-      center: [51.23129, 6.74847],
-      zoom: 13,
+      center: [50.935173, 6.953101],
+      zoom: 10,
     });
 
     const googleStreets = L.tileLayer(

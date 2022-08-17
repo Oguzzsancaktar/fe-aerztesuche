@@ -8,6 +8,7 @@ import { PlaceService } from './place.service';
 import { Observable } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { ISearchPlaceQuery } from '../models';
+import { EPendingStatus } from '../models/Enumeration/EPendingStatus';
 
 @Injectable()
 export class MarkerService {
@@ -40,29 +41,31 @@ export class MarkerService {
 
   makeCapitalMarkers(map: L.Map): void {
     this.searchQueryParams$.subscribe((queryParams) => {
-      this._placeService.getPlaceList(queryParams).subscribe((res: any) => {
-        this.removeCapitalMarkers(map);
+      this._placeService
+        .getPlaceList(queryParams)
+        .data.subscribe((res: any) => {
+          this.removeCapitalMarkers(map);
 
-        for (const doctor of res.body.personList) {
-          const lon = doctor.place.longitute;
-          const lat = doctor.place.latitude;
+          for (const doctor of res.body.personList) {
+            const lon = doctor.place.longitute;
+            const lat = doctor.place.latitude;
 
-          const marker = L.marker([lat, lon]);
+            const marker = L.marker([lat, lon]);
 
-          marker.on('click', (x) => {
-            this._doctorDetailModalService.openDoctorDetailModal(
-              doctor.id,
-              map,
-              lat,
-              lon
-            );
+            marker.on('click', (x) => {
+              this._doctorDetailModalService.openDoctorDetailModal(
+                doctor.id,
+                map,
+                lat,
+                lon
+              );
 
-            this._placeService.findPlaceWithLonLat(lon, lat);
-          });
+              this._placeService.findPlaceWithLonLat(lon, lat);
+            });
 
-          marker.addTo(map);
-        }
-      });
+            marker.addTo(map);
+          }
+        });
     });
   }
 }

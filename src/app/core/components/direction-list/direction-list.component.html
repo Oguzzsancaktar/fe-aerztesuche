@@ -1,9 +1,43 @@
 <div class="direction-list">
-  <div class="direction-list__body">
-    <app-direction-item *ngFor="let doctor of subscription_place_list$" [doctor]="doctor" [map]="map">
-    </app-direction-item>
-  </div>
+
+  <div *ngIf="placeApiResult.data | async as place;then doctor_list else table_skelton">here is ignored</div>
+
+  <ng-template #doctor_list>
+    <div class="direction-list__body" #doctor_list>
+
+      <div *ngIf="subscription_place_list$.length > 0 ;then doctor_list_inner else emty_data">here is ignored</div>
+
+      <ng-template #doctor_list_inner>
+        <app-direction-item *ngFor="let doctor of subscription_place_list$" [doctor]="doctor" [map]="map">
+        </app-direction-item>
+      </ng-template>
+
+      <ng-template #emty_data>
+        <app-no-data></app-no-data>
+      </ng-template>
+
+    </div>
+  </ng-template>
+
+  <ng-template #table_skelton>
+    <div class="direction-list__body" [ngSwitch]="placeApiResult.status | async">
+      <div *ngSwitchCase="Status.LOADING">
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+        <app-table-skeleton></app-table-skeleton>
+      </div>
+      <span *ngSwitchCase="Status.ERROR">There was an error loading the user.</span>
+    </div>
+  </ng-template>
+
   <div class="direction-list__footer">
     <span class="direction-data-info">Insgesamt {{subscription_place_list$.length}}</span>
   </div>
+
+
+
 </div>

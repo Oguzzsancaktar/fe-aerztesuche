@@ -1,3 +1,6 @@
+import { IconNoDataComponent } from './../components/icons/icon-no-data/icon-no-data.component';
+import { NoDataComponent } from './../components/no-data/no-data.component';
+import { TableSkeletonComponent } from '../components/table-skeleton/table-skeleton.component';
 import { LanguageListComponent } from './../components/language-list/language-list.component';
 import { DoctorDetailModalEffects } from './../../store/effects/doctor-detail-modal.effects';
 import { StoreModule } from '@ngrx/store';
@@ -61,6 +64,7 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     IconCloseComponent,
     IconGlobeComponent,
     IconMailComponent,
+    IconNoDataComponent,
 
     ButtonComponent,
     SearchbarComponent,
@@ -82,6 +86,8 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     LanguageListComponent,
     ActivityAreaListComponent,
     AccessibilityListComponent,
+    TableSkeletonComponent,
+    NoDataComponent,
   ],
   exports: [
     IconSearchComponent,
@@ -92,6 +98,7 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     IconCloseComponent,
     IconGlobeComponent,
     IconMailComponent,
+    IconNoDataComponent,
 
     ButtonComponent,
     SearchbarComponent,
@@ -113,6 +120,8 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     LanguageListComponent,
     ActivityAreaListComponent,
     AccessibilityListComponent,
+    TableSkeletonComponent,
+    NoDataComponent,
   ],
 })
 export class SharedModule {}

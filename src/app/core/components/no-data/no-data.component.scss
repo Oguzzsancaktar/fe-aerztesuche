@@ -1,0 +1,17 @@
+@use "src/variables" as c;
+
+.no-data {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: c.$alto;
+
+  &__text {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+}
