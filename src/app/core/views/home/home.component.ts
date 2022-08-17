@@ -16,7 +16,7 @@ import { MarkerService } from '../../services/marker.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements AfterViewInit {
-  public map: any;
+  public map!: L.Map;
   showFilterSection: boolean = false;
 
   doctorDetailModalState$ = this._store.pipe(
@@ -52,6 +52,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.map?.remove();
     this.initMap();
     this.markerService.makeCapitalMarkers(this.map);
     this.map.zoomControl.setPosition('bottomright');

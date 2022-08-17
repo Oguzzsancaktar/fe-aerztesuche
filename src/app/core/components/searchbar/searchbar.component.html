@@ -15,20 +15,32 @@
         <div class="searchbar__icon">
           <app-icon-search></app-icon-search>
         </div>
-        <input class="searchbar__input" placeholder="Suchbegriff eingeben: z.B.: Müller" />
+        <input class="searchbar__input" placeholder="Suchbegriff eingeben: z.B.: Müller"
+          [value]="(searchQueryParams$ | async)?.search" (keyup)="handleSearchChange($event)" />
       </div>
 
       <div class="searchar__layout__item search-location">
         <div class="searchbar__icon">
           <app-icon-cluster></app-icon-cluster>
         </div>
-        <input class="searchbar__input" placeholder="Ort eingeben (z.B.: Düsseldorf Hauptbahnhof)" />
+        <input class="searchbar__input" placeholder="Ort eingeben (z.B.: Düsseldorf Hauptbahnhof)"
+          [value]="(searchQueryParams$ | async)?.address" (keyup)="handleLocationChange($event)" />
       </div>
 
       <div class="searchar__layout__item search-dropdown">
-        <p>
-          dropdown
-        </p>
+        <div class="searchbar__dropdown">
+          <div class="searchbar__dropdown__selected__value">
+            <span class="searchbar__dropdown__selected__value__span" (click)="toggleDropdown()">
+              {{selectedNearOption$ ? selectedNearOption$.label : "Umkreis"}} </span>
+          </div>
+          <ul class="searchbar__dropdown__list" [ngClass]="showDropdown ? 'active' : ''">
+            <li class="searchbar__dropdown__list__item"
+              [ngClass]="(searchQueryParams$ | async)?.near === option.value.toString() ?'active' : ''"
+              *ngFor="let option of nearOptionList" (click)="handleNearOptionSelect(option.value)">
+              {{option.label}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

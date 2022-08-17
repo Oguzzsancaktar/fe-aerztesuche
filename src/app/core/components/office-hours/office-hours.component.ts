@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import IDoctorSprechzeiten from '../../models/doctor/IDoctorSprechzeiten';
 import IDoctorTermine from '../../models/doctor/IDoctorTermine';
 
 @Component({
@@ -8,7 +9,7 @@ import IDoctorTermine from '../../models/doctor/IDoctorTermine';
 })
 export class OfficeHoursComponent implements OnInit {
   @Input() headerText?: string;
-  @Input() contentData?: IDoctorTermine[];
+  @Input() officeHoursData?: IDoctorSprechzeiten[];
 
   constructor() {}
 

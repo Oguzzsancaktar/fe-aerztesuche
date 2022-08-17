@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IDoctorFremdsprachen } from '../../models';
+import IDoctorTaetigkeitsBereiche from '../../models/doctor/IDoctorTaetigkeitsBereiche';
 
 @Component({
   selector: 'app-activity-area-list',
@@ -7,7 +7,7 @@ import { IDoctorFremdsprachen } from '../../models';
   styleUrls: ['./activity-area-list.component.scss'],
 })
 export class ActivityAreaListComponent implements OnInit {
-  @Input() activtyAreaList?: IDoctorFremdsprachen[] = [];
+  @Input() activtyAreaList?: IDoctorTaetigkeitsBereiche[] = [];
 
   constructor() {}
 

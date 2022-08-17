@@ -12,7 +12,9 @@ export class DoctorLocationSlider implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('doctorDetail', this.doctorDetail);
+  }
 
   handleSlideChange(stepNumber: number) {
     this.activeSlideNumber = stepNumber;

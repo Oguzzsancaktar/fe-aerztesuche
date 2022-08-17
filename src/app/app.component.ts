@@ -13,7 +13,5 @@ export class AppComponent {
     { lat: 41.5, lng: -95.5 },
     { lat: 41.5 - 3, lng: -95.5 },
   ];
-  test() {
-    console.log('1341234');
-  }
+  test() {}
 }

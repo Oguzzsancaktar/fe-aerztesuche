@@ -27,12 +27,14 @@
           margin-right: 10px;
           width: calc((100% - 185px - 20px - 120px) / 2);
           background: c.$white;
+          color: c.$gray;
         }
 
         &.search-location {
           cursor: pointer;
           width: calc((100% - 185px - 20px - 120px) / 2);
           background: c.$white;
+          color: c.$gray;
         }
 
         &.search-dropdown {
@@ -43,6 +45,64 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 0;
+
+          .searchbar__dropdown {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &__selected__value {
+              width: 100%;
+              height: 100%;
+              color: c.$gray;
+
+              &__span {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+            }
+
+            &__list {
+              position: absolute;
+              margin: 0;
+              top: 100%;
+              left: 0;
+              width: 100%;
+              background: c.$white;
+              box-shadow: 0px 4px 10px #0000000d;
+              display: none;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              z-index: 9999;
+              padding: 0;
+              &.active {
+                display: flex;
+              }
+              &__item {
+                padding: 10px 0;
+                width: 100%;
+                cursor: pointer;
+                color: c.$gray;
+                border-bottom: 1px solid c.$alto;
+                transition: 0.4s ease-in-out background;
+                &.active {
+                  background: c.$monarch;
+                  color: c.$white;
+                  transition: 0.2s ease-in-out background;
+                }
+
+                &:hover {
+                  background: c.$wild-sand;
+                  color: c.$gray;
+                }
+              }
+            }
+          }
         }
         .searchbar__toogle-filters-icon {
           display: flex;
@@ -66,6 +126,7 @@
           outline: none;
           height: 20px;
           width: calc(100% - 35px);
+          color: c.$gray;
         }
 
         .searchbar__icon {

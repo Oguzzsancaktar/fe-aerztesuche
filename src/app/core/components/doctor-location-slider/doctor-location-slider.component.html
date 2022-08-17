@@ -15,17 +15,32 @@
   </div>
 
   <div class="content-section">
-    <!-- <div class="content-section__item">
+    <div class="content-section__item">
       <app-office-hours headerText="Sprechstunden"
-        [contentData]="(((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).">
+        [officeHoursData]="(((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten">
       </app-office-hours>
-    </div> -->
+    </div>
 
     <div class="content-section__item"
-      *ngIf="(((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
-      <app-accessibility-list headerText="Sprechstunden"
-        [accessibilityList]="(((doctorDetail?.taetigkeiten||[])[0]?.taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit">
+      *ngIf="doctorDetail &&  ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
+      <app-activity-area-list [activtyAreaList]="((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche)">
+      </app-activity-area-list>
+    </div>
+
+
+    <div class="content-section__item"
+      *ngIf="doctorDetail &&  (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
+      <app-accessibility-list
+        [accessibilityList]="(((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit">
       </app-accessibility-list>
+    </div>
+
+    <div class="content-section__item"
+      *ngIf="doctorDetail &&  (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
+
+      <!-- <app-office-hours headerText="Offene Sprechstunden"
+        [officeHoursData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.openWorkingHours">
+      </app-office-hours> -->
     </div>
 
     <!--     
@@ -33,7 +48,6 @@
       <app-office-hours headerText="Offene Sprechstunden"
         [contentData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.openWorkingHours">
       </app-office-hours>
-
     </div>
 
     <div class="content-section__item"
