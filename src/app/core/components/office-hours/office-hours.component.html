@@ -5,25 +5,33 @@
     </div>
     <div class="body">
       <ul class="office-hour-list">
-        <!-- 
-        <li class="office-hour-list-item" *ngFor="let dayData of contentData">
+
+        <li class="office-hour-list-item" *ngFor="let termine of officeHoursData.termine">
           <div class="column">
             <div class="office-hour-list-item-title">
 
               <h5 class="app-title-fifth">
-                {{dayData.day}}
+                {{daysArr[termine.tag]}}
               </h5>
             </div>
             <div class="office-hour-list-item-content">
               <div class="office-hour-list-item-content-item-time">
                 <span class="app-title-fifth">
-                  {{dayData.time}}
+                  {{termine.terminBis}}
+                </span>
+
+                <span class="app-title-fifth">
+                  -
+                </span>
+
+                <span class="app-title-fifth">
+                  {{termine.terminVon}}
                 </span>
 
               </div>
             </div>
           </div>
-        </li> -->
+        </li>
 
 
 

@@ -1,14 +1,14 @@
 @use "src/variables" as c;
 
-.accessibility-list-section {
+.app-accessibility-list-section {
   padding: 30px;
 
   &__container {
-    .accessibility-list-section__title {
+    .app-accessibility-list-section__title {
       color: c.$blue-bayoux;
     }
 
-    .activity-area-list {
+    .app-activity-area-list {
       list-style: square;
       .activity-area-list-item {
       }
