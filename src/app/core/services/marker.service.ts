@@ -8,6 +8,7 @@ import { PlaceService } from './place.service';
 import { Observable } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { ISearchPlaceQuery } from '../models';
+import { ChangeMapLoadingState } from 'src/app/store/actions/map-state.actions';
 
 @Injectable()
 export class MarkerService {
@@ -40,9 +41,10 @@ export class MarkerService {
 
   makeCapitalMarkers(map: L.Map): void {
     this.searchQueryParams$.subscribe((queryParams) => {
-      this._placeService
-        .getPlaceListForMap(queryParams)
-        .data.subscribe((res: any) => {
+      this._store.dispatch(new ChangeMapLoadingState(true));
+
+      this._placeService.getPlaceListForMap(queryParams).data.subscribe(
+        (res: any) => {
           this.removeCapitalMarkers(map);
 
           for (const mapPlace of res.body) {
@@ -63,7 +65,14 @@ export class MarkerService {
 
             marker.addTo(map);
           }
-        });
+        },
+        (err) => {
+          console.log('err==>', err);
+        },
+        () => {
+          this._store.dispatch(new ChangeMapLoadingState(false));
+        }
+      );
     });
   }
 }

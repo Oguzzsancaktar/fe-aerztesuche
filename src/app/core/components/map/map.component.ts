@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
+import { Observable } from 'rxjs';
+import { selectMapState } from 'src/app/store/selectors/map-state.selector';
+import { IAppState } from 'src/app/store/state/app.state';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 
@@ -24,4 +28,14 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent {
   @Input() map: any;
+
+  mapLoadingState$: Observable<boolean> = this._store.pipe(
+    select(selectMapState)
+  );
+
+  constructor(private _store: Store<IAppState>) {}
+
+  ngOnInit(): void {
+    console.log(this.mapLoadingState$);
+  }
 }

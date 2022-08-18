@@ -3,7 +3,7 @@ import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-mo
 import { IAppState } from 'src/app/store/state/app.state';
 import { IDoctorDetailModalState, IPlace } from 'src/app/core/models';
 import { Component, Input, OnInit } from '@angular/core';
-import IDoctorDetail from '../../models/doctor/IDoctorDetail';
+
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import EGender from '../../models/Enumeration/EGender';
