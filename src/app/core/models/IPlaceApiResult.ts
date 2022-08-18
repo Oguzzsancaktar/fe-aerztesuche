@@ -4,4 +4,5 @@ import { IPlace } from './place';
 export default interface IPlaceApiResult {
   personList: IPlace[];
   filterList: IFilter[];
+  totalCount: number;
 }

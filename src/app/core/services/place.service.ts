@@ -8,17 +8,25 @@ import { IAppState } from 'src/app/store/state/app.state';
 import { environment } from 'src/environments/environment';
 import { IPlace, IPlaceApiResult, ISearchPlaceQuery } from '../models';
 import { EPendingStatus } from '../models/Enumeration/EPendingStatus';
+import IMapPlace from '../models/IMapPlace';
+import IMapPlaceApiResult from '../models/IMapPlaceApiResult';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlaceService {
   placeList: IPlaceApiResult['personList'] = [];
+  mapPlaceList: IMapPlaceApiResult['placeList'] = [];
 
   constructor(private http: HttpClient, private _store: Store<IAppState>) {
     this.http
-      .get<IPlaceApiResult>(
-        `${environment.baseUrl}/places?Near=50&Address=Köln`,
+      .post<IPlaceApiResult>(
+        `${environment.baseUrl}/places`,
+        {
+          searchText: '',
+          near: 50,
+          address: 'Köln',
+        },
         {
           observe: 'response',
         }
@@ -35,8 +43,13 @@ export class PlaceService {
     const status = new ReplaySubject<EPendingStatus>();
 
     const request = this.http
-      .get<IPlaceApiResult>(
-        `${environment.baseUrl}/places?searchText=${queryParams.search}&Near=${queryParams.near}&Address=${queryParams.address}`,
+      .post<IPlaceApiResult>(
+        `${environment.baseUrl}/places`,
+        {
+          searchText: queryParams.search,
+          near: queryParams.near,
+          address: queryParams.address,
+        },
         {
           observe: 'response',
         }
@@ -46,11 +59,49 @@ export class PlaceService {
         retry(2),
         catchError((error) => {
           status.next(EPendingStatus.ERROR);
-          throw 'error loading user';
+          throw 'error loading map';
         }),
         tap(() => status.next(EPendingStatus.SUCCESS)),
         map((item) => {
           this.placeList = item.body?.personList || [];
+          return item;
+        })
+      );
+
+    const data = defer(() => {
+      status.next(EPendingStatus.LOADING);
+      return request;
+    });
+
+    return { data, status };
+  }
+
+  getPlaceListForMap(
+    queryParams: ISearchPlaceQuery
+  ): IPending<HttpResponse<IMapPlaceApiResult>> {
+    const status = new ReplaySubject<EPendingStatus>();
+
+    const request = this.http
+      .post<IMapPlaceApiResult>(
+        `${environment.baseUrl}/map`,
+        {
+          searchText: queryParams.search,
+          near: queryParams.near,
+          address: queryParams.address,
+        },
+        {
+          observe: 'response',
+        }
+      )
+      .pipe(
+        retry(2),
+        catchError((error) => {
+          status.next(EPendingStatus.ERROR);
+          throw 'error loading map';
+        }),
+        tap(() => status.next(EPendingStatus.SUCCESS)),
+        map((item) => {
+          this.mapPlaceList = item.body?.placeList || [];
           return item;
         })
       );

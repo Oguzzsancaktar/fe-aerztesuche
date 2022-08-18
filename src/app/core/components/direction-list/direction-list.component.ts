@@ -18,9 +18,7 @@ import { IPending } from '../../models/general/IPending';
 export class DirectionListComponent implements OnInit {
   readonly Status = EPendingStatus;
   placeApiResult!: IPending<HttpResponse<IPlaceApiResult>>;
-
   @Input() map: any;
-  public subscription_place_list$: IPlace[] = [];
 
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
@@ -32,12 +30,6 @@ export class DirectionListComponent implements OnInit {
   ) {
     this.searchQueryParams$.subscribe((queryParams) => {
       this.placeApiResult = this._placeService.getPlaceList(queryParams);
-    });
-
-    this.searchQueryParams$.subscribe((queryParams) => {
-      this._placeService.getPlaceList(queryParams).data.subscribe((item) => {
-        this.subscription_place_list$ = item.body?.personList || [];
-      });
     });
   }
 

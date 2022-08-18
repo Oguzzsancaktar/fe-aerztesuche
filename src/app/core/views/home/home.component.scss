@@ -8,9 +8,10 @@
   align-items: center;
   justify-content: space-between;
   margin: 50px 0;
+
   @media screen and (max-width: c.$media-xl-min-width) {
     width: calc(100% - 60px);
-    margin: 50px auto;
+    margin: 0px auto;
   }
 
   &__filters {
@@ -33,7 +34,7 @@
 
     @media screen and (max-width: c.$media-xl-min-width) {
       width: calc(100% - 60px);
-      margin: 50px auto;
+      margin: 30px auto;
     }
 
     .row {

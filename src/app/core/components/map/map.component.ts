@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import * as L from 'leaflet';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
-const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
 
 const iconUrl = 'assets/icon-material-location-on-blue.svg';
 const shadowUrl = 'assets/marker-shadow.png';

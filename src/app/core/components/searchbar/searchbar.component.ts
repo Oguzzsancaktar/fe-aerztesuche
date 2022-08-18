@@ -51,9 +51,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   handleNearChange(value: IOption['value']) {
-    this._store.dispatch(
-      new SetPlaceNearQueryParams({ near: value.toString() })
-    );
+    this._store.dispatch(new SetPlaceNearQueryParams({ near: +value }));
   }
 
   handleSearchChange(event: any) {

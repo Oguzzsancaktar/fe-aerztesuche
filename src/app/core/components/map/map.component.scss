@@ -1,8 +1,27 @@
+@use "src/variables" as c;
+
 .map-container {
   width: 100%;
   height: 100%;
   .map-frame {
+    width: 100%;
     height: 100%;
+    position: relative;
+
+    .map-loading-spinner {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: c.$blue-bayoux, $alpha: 0.5);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+
+      &.show {
+        display: flex;
+      }
+    }
     #map {
       height: 100%;
 

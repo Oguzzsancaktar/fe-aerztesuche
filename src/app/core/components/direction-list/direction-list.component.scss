@@ -9,6 +9,10 @@
     overflow-y: auto;
     border-bottom: 1px solid c.$alto;
     background: c.$white;
+
+    @media screen and (max-width: c.$media-xl-min-width) {
+      max-height: 600px;
+    }
   }
 
   &__footer {

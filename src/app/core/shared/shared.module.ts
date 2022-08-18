@@ -1,3 +1,4 @@
+import { LoadingSpinnerComponent } from './../components/loading-spinner/loading-spinner.component';
 import { IconNoDataComponent } from './../components/icons/icon-no-data/icon-no-data.component';
 import { NoDataComponent } from './../components/no-data/no-data.component';
 import { TableSkeletonComponent } from '../components/table-skeleton/table-skeleton.component';
@@ -66,6 +67,7 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     IconMailComponent,
     IconNoDataComponent,
 
+    LoadingSpinnerComponent,
     ButtonComponent,
     SearchbarComponent,
     DirectionListComponent,
@@ -100,6 +102,7 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     IconMailComponent,
     IconNoDataComponent,
 
+    LoadingSpinnerComponent,
     ButtonComponent,
     SearchbarComponent,
     DirectionListComponent,

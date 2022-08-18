@@ -32,8 +32,23 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row;
+
+      @media screen and (max-width: c.$media-sm-min-width) {
+        flex-direction: column;
+      }
+
       &__item {
         height: 100%;
+
+        &:first-child {
+          width: 100%;
+          margin-right: 30px;
+          height: 100%;
+
+          @media screen and (max-width: c.$media-sm-min-width) {
+            margin-bottom: 10px;
+          }
+        }
 
         &.row {
           display: flex;

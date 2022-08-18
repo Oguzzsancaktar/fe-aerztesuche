@@ -38,7 +38,7 @@ export const placeQueryParamsReducer = (
       return {
         ...state,
         address: '',
-        near: '50',
+        near: 50,
         search: '',
       };
     }

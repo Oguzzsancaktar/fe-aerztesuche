@@ -35,7 +35,7 @@
           </div>
           <ul class="searchbar__dropdown__list" [ngClass]="showDropdown ? 'active' : ''">
             <li class="searchbar__dropdown__list__item"
-              [ngClass]="(searchQueryParams$ | async)?.near === option.value.toString() ?'active' : ''"
+              [ngClass]="(searchQueryParams$ | async)?.near === +option.value ?'active' : ''"
               *ngFor="let option of nearOptionList" (click)="handleNearOptionSelect(option.value)">
               {{option.label}}
             </li>
