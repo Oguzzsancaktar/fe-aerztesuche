@@ -3,7 +3,5 @@ import EGender from '../../models/Enumeration/EGender';
 
 @Injectable()
 export class GenderUtil {
-  findGenderAdditional(gender: number) {
-    console.log(gender);
-  }
+  findGenderAdditional(gender: number) {}
 }

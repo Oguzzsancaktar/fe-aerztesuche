@@ -1,6 +1,6 @@
 <div class="direction-list">
 
-  <div *ngIf="placeApiResult.data | async as place; else table_skelton">
+  <div class="direction-list__container" *ngIf="placeApiResult.data | async as place; else table_skelton">
 
     <div class="direction-list__body">
       <div *ngIf="place.body?.totalCount;then doctor_list_inner else emty_data">

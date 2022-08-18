@@ -34,8 +34,4 @@ export class MapComponent {
   );
 
   constructor(private _store: Store<IAppState>) {}
-
-  ngOnInit(): void {
-    console.log(this.mapLoadingState$);
-  }
 }

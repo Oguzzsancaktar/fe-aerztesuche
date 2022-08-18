@@ -34,10 +34,6 @@
 
     <div class="content-section__item"
       *ngIf="doctorDetail &&  (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
-
-      <!-- <app-office-hours headerText="Offene Sprechstunden"
-        [officeHoursData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.openWorkingHours">
-      </app-office-hours> -->
     </div>
 
 
@@ -50,19 +46,6 @@
         </app-office-hours>
       </div>
     </ng-container>
-
-    <!--     
-    <div class="content-section__item">
-      <app-office-hours headerText="Offene Sprechstunden"
-        [contentData]="((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.openWorkingHours">
-      </app-office-hours>
-    </div>
-
-    <div class="content-section__item"
-      *ngFor="let information of ((doctorDetail?.properties?.locations|| [])[activeSlideNumber] || [])?.informations">
-      <app-header-text-section [headerText]="information.title" [contentDescription]="information.content">
-      </app-header-text-section>
-    </div> -->
 
   </div>
 </div>

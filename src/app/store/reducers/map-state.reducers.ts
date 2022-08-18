@@ -9,7 +9,6 @@ export const mapStateReducer = (
   state: boolean = true,
   action: MapStateActions
 ): boolean => {
-  console.log(action.payload);
   switch (action.type) {
     case EMapStateActions.CHANGE_MAP_LOADING_STATE: {
       return action.payload;
