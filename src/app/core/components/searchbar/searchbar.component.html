@@ -15,7 +15,7 @@
         <div class="searchbar__icon">
           <app-icon-search></app-icon-search>
         </div>
-        <input class="searchbar__input" placeholder="Suchbegriff eingeben: z.B.: Müller"
+        <input class="searchbar__input" placeholder="Suchbegriff eingeben: z.B. Allgemeinmediziner"
           [value]="(searchQueryParams$ | async)?.search" (keyup)="handleSearchChange($event)" />
       </div>
 
