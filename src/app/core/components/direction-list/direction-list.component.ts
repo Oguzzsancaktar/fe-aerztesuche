@@ -5,11 +5,16 @@ import {
   IPlaceApiResult,
   ISearchPlaceQuery,
 } from 'src/app/core/models';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IAppState } from 'src/app/store/state/app.state';
-import { PlaceService } from '../../services/place.service';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { EPendingStatus } from '../../models/Enumeration/EPendingStatus';
 import { IPending } from '../../models/general/IPending';
@@ -20,16 +25,16 @@ import { environment } from 'src/environments/environment';
   templateUrl: './direction-list.component.html',
   styleUrls: ['./direction-list.component.scss'],
 })
-export class DirectionListComponent implements OnInit {
+export class DirectionListComponent implements AfterViewInit {
   readonly Status = EPendingStatus;
   placeApiResult!: IPending<HttpResponse<IPlaceApiResult>>;
   @Input() map: any;
 
+  @ViewChild('scrollArea')
+  scrollArea!: ElementRef<HTMLInputElement>;
   isPlacesLoading: boolean = true;
   pageNumber: number = 1;
   places: IPlace[] = [];
-
-  // @Output() scrollingFinished = new EventEmitter<void>();
 
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
@@ -37,17 +42,11 @@ export class DirectionListComponent implements OnInit {
 
   searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
 
-  constructor(
-    private _placeService: PlaceService,
-    private _store: Store<IAppState>,
-    private http: HttpClient
-  ) {
-    // this.searchQueryParams$.subscribe((queryParams) => {
-    //   this.placeApiResult = this._placeService.getPlaceList(queryParams);
-    //   this.isPlacesLoading = false;
-    // });
-
+  constructor(private _store: Store<IAppState>, private http: HttpClient) {
     this.searchQueryParams$.subscribe((queryParams) => {
+      if (this.scrollArea?.nativeElement?.scrollTop) {
+        this.scrollArea.nativeElement.scrollTop = 0;
+      }
       this.places = [];
       this.pageNumber = 1;
       this.isPlacesLoading = true;
@@ -57,6 +56,8 @@ export class DirectionListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {}
 
   loadInitPlaces(queryParams: ISearchPlaceQuery) {
     const url = `${environment.baseUrl}/places`;
