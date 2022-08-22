@@ -50,7 +50,6 @@ export class DoctorDetailModalComponent implements OnInit {
   constructor(
     private _store: Store<IAppState>,
     private _doctorDetailModalService: DoctorDetailModalService,
-    private _placeService: PlaceService,
     private renderer: Renderer2
   ) {
     this.isDoctorDetailModalOpen$ = this._store.pipe(

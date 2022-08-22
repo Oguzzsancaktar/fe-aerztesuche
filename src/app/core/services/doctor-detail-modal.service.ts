@@ -55,36 +55,40 @@ export class DoctorDetailModalService {
     lat: number,
     lon: number
   ) {
-    this._store.dispatch(
-      new OpenDoctorDetailModal({
-        selectedDoctorId: doctorId,
-        selectedDoctorPlace: this._placeService.findPlaceWithLonLat(lon, lat),
-      })
-    );
-    console.log(
-      'this._placeService.findPlaceWithLonLat(lon, lat)',
-      this._placeService.findPlaceWithLonLat(lon, lat)
-    );
-    map.setView(new L.LatLng(lat, lon), 15, { animate: true });
-    const marker = L.marker([lat, lon], {
-      icon: iconUpdated,
-    });
+    this._placeService.findPlaceWithLonLat(lon, lat).then((place) => {
+      this._store.dispatch(
+        new OpenDoctorDetailModal({
+          selectedDoctorId: doctorId,
+          selectedDoctorPlace: place,
+        })
+      );
 
-    map.eachLayer((layer: any) => {
-      if (layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed) {
-        map.removeLayer(layer);
+      if (map) {
+        map?.setView(new L.LatLng(lat, lon), 15, { animate: true });
+        const marker = L.marker([lat, lon], {
+          icon: iconUpdated,
+        });
+
+        map?.eachLayer((layer: any) => {
+          if (
+            layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed
+          ) {
+            map.removeLayer(layer);
+          }
+        });
+
+        marker.addTo(map);
       }
     });
-
-    marker.addTo(map);
   }
 
   closeDoctorDetailModal(map: L.Map) {
-    map.eachLayer((layer: any) => {
+    this._store.dispatch(new CloseDoctorDetailModal());
+
+    map?.eachLayer((layer: any) => {
       if (layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed) {
-        map.removeLayer(layer);
+        map?.removeLayer(layer);
       }
     });
-    this._store.dispatch(new CloseDoctorDetailModal());
   }
 }

@@ -1,5 +1,6 @@
+import IDoctorTermineHours from './IDoctorTermineHours';
+
 export default interface IDoctorTermine {
   tag: number;
-  terminVon: string;
-  terminBis: string;
+  hours: IDoctorTermineHours[];
 }
