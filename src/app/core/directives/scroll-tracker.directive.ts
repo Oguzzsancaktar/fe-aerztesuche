@@ -15,14 +15,9 @@ export class ScrollTrackerDirective {
 
   @HostListener('scroll', ['$event'])
   onScroll(event: any): void {
-    console.log(
-      event.target.offsetHeight * this.pageNumber,
-      event.target.scrollTop
-    );
     if (event.target.offsetHeight * this.pageNumber < event.target.scrollTop) {
       console.log(this.pageNumber);
       this.scrollingFinished.emit();
-    } else {
     }
   }
 }
