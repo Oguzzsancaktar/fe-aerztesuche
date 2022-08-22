@@ -3,6 +3,10 @@
     <div class="map-loading-spinner " [ngClass]="(mapLoadingState$|async) ? 'show':''">
       <app-loading-spinner></app-loading-spinner>
     </div>
+    <div class="map-wont-load" *ngIf="!(mapWillLoadState$ |async)">
+      Die Karte wird nicht angezeigt, weil Sie die Cookies nicht akzeptiert haben.
+    </div>
+
     <div id="map"></div>
   </div>
 </div>

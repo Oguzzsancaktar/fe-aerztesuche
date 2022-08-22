@@ -11,7 +11,7 @@ export enum EPlaceQueryParamsActions {
 
 export class SetPlaceSearchQueryParams implements Action {
   public readonly type = EPlaceQueryParamsActions.SET_PLACE_SEARCH_QUERY_PARAMS;
-  constructor(public payload: Pick<ISearchPlaceQuery, 'search'>) {}
+  constructor(public payload: Pick<ISearchPlaceQuery, 'searchText'>) {}
 }
 
 export class SetPlaceNearQueryParams implements Action {

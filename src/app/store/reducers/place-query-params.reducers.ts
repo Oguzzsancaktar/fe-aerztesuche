@@ -19,7 +19,7 @@ export const placeQueryParamsReducer = (
     case EPlaceQueryParamsActions.SET_PLACE_SEARCH_QUERY_PARAMS: {
       return {
         ...state,
-        search: action.payload.search,
+        searchText: action.payload.searchText,
       };
     }
     case EPlaceQueryParamsActions.SET_PLACE_NEAR_QUERY_PARAMS: {
@@ -39,7 +39,7 @@ export const placeQueryParamsReducer = (
         ...state,
         address: '',
         near: 50,
-        search: '',
+        searchText: '',
       };
     }
     default:

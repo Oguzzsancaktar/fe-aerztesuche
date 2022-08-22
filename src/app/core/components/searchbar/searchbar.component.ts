@@ -56,7 +56,7 @@ export class SearchbarComponent implements OnInit {
 
   handleSearchChange(event: any) {
     this._store.dispatch(
-      new SetPlaceSearchQueryParams({ search: event.target.value })
+      new SetPlaceSearchQueryParams({ searchText: event.target.value })
     );
   }
 

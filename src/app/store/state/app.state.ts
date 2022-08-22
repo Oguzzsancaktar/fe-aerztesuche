@@ -1,21 +1,23 @@
 import {
   IDoctorDetailModalState,
+  IMapLoadingState,
   ISearchPlaceQuery,
 } from 'src/app/core/models';
 
 import { initialDoctorDetailModalState } from './doctor-detail-modal.state';
+import { initialMapLoadingState } from './map-loading.state';
 import { initialPlaceQueryParamsState } from './place-query-params.state';
 
 export interface IAppState {
   doctorDetailModalState: IDoctorDetailModalState;
   placeQueryParamsState: ISearchPlaceQuery;
-  mapLoadingState: boolean;
+  mapLoadingState: IMapLoadingState;
 }
 
 export const initialAppState: IAppState = {
   doctorDetailModalState: initialDoctorDetailModalState,
   placeQueryParamsState: initialPlaceQueryParamsState,
-  mapLoadingState: true,
+  mapLoadingState: initialMapLoadingState,
 };
 
 export function getAppInitialState(): IAppState {

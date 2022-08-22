@@ -24,6 +24,10 @@
     @media screen and (max-width: c.$media-xl-min-width) {
       max-height: 600px;
     }
+
+    .doctor-list {
+      margin: 0;
+    }
   }
 
   &__footer {

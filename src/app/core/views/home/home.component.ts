@@ -1,3 +1,7 @@
+import {
+  ChangeMapLoadingState,
+  ChangeMapWillLoadState,
+} from './../../../store/actions/map-state.actions';
 import { selectDoctorDetailModalState } from './../../../store/selectors/doctor-detail-modal.selectors';
 import { IAppState } from './../../../store/state/app.state';
 import {
@@ -9,6 +13,7 @@ import {
 import { Store, select } from '@ngrx/store';
 import * as L from 'leaflet';
 import { MarkerService } from '../../services/marker.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +31,8 @@ export class HomeComponent implements AfterViewInit {
   constructor(
     private _store: Store<IAppState>,
     private markerService: MarkerService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   private initMap(): void {
@@ -52,11 +58,19 @@ export class HomeComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.map?.remove();
-    this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
-    this.map.zoomControl.setPosition('bottomright');
-    L.control.scale({ position: 'bottomright' }).addTo(this.map);
-    this.cdr.detectChanges();
+    const isMapWillLoad = this.router.url.includes('consent=true');
+
+    if (isMapWillLoad) {
+      this.map?.remove();
+      this.initMap();
+      this.markerService.makeCapitalMarkers(this.map);
+      this.map.zoomControl.setPosition('bottomright');
+      L.control.scale({ position: 'bottomright' }).addTo(this.map);
+      this.cdr.detectChanges();
+      this._store.dispatch(new ChangeMapWillLoadState(true));
+    } else {
+      this._store.dispatch(new ChangeMapLoadingState(false));
+      this._store.dispatch(new ChangeMapWillLoadState(false));
+    }
   }
 }

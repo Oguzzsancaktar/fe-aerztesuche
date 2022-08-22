@@ -1,5 +1,5 @@
 export default interface ISearchPlaceQuery {
-  search: string;
+  searchText: string;
   near: number;
   address: string;
 }

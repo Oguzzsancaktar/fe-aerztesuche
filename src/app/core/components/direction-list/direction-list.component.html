@@ -1,14 +1,19 @@
 <div class="direction-list">
 
-  <div class="direction-list__container" *ngIf="placeApiResult.data | async as place; else table_skelton">
+  <!-- <div class="direction-list__container" *ngIf="placeApiResult.data | async as place; else table_skelton">
 
-    <div class="direction-list__body">
+    <div class="direction-list__body" scrollTracker (scrollingFinished)="onScrollingFinished()">
       <div *ngIf="place.body?.totalCount;then doctor_list_inner else emty_data">
         here is ignored</div>
 
       <ng-template #doctor_list_inner>
-        <app-direction-item *ngFor="let doctor of place.body?.personList" [doctor]="doctor" [map]="map">
-        </app-direction-item>
+        <ul class="doctor-list">
+          <li class="doctor-list-item" *ngFor="let doctor of place.body?.personList">
+            <app-direction-item [doctor]="doctor" [map]="map">
+            </app-direction-item>
+          </li>
+        </ul>
+
       </ng-template>
 
       <ng-template #emty_data>
@@ -20,10 +25,61 @@
     <div class="direction-list__footer">
       <span class="direction-data-info">Insgesamt {{place.body?.totalCount}}</span>
     </div>
+  </div> -->
+  <div class="direction-list__container">
+
+    <div class="direction-list__body" scrollTracker (scrollingFinished)="onScrollingFinished()"
+      [pageNumber]="pageNumber">
+
+
+      <ul class="doctor-list">
+        <li class="doctor-list-item" *ngFor="let doctor of places">
+          <app-direction-item [doctor]="doctor" [map]="map">
+          </app-direction-item>
+        </li>
+
+        <li *ngIf="isPlacesLoading">
+          <app-table-skeleton></app-table-skeleton>
+        </li>
+        <li *ngIf="isPlacesLoading">
+          <app-table-skeleton></app-table-skeleton>
+        </li>
+        <li *ngIf="isPlacesLoading">
+          <app-table-skeleton></app-table-skeleton>
+        </li>
+        <li *ngIf="isPlacesLoading">
+          <app-table-skeleton></app-table-skeleton>
+        </li>
+      </ul>
+
+
+      <app-no-data *ngIf="places.length === 0 && pageNumber === 1 && !isPlacesLoading"></app-no-data>
+
+    </div>
+
+    <div class="direction-list__footer">
+      <span class="direction-data-info">Insgesamt {{places.length}}</span>
+    </div>
   </div>
 
+  <!-- 
+  <ng-template #table_skelton>
+    <div class="direction-list__body">
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+      <app-table-skeleton></app-table-skeleton>
+    </div>
 
+    <div class="direction-list__footer">
+      <span class="direction-data-info">Insgesamt 0</span>
+    </div>
+  </ng-template> -->
 
+  <!-- 
   <ng-template #table_skelton>
     <div class="direction-list__body" [ngSwitch]="placeApiResult.status | async">
       <div *ngSwitchCase="Status.LOADING">
@@ -41,5 +97,5 @@
     <div class="direction-list__footer">
       <span class="direction-data-info">Insgesamt 0</span>
     </div>
-  </ng-template>
+  </ng-template> -->
 </div>

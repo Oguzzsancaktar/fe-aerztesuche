@@ -43,6 +43,7 @@ import { IconShowFiltersWhiteComponent } from '../components/icons/icon-show-fil
 import { IconMailComponent } from '../components/icons/icon-mail/icon-mail.component';
 import { ActivityAreaListComponent } from '../components/areas-of-activity-list/activity-area-list.component';
 import { AccessibilityListComponent } from '../components/accessibility-list/accessibility-list.component';
+import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import { AccessibilityListComponent } from '../components/accessibility-list/acc
     IconGlobeComponent,
     IconMailComponent,
     IconNoDataComponent,
+    ScrollTrackerDirective,
 
     LoadingSpinnerComponent,
     ButtonComponent,

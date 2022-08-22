@@ -46,7 +46,7 @@ export class PlaceService {
       .post<IPlaceApiResult>(
         `${environment.baseUrl}/places`,
         {
-          searchText: queryParams.search,
+          searchText: queryParams.searchText,
           near: queryParams.near,
           address: queryParams.address,
         },
@@ -85,7 +85,7 @@ export class PlaceService {
       .post<IMapPlaceApiResult>(
         `${environment.baseUrl}/map`,
         {
-          searchText: queryParams.search,
+          searchText: queryParams.searchText,
           near: queryParams.near,
           address: queryParams.address,
         },

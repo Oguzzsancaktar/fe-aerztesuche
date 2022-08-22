@@ -1,8 +1,12 @@
+import { selectWillMapLoad } from './../../../store/selectors/map-state.selector';
 import { Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
-import { selectMapState } from 'src/app/store/selectors/map-state.selector';
+import {
+  selectIsMapLoading,
+  selectMapState,
+} from 'src/app/store/selectors/map-state.selector';
 import { IAppState } from 'src/app/store/state/app.state';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
@@ -30,7 +34,11 @@ export class MapComponent {
   @Input() map: any;
 
   mapLoadingState$: Observable<boolean> = this._store.pipe(
-    select(selectMapState)
+    select(selectIsMapLoading)
+  );
+
+  mapWillLoadState$: Observable<boolean> = this._store.pipe(
+    select(selectWillMapLoad)
   );
 
   constructor(private _store: Store<IAppState>) {}
