@@ -74,6 +74,10 @@ export class DoctorDetailModalService {
         selectedDoctorPlace: this._placeService.findPlaceWithLonLat(lon, lat),
       })
     );
+    console.log(
+      'this._placeService.findPlaceWithLonLat(lon, lat)',
+      this._placeService.findPlaceWithLonLat(lon, lat)
+    );
     map.setView(new L.LatLng(lat, lon), 15, { animate: true });
     const marker = L.marker([lat, lon], {
       icon: iconUpdated,
