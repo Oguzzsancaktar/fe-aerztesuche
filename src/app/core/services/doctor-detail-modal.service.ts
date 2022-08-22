@@ -1,17 +1,15 @@
 import { PlaceService } from './place.service';
-import { IDoctorDetail } from 'src/app/core/models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as L from 'leaflet';
-import { map, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import {
   CloseDoctorDetailModal,
   OpenDoctorDetailModal,
 } from 'src/app/store/actions/doctor-detail-modal.actions';
 
 import { IAppState } from 'src/app/store/state/app.state';
-import IDirection from '../models/doctor/IDoctorDirection';
 import { environment } from 'src/environments/environment';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
@@ -19,17 +17,6 @@ const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
 
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
-
-const iconDefault = L.icon({
-  iconRetinaUrl: iconRetinaUrlBlue,
-  iconUrl,
-  shadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
-  shadowSize: [41, 41],
-});
 
 const iconUpdated = L.icon({
   iconRetinaUrl: iconRetinaUrlRed,
