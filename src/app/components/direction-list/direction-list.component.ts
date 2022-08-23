@@ -6,8 +6,6 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IAppState } from 'src/app/store/state/app.state';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
-import { EPendingStatus } from '../../models/Enumeration/EPendingStatus';
-import { IPending } from '../../models/general/IPending';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,22 +14,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./direction-list.component.scss'],
 })
 export class DirectionListComponent {
-  readonly Status = EPendingStatus;
-  placeApiResult!: IPending<HttpResponse<IPlaceApiResult>>;
   @Input() map: any;
-
-  @ViewChild('scrollArea')
-  scrollArea!: ElementRef<HTMLInputElement>;
+  @ViewChild('scrollArea') scrollArea!: ElementRef<HTMLInputElement>;
   isPlacesLoading: boolean = true;
   pageNumber: number = 1;
   places: IPlace[] = [];
   totalCount: number = 0;
+  searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
 
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );
-
-  searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
 
   constructor(private _store: Store<IAppState>, private http: HttpClient) {
     this.searchQueryParams$.subscribe((queryParams) => {
@@ -43,31 +36,15 @@ export class DirectionListComponent {
       this.pageNumber = 1;
       this.isPlacesLoading = true;
       this.searchQueryParamsClone = queryParams;
-      this.loadInitPlaces(queryParams);
+      this.onScrollingFinished();
     });
   }
 
-  loadInitPlaces(queryParams: ISearchPlaceQuery) {
-    const url = `${environment.baseUrl}/places`;
-    this.isPlacesLoading = true;
-
-    this.http
-      .post<IPlaceApiResult>(url, {
-        ...queryParams,
-        page: this.pageNumber,
-        pageSize: 10,
-      })
-      .subscribe((data) => {
-        this.totalCount = data.totalCount;
-        this.places = data.personList;
-        this.isPlacesLoading = false;
-      });
-  }
-
   onScrollingFinished() {
+    const url = `${environment.baseUrl}/places`;
+
     this.isPlacesLoading = true;
     this.pageNumber++;
-    const url = `${environment.baseUrl}/places`;
 
     this.http
       .post<IPlaceApiResult>(url, {
