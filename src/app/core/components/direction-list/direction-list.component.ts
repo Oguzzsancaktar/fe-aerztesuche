@@ -35,6 +35,7 @@ export class DirectionListComponent implements AfterViewInit {
   isPlacesLoading: boolean = true;
   pageNumber: number = 1;
   places: IPlace[] = [];
+  totalCount: number = 0;
 
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
@@ -47,6 +48,7 @@ export class DirectionListComponent implements AfterViewInit {
       if (this.scrollArea?.nativeElement?.scrollTop) {
         this.scrollArea.nativeElement.scrollTop = 0;
       }
+
       this.places = [];
       this.pageNumber = 1;
       this.isPlacesLoading = true;
@@ -70,6 +72,7 @@ export class DirectionListComponent implements AfterViewInit {
         pageSize: 10,
       })
       .subscribe((data) => {
+        this.totalCount = data.totalCount;
         this.places = data.personList;
         this.isPlacesLoading = false;
       });
@@ -88,6 +91,7 @@ export class DirectionListComponent implements AfterViewInit {
         pageSize: 10,
       })
       .subscribe((data) => {
+        this.totalCount = data.totalCount;
         this.places = this.places.concat(data.personList);
         this.isPlacesLoading = false;
       });
