@@ -5,7 +5,7 @@ import { IAppState } from '../../store/state/app.state';
 import { Store, select } from '@ngrx/store';
 import { DoctorDetailModalService } from './doctor-detail-modal.service';
 import { PlaceService } from './place.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { ISearchPlaceQuery } from '../models';
 import { ChangeMapLoadingState } from 'src/app/store/actions/map-state.actions';
@@ -18,6 +18,8 @@ export class MarkerService {
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );
+
+  getPlaceListForMapSubscription: Subscription = new Subscription();
 
   constructor(
     private _store: Store<IAppState>,
@@ -40,40 +42,46 @@ export class MarkerService {
     this.searchQueryParams$.subscribe((queryParams) => {
       this._store.dispatch(new ChangeMapLoadingState(true));
 
-      this._placeService.getPlaceListForMap(queryParams).data.subscribe(
-        (res: any) => {
-          this.removeCapitalMarkers(map);
+      if (this.getPlaceListForMapSubscription) {
+        this.getPlaceListForMapSubscription.unsubscribe();
+      }
 
-          let markers = L.markerClusterGroup();
+      this.getPlaceListForMapSubscription = this._placeService
+        .getPlaceListForMap(queryParams)
+        .data.subscribe(
+          (res: any) => {
+            this.removeCapitalMarkers(map);
 
-          for (const mapPlace of res.body) {
-            const lon = mapPlace.longitute;
-            const lat = mapPlace.latitude;
-            const marker = L.marker([lat, lon]);
+            let markers = L.markerClusterGroup();
 
-            marker.on('click', (x) => {
-              this._doctorDetailModalService.openDoctorDetailModal(
-                mapPlace.personId,
-                map,
-                lat,
-                lon
-              );
+            for (const mapPlace of res.body) {
+              const lon = mapPlace.longitute;
+              const lat = mapPlace.latitude;
+              const marker = L.marker([lat, lon]);
 
-              this._placeService.findPlaceWithLonLat(lon, lat);
-            });
+              marker.on('click', (x) => {
+                this._doctorDetailModalService.openDoctorDetailModal(
+                  mapPlace.personId,
+                  map,
+                  lat,
+                  lon
+                );
 
-            markers.addLayer(marker);
+                this._placeService.findPlaceWithLonLat(lon, lat);
+              });
+
+              markers.addLayer(marker);
+            }
+
+            markers.addTo(map);
+          },
+          (err) => {
+            console.log('err==>', err);
+          },
+          () => {
+            this._store.dispatch(new ChangeMapLoadingState(false));
           }
-
-          markers.addTo(map);
-        },
-        (err) => {
-          console.log('err==>', err);
-        },
-        () => {
-          this._store.dispatch(new ChangeMapLoadingState(false));
-        }
-      );
+        );
     });
   }
 }
