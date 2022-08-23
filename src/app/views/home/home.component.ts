@@ -4,12 +4,7 @@ import {
 } from './../../store/actions/map-state.actions';
 import { selectDoctorDetailModalState } from './../../store/selectors/doctor-detail-modal.selectors';
 import { IAppState } from './../../store/state/app.state';
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as L from 'leaflet';
 import { MarkerService } from '../../services/marker.service';
@@ -59,7 +54,6 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const isMapWillLoad = this.router.url.includes('consent=true');
-
     if (isMapWillLoad) {
       this.map?.remove();
       this.initMap();

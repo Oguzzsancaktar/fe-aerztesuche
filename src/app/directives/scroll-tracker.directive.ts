@@ -11,12 +11,13 @@ import {
 })
 export class ScrollTrackerDirective {
   @Output() scrollingFinished = new EventEmitter<number>();
-  @Input() pageNumber: number = 1;
 
   @HostListener('scroll', ['$event'])
   onScroll(event: any): void {
-    if (event.target.offsetHeight * this.pageNumber < event.target.scrollTop) {
-      console.log(this.pageNumber);
+    if (
+      event.target.offsetHeight + event.target.scrollTop >=
+      event.target.scrollHeight
+    ) {
       this.scrollingFinished.emit();
     }
   }

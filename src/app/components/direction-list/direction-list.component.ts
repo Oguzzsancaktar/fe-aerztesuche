@@ -1,13 +1,7 @@
 import { initialPlaceQueryParamsState } from '../../store/state/place-query-params.state';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { IPlace, IPlaceApiResult, ISearchPlaceQuery } from 'src/app/models';
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { IAppState } from 'src/app/store/state/app.state';
@@ -21,7 +15,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './direction-list.component.html',
   styleUrls: ['./direction-list.component.scss'],
 })
-export class DirectionListComponent implements AfterViewInit {
+export class DirectionListComponent {
   readonly Status = EPendingStatus;
   placeApiResult!: IPending<HttpResponse<IPlaceApiResult>>;
   @Input() map: any;
@@ -53,10 +47,6 @@ export class DirectionListComponent implements AfterViewInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit() {}
-
   loadInitPlaces(queryParams: ISearchPlaceQuery) {
     const url = `${environment.baseUrl}/places`;
     this.isPlacesLoading = true;
@@ -75,7 +65,6 @@ export class DirectionListComponent implements AfterViewInit {
   }
 
   onScrollingFinished() {
-    console.log('scrolled');
     this.isPlacesLoading = true;
     this.pageNumber++;
     const url = `${environment.baseUrl}/places`;

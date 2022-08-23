@@ -1,10 +1,8 @@
+import { initialPlaceQueryParamsState } from './../store/state/place-query-params.state';
 import { IPending } from './../models/general/IPending';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { catchError, defer, map, ReplaySubject, retry, tap } from 'rxjs';
-
-import { IAppState } from 'src/app/store/state/app.state';
 import { environment } from 'src/environments/environment';
 import { IPlace, IPlaceApiResult, ISearchPlaceQuery } from '../models';
 import { EPendingStatus } from '../models/Enumeration/EPendingStatus';
@@ -18,16 +16,12 @@ export class PlaceService {
   mapPlaceList: IMapPlaceApiResult['placeList'] = [];
   selectedPlace: IPlace | undefined;
 
-  constructor(private http: HttpClient, private _store: Store<IAppState>) {
+  constructor(private http: HttpClient) {
     this.http
       .post<IPlaceApiResult>(
         `${environment.baseUrl}/places`,
         {
-          searchText: '',
-          near: 10,
-          address: 'Köln',
-          page: 1,
-          pageSize: 10,
+          ...initialPlaceQueryParamsState,
         },
         {
           observe: 'response',

@@ -3,5 +3,5 @@ export default interface ISearchPlaceQuery {
   near: number;
   address: string;
   page?: number;
-  pageNumber?: number;
+  pageSize?: number;
 }
