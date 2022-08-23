@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { ISearchPlaceQuery } from '../models';
 import { ChangeMapLoadingState } from 'src/app/store/actions/map-state.actions';
+import 'leaflet.markercluster';
 
 @Injectable()
 export class MarkerService {
@@ -23,10 +24,6 @@ export class MarkerService {
     private _doctorDetailModalService: DoctorDetailModalService,
     private _placeService: PlaceService
   ) {}
-
-  static scaledRadius(val: number, maxVal: number): number {
-    return 20 * (val / maxVal);
-  }
 
   removeCapitalMarkers(map: L.Map): void {
     map.eachLayer((layer: any) => {
@@ -47,6 +44,8 @@ export class MarkerService {
         (res: any) => {
           this.removeCapitalMarkers(map);
 
+          let markers = L.markerClusterGroup();
+
           for (const mapPlace of res.body) {
             const lon = mapPlace.longitute;
             const lat = mapPlace.latitude;
@@ -63,8 +62,10 @@ export class MarkerService {
               this._placeService.findPlaceWithLonLat(lon, lat);
             });
 
-            marker.addTo(map);
+            markers.addLayer(marker);
           }
+
+          markers.addTo(map);
         },
         (err) => {
           console.log('err==>', err);
