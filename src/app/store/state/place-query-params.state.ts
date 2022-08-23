@@ -2,6 +2,6 @@ import { ISearchPlaceQuery } from 'src/app/core/models';
 
 export const initialPlaceQueryParamsState: ISearchPlaceQuery = {
   searchText: '',
-  near: 50,
+  near: 10,
   address: 'Köln',
 };

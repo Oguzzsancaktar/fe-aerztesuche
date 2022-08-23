@@ -24,7 +24,7 @@ export class PlaceService {
         `${environment.baseUrl}/places`,
         {
           searchText: '',
-          near: 50,
+          near: 10,
           address: 'Köln',
           page: 1,
           pageSize: 10,
