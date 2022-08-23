@@ -1,4 +1,4 @@
-import { IDoctorDetailModalState } from 'src/app/core/models';
+import { IDoctorDetailModalState } from 'src/app/models';
 import { Action } from '@ngrx/store';
 
 export enum EDoctorDetailModalActions {

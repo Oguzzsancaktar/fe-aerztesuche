@@ -3,7 +3,6 @@ import { IconNoDataComponent } from './../components/icons/icon-no-data/icon-no-
 import { NoDataComponent } from './../components/no-data/no-data.component';
 import { TableSkeletonComponent } from '../components/table-skeleton/table-skeleton.component';
 import { LanguageListComponent } from './../components/language-list/language-list.component';
-import { DoctorDetailModalEffects } from './../../store/effects/doctor-detail-modal.effects';
 import { StoreModule } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -53,7 +52,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     HttpClientModule,
     RouterModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([DoctorDetailModalEffects]),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
   ],
   declarations: [

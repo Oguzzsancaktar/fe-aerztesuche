@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { IDoctorDetailModalState } from 'src/app/core/models';
+import { IDoctorDetailModalState } from 'src/app/models';
 import { IAppState } from './../state/app.state';
 
 const selectAppState = (state: IAppState) => state.doctorDetailModalState;

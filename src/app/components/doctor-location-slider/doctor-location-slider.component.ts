@@ -1,4 +1,4 @@
-import { IDoctorDetail } from 'src/app/core/models';
+import { IDoctorDetail } from 'src/app/models';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

@@ -1,4 +1,4 @@
-import { IDoctorDetail, IPlace } from 'src/app/core/models';
+import { IDoctorDetail, IPlace } from 'src/app/models';
 
 export default interface IDoctorDetailModalState {
   isModalOpen: boolean;

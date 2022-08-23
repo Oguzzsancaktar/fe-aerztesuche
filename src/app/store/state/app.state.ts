@@ -2,7 +2,7 @@ import {
   IDoctorDetailModalState,
   IMapLoadingState,
   ISearchPlaceQuery,
-} from 'src/app/core/models';
+} from 'src/app/models';
 
 import { initialDoctorDetailModalState } from './doctor-detail-modal.state';
 import { initialMapLoadingState } from './map-loading.state';

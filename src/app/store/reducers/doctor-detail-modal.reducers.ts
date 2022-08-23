@@ -1,5 +1,5 @@
 import { initialDoctorDetailModalState } from '../state/doctor-detail-modal.state';
-import { IDoctorDetailModalState } from 'src/app/core/models';
+import { IDoctorDetailModalState } from 'src/app/models';
 
 import {
   DoctorDetailModalActions,

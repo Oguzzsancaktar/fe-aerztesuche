@@ -1,4 +1,4 @@
-import { IMapLoadingState } from 'src/app/core/models';
+import { IMapLoadingState } from 'src/app/models';
 
 export const initialMapLoadingState: IMapLoadingState = {
   isMapLoading: false,

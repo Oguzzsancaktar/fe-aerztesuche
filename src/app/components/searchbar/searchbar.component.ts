@@ -3,7 +3,7 @@ import {
   SetPlaceSearchQueryParams,
   SetPlaceAddressQueryParams,
   SetPlaceNearQueryParams,
-} from './../../../store/actions/place-query-params.actions';
+} from '../../store/actions/place-query-params.actions';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';

@@ -1,7 +1,7 @@
-import { selectDoctorDetailModalDoctorId } from './../../../store/selectors/doctor-detail-modal.selectors';
-import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-modal.service';
+import { selectDoctorDetailModalDoctorId } from '../../store/selectors/doctor-detail-modal.selectors';
+import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.service';
 import { IAppState } from 'src/app/store/state/app.state';
-import { IDoctorDetailModalState, IPlace } from 'src/app/core/models';
+import { IDoctorDetailModalState, IPlace } from 'src/app/models';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Store, select } from '@ngrx/store';

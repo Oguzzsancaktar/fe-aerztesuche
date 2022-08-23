@@ -1,4 +1,4 @@
-import { IMapLoadingState } from 'src/app/core/models';
+import { IMapLoadingState } from 'src/app/models';
 import { createSelector } from '@ngrx/store';
 import { IAppState } from '../state/app.state';
 

@@ -1,4 +1,4 @@
-import { IDoctorDetailModalState } from 'src/app/core/models';
+import { IDoctorDetailModalState } from 'src/app/models';
 
 export const initialDoctorDetailModalState: IDoctorDetailModalState = {
   isModalOpen: false,

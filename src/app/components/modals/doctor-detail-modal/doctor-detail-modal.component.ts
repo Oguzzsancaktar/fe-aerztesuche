@@ -3,7 +3,7 @@ import {
   selectDoctorDetailModalDoctorId,
   selectDoctorDetailModalState,
   selectDoctorDetailModalPlace,
-} from './../../../../store/selectors/doctor-detail-modal.selectors';
+} from '../../../store/selectors/doctor-detail-modal.selectors';
 import { Store, select } from '@ngrx/store';
 import {
   Component,
@@ -14,14 +14,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  IDoctorDetail,
-  IDoctorDetailModalState,
-  IPlace,
-} from 'src/app/core/models';
+import { IDoctorDetail, IDoctorDetailModalState, IPlace } from 'src/app/models';
 import { IAppState } from 'src/app/store/state/app.state';
-import { DoctorDetailModalService } from 'src/app/core/services/doctor-detail-modal.service';
-import { PlaceService } from 'src/app/core/services/place.service';
+import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.service';
+import { PlaceService } from 'src/app/services/place.service';
 
 @Component({
   selector: 'app-doctor-detail-modal',

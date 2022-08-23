@@ -1,7 +1,7 @@
-import { selectDoctorDetailModalDoctorId } from './../../store/selectors/doctor-detail-modal.selectors';
+import { selectDoctorDetailModalDoctorId } from './../store/selectors/doctor-detail-modal.selectors';
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
-import { IAppState } from '../../store/state/app.state';
+import { IAppState } from '../store/state/app.state';
 import { Store, select } from '@ngrx/store';
 import { DoctorDetailModalService } from './doctor-detail-modal.service';
 import { PlaceService } from './place.service';

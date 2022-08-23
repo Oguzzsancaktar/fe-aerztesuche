@@ -1,4 +1,4 @@
-import { ISearchPlaceQuery } from 'src/app/core/models';
+import { ISearchPlaceQuery } from 'src/app/models';
 
 export const initialPlaceQueryParamsState: ISearchPlaceQuery = {
   searchText: '',

@@ -1,9 +1,9 @@
 import {
   ChangeMapLoadingState,
   ChangeMapWillLoadState,
-} from './../../../store/actions/map-state.actions';
-import { selectDoctorDetailModalState } from './../../../store/selectors/doctor-detail-modal.selectors';
-import { IAppState } from './../../../store/state/app.state';
+} from './../../store/actions/map-state.actions';
+import { selectDoctorDetailModalState } from './../../store/selectors/doctor-detail-modal.selectors';
+import { IAppState } from './../../store/state/app.state';
 import {
   AfterViewInit,
   ChangeDetectorRef,

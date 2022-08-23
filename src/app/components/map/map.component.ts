@@ -1,4 +1,4 @@
-import { selectWillMapLoad } from './../../../store/selectors/map-state.selector';
+import { selectWillMapLoad } from '../../store/selectors/map-state.selector';
 import { Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';

@@ -1,10 +1,6 @@
-import { initialPlaceQueryParamsState } from './../../../store/state/place-query-params.state';
+import { initialPlaceQueryParamsState } from '../../store/state/place-query-params.state';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import {
-  IPlace,
-  IPlaceApiResult,
-  ISearchPlaceQuery,
-} from 'src/app/core/models';
+import { IPlace, IPlaceApiResult, ISearchPlaceQuery } from 'src/app/models';
 import {
   AfterViewInit,
   Component,

@@ -1,5 +1,5 @@
 import { initialPlaceQueryParamsState } from './../state/place-query-params.state';
-import { ISearchPlaceQuery } from 'src/app/core/models';
+import { ISearchPlaceQuery } from 'src/app/models';
 import {
   EPlaceQueryParamsActions,
   PlaceQueryParamsActions,
