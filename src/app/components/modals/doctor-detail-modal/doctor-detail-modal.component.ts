@@ -1,7 +1,6 @@
 import {
   selectDoctorDetailModalIsOpen,
   selectDoctorDetailModalDoctorId,
-  selectDoctorDetailModalState,
   selectDoctorDetailModalPlace,
 } from '../../../store/selectors/doctor-detail-modal.selectors';
 import { Store, select } from '@ngrx/store';

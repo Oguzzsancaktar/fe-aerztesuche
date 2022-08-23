@@ -15,7 +15,7 @@ import EGender from '../../models/Enumeration/EGender';
 })
 export class DirectionItemComponent implements OnInit {
   @Input() map: any;
-  @Input() doctor?: IPlace | null;
+  @Input() place?: IPlace | null;
   @Input() isForModal: boolean = false;
 
   selectedDoctorId$: Observable<IDoctorDetailModalState['selectedDoctorId']> =
@@ -30,7 +30,7 @@ export class DirectionItemComponent implements OnInit {
     private _doctorDetailModalService: DoctorDetailModalService,
     public _store: Store<IAppState>
   ) {
-    console.log('doctor23452345', this.doctor);
+    console.log('place3452345', this.place);
   }
 
   openDoctorDetailModal(id: number) {
@@ -38,8 +38,8 @@ export class DirectionItemComponent implements OnInit {
       this._doctorDetailModalService.openDoctorDetailModal(
         id,
         this.map,
-        this.doctor?.place.latitude!,
-        this.doctor?.place.longitute!
+        this.place?.place.latitude!,
+        this.place?.place.longitute!
       );
     }
   }

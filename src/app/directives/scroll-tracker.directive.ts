@@ -1,16 +1,10 @@
-import {
-  Directive,
-  Output,
-  EventEmitter,
-  HostListener,
-  Input,
-} from '@angular/core';
+import { Directive, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[scrollTracker]',
 })
 export class ScrollTrackerDirective {
-  @Output() scrollingFinished = new EventEmitter<number>();
+  @Output() scrollingFinished = new EventEmitter<any>();
 
   @HostListener('scroll', ['$event'])
   onScroll(event: any): void {

@@ -2,8 +2,8 @@
   <div class="direction-list__container">
     <div class="direction-list__body" scrollTracker (scrollingFinished)="onScrollingFinished()" #scrollArea>
       <ul class="doctor-list">
-        <li class="doctor-list-item" *ngFor="let doctor of places">
-          <app-direction-item [doctor]="doctor" [map]="map">
+        <li class="doctor-list-item" *ngFor="let place of placeList">
+          <app-direction-item [place]="place" [map]="map">
           </app-direction-item>
         </li>
         <li *ngIf="isPlacesLoading">
@@ -31,10 +31,10 @@
           <app-table-skeleton></app-table-skeleton>
         </li>
       </ul>
-      <app-no-data *ngIf="places.length === 0 && pageNumber === 1 && !isPlacesLoading"></app-no-data>
+      <app-no-data *ngIf="placeList.length === 0 && !isPlacesLoading"></app-no-data>
     </div>
     <div class="direction-list__footer">
-      <span class="direction-data-info">Insgesamt {{totalCount}}</span>
+      <span class="direction-data-info">Insgesamt {{totalPlaceCount}}</span>
     </div>
   </div>
 </div>

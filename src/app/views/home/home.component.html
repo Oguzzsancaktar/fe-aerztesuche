@@ -13,7 +13,9 @@
     </div>
     <div class="row">
       <div class="row-item row-item-small app-direction-list">
-        <app-direction-list [map]="map"> </app-direction-list>
+        <app-direction-list [placeList]="placeList" [totalPlaceCount]="totalPlaceCount"
+          [isPlacesLoading]="isPlacesLoading" [pageNumber]="pageNumber" [map]="map"
+          (handleOnScrollingFinished)="onScrollingFinished($event)"> </app-direction-list>
       </div>
       <div class="row-item row-item-large app-map">
         <app-map [map]="map"></app-map>
