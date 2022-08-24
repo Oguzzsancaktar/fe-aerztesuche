@@ -98,11 +98,7 @@ export class LeftFilterSectionComponent implements OnInit {
 
   activeIndex: number | null = null;
 
-  constructor() {
-    setInterval(() => {
-      console.log(1234123, this.filterList);
-    }, 2000);
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 
