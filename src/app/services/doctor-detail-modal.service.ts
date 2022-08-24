@@ -1,9 +1,9 @@
 import { PlaceService } from './place.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import {
   CloseDoctorDetailModal,
   OpenDoctorDetailModal,
@@ -11,6 +11,9 @@ import {
 
 import { IAppState } from 'src/app/store/state/app.state';
 import { environment } from 'src/environments/environment';
+import { ISearchPlaceQuery } from '../models';
+import { selectPlaceQueryParamsState } from '../store/selectors/place-query-params.selectors';
+import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
@@ -37,11 +40,21 @@ export class DoctorDetailModalService {
   selectedDoctor: Subject<any> = new Subject<any>();
   isDoctorDetailModalOpen: Subject<any> = new Subject<any>();
 
+  searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
+
+  searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
+    select(selectPlaceQueryParamsState)
+  );
+
   constructor(
     private http: HttpClient,
     private _store: Store<IAppState>,
     private _placeService: PlaceService
-  ) {}
+  ) {
+    this.searchQueryParams$.subscribe((queryParams) => {
+      this.searchQueryParamsClone = queryParams;
+    });
+  }
 
   getDoctorDetailById(doctorId: number) {
     return this.http.get<any>(`${environment.baseUrl}/person/${doctorId}`, {
@@ -55,31 +68,33 @@ export class DoctorDetailModalService {
     lat: number,
     lon: number
   ) {
-    this._placeService.findPlaceWithLonLat(lon, lat).then((place) => {
-      this._store.dispatch(
-        new OpenDoctorDetailModal({
-          selectedDoctorId: doctorId,
-          selectedDoctorPlace: place,
-        })
-      );
+    this._placeService
+      .findPlaceWithLonLat(lon, lat, this.searchQueryParamsClone.address)
+      .then((place) => {
+        this._store.dispatch(
+          new OpenDoctorDetailModal({
+            selectedDoctorId: doctorId,
+            selectedDoctorPlace: place,
+          })
+        );
 
-      if (map) {
-        map?.setView(new L.LatLng(lat, lon), 15, { animate: true });
-        const marker = L.marker([lat, lon], {
-          icon: iconUpdated,
-        });
+        if (map) {
+          map?.setView(new L.LatLng(lat, lon), 15, { animate: true });
+          const marker = L.marker([lat, lon], {
+            icon: iconUpdated,
+          });
 
-        map?.eachLayer((layer: any) => {
-          if (
-            layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed
-          ) {
-            map.removeLayer(layer);
-          }
-        });
+          map?.eachLayer((layer: any) => {
+            if (
+              layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed
+            ) {
+              map.removeLayer(layer);
+            }
+          });
 
-        marker.addTo(map);
-      }
-    });
+          marker.addTo(map);
+        }
+      });
   }
 
   closeDoctorDetailModal(map: L.Map) {

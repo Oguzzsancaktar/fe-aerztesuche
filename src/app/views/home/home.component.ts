@@ -15,6 +15,7 @@ import { MarkerService } from '../../services/marker.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
+  IDoctorDetailModalState,
   IFilter,
   IPlace,
   IPlaceApiResult,
@@ -24,6 +25,7 @@ import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query
 import { initialPlaceQueryParamsState } from 'src/app/store/state/place-query-params.state';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { selectDoctorDetailModalIsOpen } from 'src/app/store/selectors/doctor-detail-modal.selectors';
 
 @Component({
   selector: 'app-home',
@@ -47,6 +49,10 @@ export class HomeComponent implements AfterViewInit {
     select(selectPlaceQueryParamsState)
   );
 
+  public isDoctorDetailModalOpen$: Observable<
+    IDoctorDetailModalState['isModalOpen']
+  >;
+
   constructor(
     private _store: Store<IAppState>,
     private markerService: MarkerService,
@@ -65,6 +71,10 @@ export class HomeComponent implements AfterViewInit {
       this.searchQueryParamsClone = queryParams;
       this.onScrollingFinished();
     });
+
+    this.isDoctorDetailModalOpen$ = this._store.pipe(
+      select(selectDoctorDetailModalIsOpen)
+    );
   }
 
   onScrollingFinished(scrollElementRef?: ElementRef<HTMLInputElement>) {
@@ -114,7 +124,7 @@ export class HomeComponent implements AfterViewInit {
     if (isMapWillLoad) {
       this.map?.remove();
       this.initMap();
-      this.markerService.makeCapitalMarkers(this.map);
+      this.markerService.makeMarkers(this.map);
       this.map.zoomControl.setPosition('bottomright');
       L.control.scale({ position: 'bottomright' }).addTo(this.map);
       this.cdr.detectChanges();

@@ -71,9 +71,11 @@ export class PlaceService {
     return { data, status };
   }
 
-  findPlaceWithLonLat(lon: number, lat: number) {
+  findPlaceWithLonLat(lon: number, lat: number, address: string) {
     const request = this.http
-      .get<IPlace>(`${environment.baseUrl}/places/${lat}/${lon}`)
+      .get<IPlace>(
+        `${environment.baseUrl}/places/${lat}/${lon}?address=${address}`
+      )
       .pipe(
         retry(2),
         map((item) => {

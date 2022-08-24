@@ -5,8 +5,7 @@
 
   <div class="slide-section">
     <ul class="location-list">
-      <li class="location-list__item"
-        *ngFor="let location of (doctorDetail?.taetigkeiten || [])[0]?.taetigkeitAnLeistungsorten; let i = index"
+      <li class="location-list__item" *ngFor="let location of taetigkeitAnLeistungsortenList; let i = index"
         (click)="handleSlideChange(i)" [ngClass]="i === activeSlideNumber ? 'active' : ''">
         {{location.strasse}} {{location.hausnummer}} {{location.plz}} {{location.ort}}
         <div class="paddy"></div>
@@ -17,28 +16,21 @@
   <div class="content-section">
 
 
-
-    <div class="content-section__item"
-      *ngIf="doctorDetail &&  ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
+    <div class="content-section__item" *ngIf=" ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
       <app-activity-area-list [activtyAreaList]="((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche)">
       </app-activity-area-list>
     </div>
 
 
     <div class="content-section__item"
-      *ngIf="doctorDetail &&  (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
+      *ngIf=" (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
       <app-accessibility-list
         [accessibilityList]="(((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit">
       </app-accessibility-list>
     </div>
 
-    <div class="content-section__item"
-      *ngIf="doctorDetail &&  (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
-    </div>
 
-
-
-    <ng-container *ngIf="doctorDetail &&  ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
+    <ng-container *ngIf=" ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
       <div class="content-section__item"
         *ngFor="let sprechzeiten of (((doctorDetail?.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).sprechzeiten; let i = index">
         <app-office-hours headerText="Sprechstunden"

@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 import { IDoctorDetail, IDoctorDetailModalState, IPlace } from 'src/app/models';
 import { IAppState } from 'src/app/store/state/app.state';
 import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.service';
-import { PlaceService } from 'src/app/services/place.service';
 
 @Component({
   selector: 'app-doctor-detail-modal',
@@ -27,7 +26,7 @@ export class DoctorDetailModalComponent implements OnInit {
   @Input() map: any;
   @ViewChild('doctorDetailModal') doctorDetailModal: ElementRef | undefined;
 
-  doctorDetail$: IDoctorDetail | undefined;
+  doctorDetail: IDoctorDetail | undefined;
   doctorDirection$: IPlace | undefined;
 
   public isDoctorDetailModalOpen$: Observable<
@@ -72,9 +71,7 @@ export class DoctorDetailModalComponent implements OnInit {
         this._doctorDetailModalService
           .getDoctorDetailById(doctorId)
           .subscribe((doctorDetail) => {
-            console.log('doctorDetail$', doctorDetail.body);
-
-            this.doctorDetail$ = doctorDetail.body;
+            this.doctorDetail = doctorDetail.body;
           });
       }
     });

@@ -15,18 +15,16 @@
           </app-direction-item>
         </div>
 
-        <div class="detail-modal-item" *ngIf=" (doctorDetail$?.fremdsprachen || []).length > 0">
+        <div class="detail-modal-item" *ngIf="doctorDetail && doctorDetail.fremdsprachen.length > 0">
           <div class="section">
-            <app-language-list headerText="Fremdsprachen" [languages]="doctorDetail$?.fremdsprachen">
+            <app-language-list headerText="Fremdsprachen" [languages]="doctorDetail?.fremdsprachen">
             </app-language-list>
           </div>
         </div>
 
-        <div class="detail-modal-item">
-          <app-doctor-location-slider [doctorDetail]="doctorDetail$"></app-doctor-location-slider>
+        <div class="detail-modal-item" *ngIf="doctorDetail">
+          <app-doctor-location-slider [doctorDetail]="doctorDetail"></app-doctor-location-slider>
         </div>
-
-
       </div>
     </div>
   </div>

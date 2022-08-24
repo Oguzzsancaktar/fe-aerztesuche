@@ -10,14 +10,14 @@ import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query
 import { ISearchPlaceQuery } from '../models';
 import { ChangeMapLoadingState } from 'src/app/store/actions/map-state.actions';
 import 'leaflet.markercluster';
+import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
 
 @Injectable()
 export class MarkerService {
-  selectedDoctorId$ = this._store.pipe(select(selectDoctorDetailModalDoctorId));
-
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );
+  searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
 
   getPlaceListForMapSubscription: Subscription = new Subscription();
 
@@ -25,11 +25,15 @@ export class MarkerService {
     private _store: Store<IAppState>,
     private _doctorDetailModalService: DoctorDetailModalService,
     private _placeService: PlaceService
-  ) {}
+  ) {
+    this.searchQueryParams$.subscribe((queryParams) => {
+      this.searchQueryParamsClone = queryParams;
+    });
+  }
 
-  removeCapitalMarkers(map: L.Map): void {
+  removeMarkers(map: L.Map): void {
     map.eachLayer((layer: any) => {
-      if (layer?.options?.icon?.options?.iconUrl?.includes('icon')) {
+      if (!layer?._url) {
         map.removeLayer(layer);
       }
     }),
@@ -38,7 +42,7 @@ export class MarkerService {
       };
   }
 
-  makeCapitalMarkers(map: L.Map): void {
+  makeMarkers(map: L.Map): void {
     this.searchQueryParams$.subscribe((queryParams) => {
       this._store.dispatch(new ChangeMapLoadingState(true));
 
@@ -50,7 +54,7 @@ export class MarkerService {
         .getPlaceListForMap(queryParams)
         .data.subscribe(
           (res: any) => {
-            this.removeCapitalMarkers(map);
+            this.removeMarkers(map);
 
             let markers = L.markerClusterGroup();
 
@@ -59,7 +63,7 @@ export class MarkerService {
               const lat = mapPlace.latitude;
               const marker = L.marker([lat, lon]);
 
-              marker.on('click', (x) => {
+              marker.on('click', () => {
                 this._doctorDetailModalService.openDoctorDetailModal(
                   mapPlace.personId,
                   map,
@@ -67,12 +71,14 @@ export class MarkerService {
                   lon
                 );
 
-                this._placeService.findPlaceWithLonLat(lon, lat);
+                this._placeService.findPlaceWithLonLat(
+                  lon,
+                  lat,
+                  this.searchQueryParamsClone.address
+                );
               });
-
               markers.addLayer(marker);
             }
-
             markers.addTo(map);
           },
           (err) => {

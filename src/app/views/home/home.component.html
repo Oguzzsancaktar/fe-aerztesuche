@@ -24,4 +24,4 @@
   </div>
 </div>
 
-<app-doctor-detail-modal [map]="map"></app-doctor-detail-modal>
+<app-doctor-detail-modal *ngIf="isDoctorDetailModalOpen$ | async" [map]="map"></app-doctor-detail-modal>

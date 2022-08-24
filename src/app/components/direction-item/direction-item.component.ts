@@ -29,9 +29,7 @@ export class DirectionItemComponent implements OnInit {
   constructor(
     private _doctorDetailModalService: DoctorDetailModalService,
     public _store: Store<IAppState>
-  ) {
-    console.log('place3452345', this.place);
-  }
+  ) {}
 
   openDoctorDetailModal(id: number) {
     if (!this.isForModal) {
