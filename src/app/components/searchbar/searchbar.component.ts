@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { debounce } from 'lodash';
-import { IOption, ISearchPlaceQuery } from '../../models';
+import { IFilter, IOption, ISearchPlaceQuery } from '../../models';
 import { Observable } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 

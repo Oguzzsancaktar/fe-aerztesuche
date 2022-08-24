@@ -1,12 +1,13 @@
 <div class="home-page">
   <div class="home-page__filters" [ngStyle]="{'max-width': showFilterSection ? '360px':'0px' }">
-    <app-left-filter-section (handleFilterSectionEmitter)="handleFilterSection($event)"
+    <app-left-filter-section (handleFilterSectionEmitter)="handleFilterSection($event)" [filterList]="filterList"
       [showFilterSection]="showFilterSection"></app-left-filter-section>
   </div>
 
   <div class="home-page__content" [ngStyle]="{'width': showFilterSection ? 'calc(100% - 360px)':'100%' }">
     <div class="row">
       <div class="row-item row-item-small app-searchbar">
+
         <app-searchbar [showFilterSection]="showFilterSection"
           (handleFilterSectionEmitter)="handleFilterSection($event)"></app-searchbar>
       </div>

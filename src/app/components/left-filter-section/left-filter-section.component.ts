@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IFilter } from 'src/app/models';
 
 @Component({
   selector: 'app-left-filter-section',
@@ -6,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./left-filter-section.component.scss'],
 })
 export class LeftFilterSectionComponent implements OnInit {
+  @Input() filterList: IFilter[] = [];
   @Input() showFilterSection?: boolean;
   @Output() handleFilterSectionEmitter = new EventEmitter<boolean>();
 
@@ -96,7 +98,11 @@ export class LeftFilterSectionComponent implements OnInit {
 
   activeIndex: number | null = null;
 
-  constructor() {}
+  constructor() {
+    setInterval(() => {
+      console.log(1234123, this.filterList);
+    }, 2000);
+  }
 
   ngOnInit(): void {}
 
