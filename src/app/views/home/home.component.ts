@@ -114,7 +114,6 @@ export class HomeComponent {
   }
 
   private revealPosition(position: GeolocationPosition) {
-    console.log('reveal position worked!!');
     this.http
       .get<{ address: string }>(
         `${environment.baseUrl}/address?lat=${position.coords.latitude}&lng=${position.coords.longitude}`
@@ -184,7 +183,6 @@ export class HomeComponent {
         }
       );
 
-      console.log(location, this.searchQueryParamsClone.address.length);
       if (this.searchQueryParamsClone.address.length) {
         const marker = L.marker([this.searchLatitude, this.searchLongitude]);
         marker.setIcon(iconSelectedLocation);
