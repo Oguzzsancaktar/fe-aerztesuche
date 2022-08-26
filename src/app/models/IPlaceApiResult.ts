@@ -5,4 +5,6 @@ export default interface IPlaceApiResult {
   personList: IPlace[];
   filterList: IFilter[];
   totalCount: number;
+  searchLatitude: number;
+  searchLongitude: number;
 }

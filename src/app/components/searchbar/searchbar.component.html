@@ -29,7 +29,7 @@
 
       <div class="searchar__layout__item search-dropdown">
         <div class="searchbar__dropdown">
-          <div class="searchbar__dropdown__selected__value">
+          <div class="searchbar__dropdown__selected__value" [ngClass]="allowNearOptionSelect ? '' : 'disabled'">
             <span class="searchbar__dropdown__selected__value__span" (click)="toggleDropdown()">
               {{selectedNearOption$ ? selectedNearOption$.label : "Umkreis"}} </span>
           </div>

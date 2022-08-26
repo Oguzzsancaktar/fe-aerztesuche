@@ -17,6 +17,10 @@
       height: 100%;
       color: white;
       display: flex;
+      flex-direction: column;
+      .wont-text {
+        margin-top: 20px;
+      }
     }
 
     .map-loading-spinner {

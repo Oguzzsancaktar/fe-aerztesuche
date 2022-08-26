@@ -4,8 +4,8 @@
   <div class="direction-item__container">
     <div class="direction-item__row">
       <div class="direction-item__row__item row">
-        <app-distance-item [distance]="place.distance.toFixed(2) + 'km'"
-          [isActive]="(place.id === (selectedDoctorId$ | async) && !isForModal )">
+        <app-distance-item [distance]="place.distance ? place.distance.toFixed(2) + 'km' : ''"
+          [coordinates]="place.place" [isActive]="(place.id === (selectedDoctorId$ | async) && !isForModal )">
         </app-distance-item>
 
         <div class="column">

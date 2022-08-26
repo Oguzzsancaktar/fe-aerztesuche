@@ -11,18 +11,18 @@ export enum EPlaceQueryParamsActions {
 
 export class SetPlaceSearchQueryParams implements Action {
   public readonly type = EPlaceQueryParamsActions.SET_PLACE_SEARCH_QUERY_PARAMS;
-  constructor(public payload: Pick<ISearchPlaceQuery, 'searchText'>) {}
+  constructor(public payload: ISearchPlaceQuery['searchText']) {}
 }
 
 export class SetPlaceNearQueryParams implements Action {
   public readonly type = EPlaceQueryParamsActions.SET_PLACE_NEAR_QUERY_PARAMS;
-  constructor(public payload: Pick<ISearchPlaceQuery, 'near'>) {}
+  constructor(public payload: ISearchPlaceQuery['near']) {}
 }
 
 export class SetPlaceAddressQueryParams implements Action {
   public readonly type =
     EPlaceQueryParamsActions.SET_PLACE_ADDRESS_QUERY_PARAMS;
-  constructor(public payload: Pick<ISearchPlaceQuery, 'address'>) {}
+  constructor(public payload: ISearchPlaceQuery['address']) {}
 }
 
 export class ClearPlaceQueryParams implements Action {

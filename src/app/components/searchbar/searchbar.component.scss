@@ -64,6 +64,14 @@
                 align-items: center;
                 justify-content: center;
               }
+
+              &.disabled {
+                background-color: c.$gray;
+                color: c.$white;
+                span {
+                  cursor: not-allowed !important;
+                }
+              }
             }
 
             &__list {

@@ -33,7 +33,8 @@ export class MarkerService {
 
   removeMarkers(map: L.Map): void {
     map.eachLayer((layer: any) => {
-      if (!layer?._url) {
+      console.log(layer);
+      if (layer?.options?.icon?.options?.iconRetinaUrl?.includes('blue')) {
         map.removeLayer(layer);
       }
     }),

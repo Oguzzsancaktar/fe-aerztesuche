@@ -79,7 +79,7 @@ export class DoctorDetailModalService {
         );
 
         if (map) {
-          map?.setView(new L.LatLng(lat, lon), 15, { animate: true });
+          map?.setView(new L.LatLng(lat, lon), 20, { animate: true });
           const marker = L.marker([lat, lon], {
             icon: iconUpdated,
           });

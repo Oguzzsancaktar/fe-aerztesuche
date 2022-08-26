@@ -1,3 +1,4 @@
+import { IconCircleExclamationMarkComponent } from './../components/icons/icon-circle-exclamation-mark/icon-circle-exclamation-mark.component';
 import { LoadingSpinnerComponent } from './../components/loading-spinner/loading-spinner.component';
 import { IconNoDataComponent } from './../components/icons/icon-no-data/icon-no-data.component';
 import { NoDataComponent } from './../components/no-data/no-data.component';
@@ -66,6 +67,8 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     IconGlobeComponent,
     IconMailComponent,
     IconNoDataComponent,
+    IconCircleExclamationMarkComponent,
+
     ScrollTrackerDirective,
 
     LoadingSpinnerComponent,
@@ -102,6 +105,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     IconGlobeComponent,
     IconMailComponent,
     IconNoDataComponent,
+    IconCircleExclamationMarkComponent,
 
     LoadingSpinnerComponent,
     ButtonComponent,

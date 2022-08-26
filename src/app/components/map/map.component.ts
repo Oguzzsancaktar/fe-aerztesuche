@@ -3,10 +3,7 @@ import { Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
-import {
-  selectIsMapLoading,
-  selectMapState,
-} from 'src/app/store/selectors/map-state.selector';
+import { selectIsMapLoading } from 'src/app/store/selectors/map-state.selector';
 import { IAppState } from 'src/app/store/state/app.state';
 
 const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';

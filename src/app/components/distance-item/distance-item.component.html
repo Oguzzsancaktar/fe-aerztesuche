@@ -1,4 +1,4 @@
-<div class="distance-item">
+<div class="distance-item" (click)="openLocationOnGoogleMaps(coordinates.latitude,coordinates.longitute)">
   <div class="distance__column">
     <div class="distance__icon" *ngIf="!isActive">
       <app-icon-direction></app-icon-direction>

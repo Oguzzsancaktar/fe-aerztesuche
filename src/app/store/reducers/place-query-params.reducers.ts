@@ -19,19 +19,19 @@ export const placeQueryParamsReducer = (
     case EPlaceQueryParamsActions.SET_PLACE_SEARCH_QUERY_PARAMS: {
       return {
         ...state,
-        searchText: action.payload.searchText,
+        searchText: action.payload,
       };
     }
     case EPlaceQueryParamsActions.SET_PLACE_NEAR_QUERY_PARAMS: {
       return {
         ...state,
-        near: action.payload.near,
+        near: action.payload,
       };
     }
     case EPlaceQueryParamsActions.SET_PLACE_ADDRESS_QUERY_PARAMS: {
       return {
         ...state,
-        address: action.payload.address,
+        address: action.payload,
       };
     }
     case EPlaceQueryParamsActions.CLEAR_PLACE_QUERY_PARAMS: {

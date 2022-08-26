@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { debounce } from 'lodash';
-import { IFilter, IOption, ISearchPlaceQuery } from '../../models';
+import { IOption, ISearchPlaceQuery } from '../../models';
 import { Observable } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 
@@ -22,6 +22,7 @@ export class SearchbarComponent implements OnInit {
   @Output() handleFilterSectionEmitter = new EventEmitter<boolean>();
   showDropdown: boolean = false;
   nearOptionList = nearOptions;
+  allowNearOptionSelect: boolean = false;
 
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
@@ -35,6 +36,11 @@ export class SearchbarComponent implements OnInit {
     this.handleNearChange = debounce(this.handleNearChange, 500);
 
     this.searchQueryParams$.subscribe((queryParams) => {
+      if (queryParams.address) {
+        this.allowNearOptionSelect = true;
+      } else {
+        this.allowNearOptionSelect = false;
+      }
       this.selectedNearOption$ = nearOptions.find(
         (option) => option.value.toString() === queryParams.near.toString()
       );
@@ -42,7 +48,9 @@ export class SearchbarComponent implements OnInit {
   }
 
   toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
+    if (this.allowNearOptionSelect) {
+      this.showDropdown = !this.showDropdown;
+    }
   }
 
   handleNearOptionSelect(value: IOption['value']) {
@@ -51,19 +59,23 @@ export class SearchbarComponent implements OnInit {
   }
 
   handleNearChange(value: IOption['value']) {
-    this._store.dispatch(new SetPlaceNearQueryParams({ near: +value }));
+    this._store.dispatch(new SetPlaceNearQueryParams(+value));
   }
 
   handleSearchChange(event: any) {
-    this._store.dispatch(
-      new SetPlaceSearchQueryParams({ searchText: event.target.value })
-    );
+    this._store.dispatch(new SetPlaceSearchQueryParams(event.target.value));
   }
 
   handleLocationChange(event: any) {
-    this._store.dispatch(
-      new SetPlaceAddressQueryParams({ address: event.target.value })
-    );
+    if (event.target.value) {
+      this._store.dispatch(new SetPlaceNearQueryParams(5));
+      this.allowNearOptionSelect = true;
+    } else {
+      this._store.dispatch(new SetPlaceNearQueryParams(1000));
+      this.allowNearOptionSelect = false;
+    }
+
+    this._store.dispatch(new SetPlaceAddressQueryParams(event.target.value));
   }
 
   handleFilterIconClick() {
