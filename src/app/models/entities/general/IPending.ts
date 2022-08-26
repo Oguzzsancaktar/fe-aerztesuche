@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
-import { EPendingStatus } from '../Enumeration/EPendingStatus';
+import { EPendingStatus } from '../../enumeration';
 
-export interface IPending<T> {
+export default interface IPending<T> {
   data: Observable<T>;
   status: Observable<EPendingStatus>;
 }

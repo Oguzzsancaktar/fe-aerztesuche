@@ -1,7 +1,7 @@
 import { IDoctorDetail } from 'src/app/models';
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import ITaetigkeiten from 'src/app/models/doctor/IDoctorTaetigkeiten';
-import IDoctorTaetigkeitAnLeistungsorten from 'src/app/models/doctor/IDoctorTaetigkeitAnLeistungsorten';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import ITaetigkeiten from 'src/app/models/entities/doctor/IDoctorTaetigkeiten';
+import IDoctorTaetigkeitAnLeistungsorten from 'src/app/models/entities/doctor/IDoctorTaetigkeitAnLeistungsorten';
 
 @Component({
   selector: 'app-doctor-location-slider',
@@ -14,8 +14,6 @@ export class DoctorLocationSlider implements AfterViewInit {
 
   taetigkeitenList: ITaetigkeiten[] = [];
   taetigkeitAnLeistungsortenList: IDoctorTaetigkeitAnLeistungsorten[] = [];
-
-  constructor() {}
 
   ngAfterViewInit(): void {
     this.taetigkeitenList = this.doctorDetail.taetigkeiten;

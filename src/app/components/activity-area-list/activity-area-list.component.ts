@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IDoctorFremdsprachen } from '../../models';
 
 @Component({
@@ -6,10 +6,6 @@ import { IDoctorFremdsprachen } from '../../models';
   templateUrl: './activity-area-list.component.html',
   styleUrls: ['./activity-area-list.component.scss'],
 })
-export class ActivityAreaListComponent implements OnInit {
+export class ActivityAreaListComponent {
   @Input() activtyAreaList?: IDoctorFremdsprachen[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

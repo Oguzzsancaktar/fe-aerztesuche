@@ -2,18 +2,17 @@ import { selectDoctorDetailModalDoctorId } from '../../store/selectors/doctor-de
 import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.service';
 import { IAppState } from 'src/app/store/state/app.state';
 import { IDoctorDetailModalState, IPlace } from 'src/app/models';
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import EGender from '../../models/Enumeration/EGender';
+import { GenderUtil } from '../../utils/genderUtil';
 
 @Component({
   selector: 'app-direction-item',
   templateUrl: './direction-item.component.html',
   styleUrls: ['./direction-item.component.scss'],
 })
-export class DirectionItemComponent implements OnInit {
+export class DirectionItemComponent {
   @Input() map: any;
   @Input() place?: IPlace | null;
   @Input() isForModal: boolean = false;
@@ -21,15 +20,15 @@ export class DirectionItemComponent implements OnInit {
   selectedDoctorId$: Observable<IDoctorDetailModalState['selectedDoctorId']> =
     this._store.pipe(select(selectDoctorDetailModalDoctorId));
 
-  // TODO make it util
-  findGenderAdditional(gender: number) {
-    return EGender[gender];
-  }
-
   constructor(
     private _doctorDetailModalService: DoctorDetailModalService,
-    public _store: Store<IAppState>
+    private _store: Store<IAppState>,
+    private _genderUtil: GenderUtil
   ) {}
+
+  findGender() {
+    return this._genderUtil.findGenderAdditional(this.place?.geschlect || 0);
+  }
 
   openDoctorDetailModal(id: number) {
     if (!this.isForModal) {
@@ -41,6 +40,4 @@ export class DirectionItemComponent implements OnInit {
       );
     }
   }
-
-  ngOnInit(): void {}
 }

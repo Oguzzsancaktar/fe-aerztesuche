@@ -1,4 +1,4 @@
-import ITitleContentInformation from '../ITitleContentInformation';
+import ITitleContentInformation from '../general/ITitleContentInformation';
 import IDoctorWorkingHours from './IDoctorWorkingHours';
 
 export default interface IDoctorLocation {

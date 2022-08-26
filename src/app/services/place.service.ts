@@ -1,12 +1,11 @@
-import { initialPlaceQueryParamsState } from './../store/state/place-query-params.state';
-import { IPending } from './../models/general/IPending';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, defer, map, ReplaySubject, retry, tap } from 'rxjs';
+import { ReplaySubject, retry, catchError, tap, map, defer } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IPlace, IPlaceApiResult, ISearchPlaceQuery } from '../models';
-import { EPendingStatus } from '../models/Enumeration/EPendingStatus';
-import IMapPlaceApiResult from '../models/IMapPlaceApiResult';
+import { IPlace, ISearchPlaceQuery, EPendingStatus, IPending } from '../models';
+import IPlaceApiResult from '../models/entities/general/IPlaceApiResult';
+import IMapPlaceApiResult from '../models/entities/map/IMapPlaceApiResult';
+import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
 
 @Injectable({
   providedIn: 'root',
@@ -52,9 +51,9 @@ export class PlaceService {
       )
       .pipe(
         retry(2),
-        catchError((error) => {
+        catchError((_error) => {
           status.next(EPendingStatus.ERROR);
-          throw 'error loading map';
+          throw _error;
         }),
         tap(() => status.next(EPendingStatus.SUCCESS)),
         map((item) => {

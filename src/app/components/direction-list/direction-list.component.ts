@@ -26,8 +26,6 @@ export class DirectionListComponent {
     ElementRef<HTMLInputElement>
   >();
 
-  constructor() {}
-
   onScrollingFinished() {
     this.handleOnScrollingFinished.emit(this.scrollArea);
   }

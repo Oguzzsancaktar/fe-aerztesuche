@@ -29,9 +29,6 @@
       height: 50px;
       display: flex;
 
-      .modal-title {
-      }
-
       .close {
         position: absolute;
         right: 30px;
@@ -40,8 +37,6 @@
         border: none;
         cursor: pointer;
         color: #7e7e7e;
-        span {
-        }
       }
     }
 
@@ -58,9 +53,6 @@
       }
       .column {
         .detail-modal-item {
-          app-direction-item {
-          }
-
           &.two-section {
             display: flex;
             .section {

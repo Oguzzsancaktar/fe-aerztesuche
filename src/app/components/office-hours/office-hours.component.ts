@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import IDoctorSprechzeiten from '../../models/doctor/IDoctorSprechzeiten';
-import { EDays } from '../../models/Enumeration/EDays';
-import { ESpretchzeitArt } from '../../models/Enumeration/ESprechzeitArt';
+import { Component, OnInit, Input } from '@angular/core';
+import { ESpretchzeitArt, EDays } from 'src/app/models';
+import IDoctorSprechzeiten from 'src/app/models/entities/doctor/IDoctorSprechzeiten';
 
 @Component({
   selector: 'app-office-hours',
@@ -18,10 +17,9 @@ export class OfficeHoursComponent implements OnInit {
     this.headerText = ESpretchzeitArt[this.officeHoursData?.sprechzeitArt];
   }
 
-  capitalize = (str: string, lower = false) =>
-    (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
-      match.toUpperCase()
-    );
+  capitalize(str: string) {
+    return str.replace(/(?:^|\s|["'([{])+\S/g, (match) => match.toUpperCase());
+  }
 
   ngOnInit(): void {
     this.headerText = this.capitalize(

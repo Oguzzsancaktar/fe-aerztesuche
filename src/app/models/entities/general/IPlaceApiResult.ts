@@ -1,5 +1,5 @@
-import { IFilter } from './filter';
-import { IPlace } from './place';
+import { IFilter } from '../filter';
+import { IPlace } from '../place';
 
 export default interface IPlaceApiResult {
   personList: IPlace[];

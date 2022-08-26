@@ -19,14 +19,9 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .head-title {
-          }
 
           .close-icon {
             cursor: pointer;
-          }
-
-          app-icon-close {
           }
         }
       }
@@ -47,9 +42,6 @@
                 font: normal normal normal 16px/19px Lato;
                 margin-right: 10px;
                 color: c.$blue-bayoux;
-              }
-
-              span {
               }
             }
 

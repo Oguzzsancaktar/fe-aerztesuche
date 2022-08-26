@@ -4,7 +4,7 @@ import {
   SetPlaceAddressQueryParams,
   SetPlaceNearQueryParams,
 } from '../../store/actions/place-query-params.actions';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
 import { debounce } from 'lodash';
@@ -17,7 +17,7 @@ import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss'],
 })
-export class SearchbarComponent implements OnInit {
+export class SearchbarComponent {
   @Input() showFilterSection?: boolean;
   @Output() handleFilterSectionEmitter = new EventEmitter<boolean>();
   showDropdown: boolean = false;
@@ -81,6 +81,4 @@ export class SearchbarComponent implements OnInit {
   handleFilterIconClick() {
     this.handleFilterSectionEmitter.emit(!this.showFilterSection);
   }
-
-  ngOnInit(): void {}
 }

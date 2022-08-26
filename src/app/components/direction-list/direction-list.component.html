@@ -6,30 +6,13 @@
           <app-direction-item [place]="place" [map]="map">
           </app-direction-item>
         </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
-        <li *ngIf="isPlacesLoading">
-          <app-table-skeleton></app-table-skeleton>
-        </li>
+
+        <ng-container *ngIf="isPlacesLoading">
+          <li *ngFor="let x of [].constructor(10)">
+            <app-table-skeleton></app-table-skeleton>
+          </li>
+        </ng-container>
+
       </ul>
       <app-no-data *ngIf="placeList.length === 0 && !isPlacesLoading"></app-no-data>
     </div>

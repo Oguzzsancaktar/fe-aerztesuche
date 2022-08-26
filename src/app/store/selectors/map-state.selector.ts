@@ -1,5 +1,5 @@
-import { IMapLoadingState } from 'src/app/models';
 import { createSelector } from '@ngrx/store';
+import IMapLoadingState from 'src/app/models/entities/map/IMapLoadingState';
 import { IAppState } from '../state/app.state';
 
 const selectAppState = (state: IAppState) => state.mapLoadingState;

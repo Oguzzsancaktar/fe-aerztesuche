@@ -15,9 +15,7 @@ import { ISearchPlaceQuery } from '../models';
 import { selectPlaceQueryParamsState } from '../store/selectors/place-query-params.selectors';
 import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
 
-const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
-
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
 

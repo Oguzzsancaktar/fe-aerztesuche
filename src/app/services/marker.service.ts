@@ -1,4 +1,3 @@
-import { selectDoctorDetailModalDoctorId } from './../store/selectors/doctor-detail-modal.selectors';
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
 import { IAppState } from '../store/state/app.state';
@@ -9,8 +8,8 @@ import { Observable, Subscription } from 'rxjs';
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { ISearchPlaceQuery } from '../models';
 import { ChangeMapLoadingState } from 'src/app/store/actions/map-state.actions';
-import 'leaflet.markercluster';
 import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
+import 'leaflet.markercluster';
 
 @Injectable()
 export class MarkerService {
@@ -33,7 +32,6 @@ export class MarkerService {
 
   removeMarkers(map: L.Map): void {
     map.eachLayer((layer: any) => {
-      console.log(layer);
       if (layer?.options?.icon?.options?.iconRetinaUrl?.includes('blue')) {
         map.removeLayer(layer);
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IFilter } from 'src/app/models';
 
 @Component({
@@ -6,7 +6,7 @@ import { IFilter } from 'src/app/models';
   templateUrl: './left-filter-section.component.html',
   styleUrls: ['./left-filter-section.component.scss'],
 })
-export class LeftFilterSectionComponent implements OnInit {
+export class LeftFilterSectionComponent {
   @Input() filterList: IFilter[] = [];
   @Input() showFilterSection?: boolean;
   @Output() handleFilterSectionEmitter = new EventEmitter<boolean>();
@@ -97,10 +97,6 @@ export class LeftFilterSectionComponent implements OnInit {
   ];
 
   activeIndex: number | null = null;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   handleCloseIconClick() {
     this.handleFilterSectionEmitter.emit(false);
