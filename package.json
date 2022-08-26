@@ -8,9 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "start:dev": "ng serve",
-    "test": "sonarlint --src 'src/**' --tests 'test/**'",
-    "testSonarQube": "ng test --watch=false --code-coverage"
+    "start:dev": "ng serve"
   },
   "private": true,
   "dependencies": {
