@@ -1,18 +1,10 @@
-import {
-  SetPlaceAddressQueryParams,
-  SetPlaceSearchQueryParams,
-} from './../../store/actions/place-query-params.actions';
+import { SetPlaceAddressQueryParams } from './../../store/actions/place-query-params.actions';
 import {
   ChangeMapLoadingState,
   ChangeMapWillLoadState,
 } from './../../store/actions/map-state.actions';
 import { IAppState } from './../../store/state/app.state';
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
 import { MarkerService } from '../../services/marker.service';
@@ -25,6 +17,7 @@ import {
   IPlaceApiResult,
   ISearchPlaceQuery,
 } from 'src/app/models';
+
 import { selectPlaceQueryParamsState } from 'src/app/store/selectors/place-query-params.selectors';
 import { initialPlaceQueryParamsState } from 'src/app/store/state/place-query-params.state';
 import { environment } from 'src/environments/environment';
@@ -33,9 +26,7 @@ import { selectDoctorDetailModalIsOpen } from 'src/app/store/selectors/doctor-de
 import { SetPlaceNearQueryParams } from 'src/app/store/actions/place-query-params.actions';
 
 const iconRetinaUrlRed = 'assets/icon-your-location.svg';
-
 const iconUrl = 'assets/icon-your-location.svg';
-
 const iconSelectedLocation = L.icon({
   iconRetinaUrl: iconRetinaUrlRed,
   iconUrl,
@@ -48,24 +39,19 @@ const iconSelectedLocation = L.icon({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements AfterViewInit {
-  getPlacecesForListSubscription: Subscription = new Subscription();
-
+export class HomeComponent {
   public map!: L.Map;
+  getPlacesForListSubscription: Subscription = new Subscription();
   showFilterSection: boolean = false;
-
   searchLatitude: IPlaceApiResult['searchLatitude'] = 50.937531;
   searchLongitude: IPlaceApiResult['searchLongitude'] = 6.9602786;
-
   filterList: IFilter[] = [];
   placeList: IPlace[] = [];
   totalPlaceCount: number = 0;
   isPlacesLoading: boolean = true;
   pageNumber: number = 1;
   searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
-
   scrollAreaElement: ElementRef<HTMLInputElement> | undefined;
-
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );
@@ -105,20 +91,19 @@ export class HomeComponent implements AfterViewInit {
     console.log(`Permission ${state}`);
   }
 
+  private getGeoLocationCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(
+      (position: GeolocationPosition) => this.revealPosition(position),
+      this.positionDenied
+    );
+  }
+
   private handlePermission() {
     navigator.permissions.query({ name: 'geolocation' }).then((result) => {
       if (result.state === 'granted') {
-        this.report(result.state);
-        navigator.geolocation.getCurrentPosition(
-          (position: GeolocationPosition) => this.revealPosition(position),
-          this.positionDenied
-        );
+        this.getGeoLocationCurrentPosition();
       } else if (result.state === 'prompt') {
-        this.report(result.state);
-        navigator.geolocation.getCurrentPosition(
-          (position: GeolocationPosition) => this.revealPosition(position),
-          this.positionDenied
-        );
+        this.getGeoLocationCurrentPosition();
       } else if (result.state === 'denied') {
         this.report(result.state);
       }
@@ -140,7 +125,7 @@ export class HomeComponent implements AfterViewInit {
       });
   }
 
-  private positionDenied(location: any) {
+  private positionDenied() {
     this.initMap();
     this._store.dispatch(new SetPlaceNearQueryParams(1000));
     this._store.dispatch(new SetPlaceAddressQueryParams(''));
@@ -153,11 +138,11 @@ export class HomeComponent implements AfterViewInit {
     this.isPlacesLoading = true;
     this.pageNumber++;
 
-    if (this.getPlacecesForListSubscription && !scrollElementRef) {
-      this.getPlacecesForListSubscription.unsubscribe();
+    if (this.getPlacesForListSubscription && !scrollElementRef) {
+      this.getPlacesForListSubscription.unsubscribe();
     }
 
-    this.getPlacecesForListSubscription = this.http
+    this.getPlacesForListSubscription = this.http
       .post<IPlaceApiResult>(url, {
         ...this.searchQueryParamsClone,
         page: this.pageNumber,
@@ -221,6 +206,4 @@ export class HomeComponent implements AfterViewInit {
   handleFilterSection(show: boolean) {
     this.showFilterSection = show;
   }
-
-  ngAfterViewInit(): void {}
 }

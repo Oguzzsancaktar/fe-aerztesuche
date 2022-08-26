@@ -23,7 +23,7 @@
 
         <div class="detail-modal-item" *ngIf="doctorDetail && doctorDetail.fremdsprachen.length > 0">
           <div class="section">
-            <app-language-list headerText="Fremdsprachen" [languages]="doctorDetail?.fremdsprachen">
+            <app-language-list [languages]="doctorDetail.fremdsprachen">
             </app-language-list>
           </div>
         </div>
