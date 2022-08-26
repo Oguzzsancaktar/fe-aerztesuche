@@ -116,7 +116,7 @@ export class HomeComponent implements AfterViewInit {
       } else if (result.state === 'prompt') {
         this.report(result.state);
         navigator.geolocation.getCurrentPosition(
-          this.revealPosition,
+          (position: GeolocationPosition) => this.revealPosition(position),
           this.positionDenied
         );
       } else if (result.state === 'denied') {
