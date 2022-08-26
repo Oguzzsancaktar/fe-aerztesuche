@@ -18,10 +18,17 @@ export class OfficeHoursComponent implements OnInit {
     this.headerText = ESpretchzeitArt[this.officeHoursData?.sprechzeitArt];
   }
 
+  capitalize = (str: string, lower = false) =>
+    (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
+      match.toUpperCase()
+    );
+
   ngOnInit(): void {
-    this.headerText = ESpretchzeitArt[this.officeHoursData?.sprechzeitArt]
-      .split('_')
-      .join(' ')
-      .toLocaleLowerCase();
+    this.headerText = this.capitalize(
+      ESpretchzeitArt[this.officeHoursData?.sprechzeitArt]
+        .split('_')
+        .join(' ')
+        .toLocaleLowerCase()
+    );
   }
 }

@@ -26,6 +26,8 @@ export class DoctorDetailModalComponent implements OnInit {
   @Input() map: any;
   @ViewChild('doctorDetailModal') doctorDetailModal: ElementRef | undefined;
 
+  isModalLoading: boolean = true;
+
   doctorDetail: IDoctorDetail | undefined;
   doctorDirection$: IPlace | undefined;
 
@@ -66,12 +68,15 @@ export class DoctorDetailModalComponent implements OnInit {
       }
     });
 
+    this.isModalLoading = true;
+
     this.doctorDetailModalDoctorId$.subscribe((doctorId) => {
       if (doctorId) {
         this._doctorDetailModalService
           .getDoctorDetailById(doctorId)
           .subscribe((doctorDetail) => {
             this.doctorDetail = doctorDetail.body;
+            this.isModalLoading = false;
           });
       }
     });

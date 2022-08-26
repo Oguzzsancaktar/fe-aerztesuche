@@ -24,13 +24,6 @@ export class DoctorLocationSlider implements AfterViewInit {
         ...taetigkeiten.taetigkeitAnLeistungsorten
       );
     }
-
-    console.log(
-      'this.taetigkeitAnLeistungsortenList',
-      this.taetigkeitAnLeistungsortenList
-    );
-
-    console.log('taetigkeitenList', this.taetigkeitenList);
   }
 
   handleSlideChange(stepNumber: number) {

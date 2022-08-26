@@ -9,7 +9,13 @@
       </button>
     </div>
     <div class="modal-body">
-      <div class="column">
+
+      <div class="loading-spinner" *ngIf="isModalLoading">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+
+
+      <div class="column" *ngIf="!isModalLoading">
         <div class="detail-modal-item">
           <app-direction-item [isForModal]="true" [place]="doctorDetailModalSelectedPlace$ | async">
           </app-direction-item>
