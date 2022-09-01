@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "node server.js",
     "start:dev": "ng serve",
-    "build": "ng build",
+    "build:prod": "ng build --prod",
     "testSonarQube": "ng test --watch=false --code-coverage"
   },
   "private": true,
