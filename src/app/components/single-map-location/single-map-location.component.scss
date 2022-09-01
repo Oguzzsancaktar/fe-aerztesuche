@@ -1,0 +1,58 @@
+@use "src/variables" as c;
+
+.single-map-container {
+  width: 100%;
+  height: 100%;
+  .single-map-frame {
+    width: 100%;
+    height: 160px;
+    position: relative;
+
+    .single-map-wont-load {
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: c.$blue-bayoux, $alpha: 0.5);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      .wont-text {
+        margin-top: 20px;
+      }
+    }
+
+    .single-map-loading-spinner {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: c.$blue-bayoux, $alpha: 0.5);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 9998;
+
+      &.show {
+        display: flex;
+      }
+    }
+    #singleMap {
+      height: 100%;
+
+      .leaflet-bottom.leaflet-right {
+        display: none !important;
+      }
+
+      .leaflet-control-zoom {
+        display: none !important;
+        float: none;
+      }
+    }
+  }
+}
+
+.leaflet-control-zoom {
+  display: none !important;
+  float: none;
+}

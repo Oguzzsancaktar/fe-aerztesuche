@@ -1,0 +1,13 @@
+<div class="single-map-container">
+  <div class="single-map-frame">
+
+    <div class="single-map-wont-load" *ngIf="!(mapWillLoadState$ |async)">
+      <app-icon-circle-exclamation-mark></app-icon-circle-exclamation-mark>
+      <p class="wont-text">
+        Die Karte wird nicht angezeigt, weil Sie die Cookies nicht akzeptiert haben.
+      </p>
+    </div>
+
+    <div id="singleMap"></div>
+  </div>
+</div>

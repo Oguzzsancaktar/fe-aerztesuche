@@ -1,3 +1,4 @@
+import { SingleMapLocationComponent } from './../components/single-map-location/single-map-location.component';
 import { IconCircleExclamationMarkComponent } from './../components/icons/icon-circle-exclamation-mark/icon-circle-exclamation-mark.component';
 import { LoadingSpinnerComponent } from './../components/loading-spinner/loading-spinner.component';
 import { IconNoDataComponent } from './../components/icons/icon-no-data/icon-no-data.component';
@@ -94,6 +95,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     AccessibilityListComponent,
     TableSkeletonComponent,
     NoDataComponent,
+    SingleMapLocationComponent,
   ],
   exports: [
     IconSearchComponent,
@@ -130,6 +132,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     AccessibilityListComponent,
     TableSkeletonComponent,
     NoDataComponent,
+    SingleMapLocationComponent,
   ],
 })
 export class SharedModule {}

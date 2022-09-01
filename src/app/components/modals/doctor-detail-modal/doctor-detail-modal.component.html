@@ -21,6 +21,14 @@
           </app-direction-item>
         </div>
 
+        <div class="detail-modal-item">
+          <div class="section">
+            <app-single-map-location [coords]="(doctorDetailModalSelectedPlace$ | async)?.place">
+            </app-single-map-location>
+          </div>
+        </div>
+
+
         <div class="detail-modal-item" *ngIf="doctorDetail && doctorDetail.fremdsprachen.length > 0">
           <div class="section">
             <app-language-list [languages]="doctorDetail.fremdsprachen">
