@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 import { selectIsMapLoading } from 'src/app/store/selectors/map-state.selector';
 import { IAppState } from 'src/app/store/state/app.state';
 
-const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
+const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
 
-const iconUrl = 'assets/icon-material-location-on-blue.svg';
+const iconUrl = 'assets/icon-material-location-on-red.svg';
 const shadowUrl = 'assets/marker-shadow.png';
 const iconDefault = L.icon({
-  iconRetinaUrl: iconRetinaUrlBlue,
+  iconRetinaUrl: iconRetinaUrlRed,
   iconUrl,
   shadowUrl,
   iconSize: [25, 41],

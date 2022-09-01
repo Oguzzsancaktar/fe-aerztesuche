@@ -77,7 +77,7 @@ export class HomeComponent {
       this.isPlacesLoading = true;
       this.searchQueryParamsClone = queryParams;
 
-      this.onScrollingFinished();
+      this.onScrollingFinished(undefined, queryParams.near);
     });
 
     this.isDoctorDetailModalOpen$ = this._store.pipe(
@@ -130,7 +130,10 @@ export class HomeComponent {
     this._store.dispatch(new SetPlaceAddressQueryParams(''));
   }
 
-  onScrollingFinished(scrollElementRef?: ElementRef<HTMLInputElement>) {
+  onScrollingFinished(
+    scrollElementRef?: ElementRef<HTMLInputElement>,
+    near?: number
+  ) {
     const url = `${environment.baseUrl}/places`;
 
     this.scrollAreaElement = scrollElementRef;
@@ -153,12 +156,13 @@ export class HomeComponent {
         this.placeList = this.placeList.concat(data.personList);
         this.totalPlaceCount = data.totalCount;
         this.isPlacesLoading = false;
-        this.initMap();
+        this.initMap(undefined, near);
       });
   }
 
-  private initMap(location?: GeolocationPosition): void {
+  private initMap(location?: GeolocationPosition, near?: number): void {
     const isMapWillLoad = this.router.url.includes('consent=true');
+    let mapZoom = 10;
     if (isMapWillLoad) {
       if (this.map) {
         this.map?.remove();
@@ -169,14 +173,48 @@ export class HomeComponent {
         this.searchLongitude = location.coords.longitude;
       }
 
+      switch (near) {
+        case 1000:
+          mapZoom = 10;
+          break;
+        case 200:
+          mapZoom = 11;
+          break;
+
+        case 100:
+          mapZoom = 12;
+          break;
+
+        case 50:
+          mapZoom = 13;
+          break;
+
+        case 25:
+          mapZoom = 14;
+          break;
+
+        case 10:
+          mapZoom = 15;
+          break;
+        case 5:
+          mapZoom = 16;
+          break;
+        case 1:
+          mapZoom = 17;
+          break;
+        default:
+          mapZoom = 10;
+          break;
+      }
+
       this.map = L.map('map', {
         attributionControl: false,
         center: [this.searchLatitude, this.searchLongitude],
-        zoom: 10,
+        zoom: mapZoom || 10,
       });
 
       const googleStreets = L.tileLayer(
-        'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+        'http://{s}.google.com/vt/lyrs=m&hl=de&x={x}&y={y}&z={z}',
         {
           maxZoom: 20,
           subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],

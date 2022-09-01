@@ -15,12 +15,12 @@ import { ISearchPlaceQuery } from '../models';
 import { selectPlaceQueryParamsState } from '../store/selectors/place-query-params.selectors';
 import { initialPlaceQueryParamsState } from '../store/state/place-query-params.state';
 
-const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
+const iconRetinaUrlBlue = 'assets/icon-material-location-on-blue.svg';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
 
 const iconUpdated = L.icon({
-  iconRetinaUrl: iconRetinaUrlRed,
+  iconRetinaUrl: iconRetinaUrlBlue,
   iconUrl,
   shadowUrl,
   iconSize: [25, 41],
@@ -84,7 +84,7 @@ export class DoctorDetailModalService {
 
           map?.eachLayer((layer: any) => {
             if (
-              layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed
+              layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlBlue
             ) {
               map.removeLayer(layer);
             }
@@ -99,7 +99,7 @@ export class DoctorDetailModalService {
     this._store.dispatch(new CloseDoctorDetailModal());
 
     map?.eachLayer((layer: any) => {
-      if (layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlRed) {
+      if (layer?.options?.icon?.options?.iconRetinaUrl === iconRetinaUrlBlue) {
         map?.removeLayer(layer);
       }
     });

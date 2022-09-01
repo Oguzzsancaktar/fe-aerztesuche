@@ -10,7 +10,6 @@
   background-color: #00000027;
   display: flex;
   align-items: center;
-  justify-content: center;
   &.show-modal {
     display: flex;
   }
@@ -24,6 +23,8 @@
     background-color: c.$white;
     position: relative;
     height: 800px;
+
+    margin-left: 125px;
     overflow-y: auto;
     .modal-header {
       height: 50px;
