@@ -7,5 +7,5 @@ import { IDoctorFremdsprachen } from '../../models';
   styleUrls: ['./activity-area-list.component.scss'],
 })
 export class ActivityAreaListComponent {
-  @Input() activtyAreaList?: IDoctorFremdsprachen[] = [];
+  @Input() activityAreaList?: IDoctorFremdsprachen[] = [];
 }

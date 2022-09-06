@@ -52,6 +52,7 @@ export class HomeComponent {
   pageNumber: number = 1;
   searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
   scrollAreaElement: ElementRef<HTMLInputElement> | undefined;
+
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );

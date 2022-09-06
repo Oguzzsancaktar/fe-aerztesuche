@@ -7,5 +7,5 @@ import IDoctorTaetigkeitsBereiche from '../../models/entities/doctor/IDoctorTaet
   styleUrls: ['./activity-area-list.component.scss'],
 })
 export class ActivityAreaListComponent {
-  @Input() activtyAreaList?: IDoctorTaetigkeitsBereiche[] = [];
+  @Input() activityAreaList?: IDoctorTaetigkeitsBereiche[] = [];
 }

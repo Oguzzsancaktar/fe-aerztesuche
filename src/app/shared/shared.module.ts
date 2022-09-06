@@ -33,7 +33,6 @@ import { SelectFilterComponent } from '../components/select-filter/select-filter
 import { DoctorDetailModalComponent } from '../components/modals/doctor-detail-modal/doctor-detail-modal.component';
 import { HeaderTextSectionComponent } from '../components/header-text-section/header-text-section.component';
 import { OfficeHoursComponent } from '../components/office-hours/office-hours.component';
-import { appReducers } from 'src/app/store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { IconDirectionActiveComponent } from '../components/icons/icon-direction-active/icon-direction-active.component';
@@ -53,7 +52,6 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
   ],

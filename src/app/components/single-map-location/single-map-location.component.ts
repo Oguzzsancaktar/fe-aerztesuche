@@ -4,19 +4,16 @@ import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
 import { Observable } from 'rxjs';
 import { IPlace, IPlaceApiResult } from 'src/app/models';
-import {
-  selectIsMapLoading,
-  selectWillMapLoad,
-} from 'src/app/store/selectors/map-state.selector';
+import { selectWillMapLoad } from 'src/app/store/selectors/map-state.selector';
 import { IAppState } from 'src/app/store/state/app.state';
 
-const iconRetinaUrlRed = 'assets/icon-material-location-on-blue.svg';
-const iconUrl = 'assets/icon-material-location-on-blue.svg';
+const iconRetinaUrlRed = 'assets/icon-material-location-on-red.svg';
+const iconUrl = 'assets/icon-material-location-on-red.svg';
 const iconSelectedLocation = L.icon({
   iconRetinaUrl: iconRetinaUrlRed,
   iconUrl,
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
 });
 
 @Component({
