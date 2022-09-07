@@ -53,6 +53,8 @@ export class HomeComponent {
   searchQueryParamsClone: ISearchPlaceQuery = initialPlaceQueryParamsState;
   scrollAreaElement: ElementRef<HTMLInputElement> | undefined;
 
+  isAddressEmpty: boolean = true;
+
   searchQueryParams$: Observable<ISearchPlaceQuery> = this._store.pipe(
     select(selectPlaceQueryParamsState)
   );
@@ -78,7 +80,15 @@ export class HomeComponent {
       this.isPlacesLoading = true;
       this.searchQueryParamsClone = queryParams;
 
-      this.onScrollingFinished(undefined, queryParams.near);
+      if (queryParams.address.trim().length > 0) {
+        this.onScrollingFinished(undefined, queryParams.near);
+        this.isAddressEmpty = false;
+        this._store.dispatch(new ChangeMapLoadingState(true));
+      } else {
+        this.isPlacesLoading = false;
+        this.isAddressEmpty = true;
+        this._store.dispatch(new ChangeMapLoadingState(false));
+      }
     });
 
     this.isDoctorDetailModalOpen$ = this._store.pipe(
@@ -86,10 +96,6 @@ export class HomeComponent {
     );
 
     this.handlePermission();
-  }
-
-  private report(state: string) {
-    console.log(`Permission ${state}`);
   }
 
   private getGeoLocationCurrentPosition() {
@@ -106,11 +112,9 @@ export class HomeComponent {
       } else if (result.state === 'prompt') {
         this.getGeoLocationCurrentPosition();
       } else if (result.state === 'denied') {
-        this.report(result.state);
+        this.positionDenied();
       }
-      result.addEventListener('change', () => {
-        this.report(result.state);
-      });
+      result.addEventListener('change', () => {});
     });
   }
 
@@ -126,7 +130,9 @@ export class HomeComponent {
   }
 
   private positionDenied() {
-    this.initMap();
+    this.isPlacesLoading = false;
+    this._store.dispatch(new ChangeMapLoadingState(false));
+
     this._store.dispatch(new SetPlaceNearQueryParams(1000));
     this._store.dispatch(new SetPlaceAddressQueryParams(''));
   }
@@ -163,7 +169,7 @@ export class HomeComponent {
 
   private initMap(location?: GeolocationPosition, near?: number): void {
     const isMapWillLoad = this.router.url.includes('consent=true');
-    let mapZoom = 10;
+    let mapZoom = 5;
     if (isMapWillLoad) {
       if (this.map) {
         this.map?.remove();
@@ -172,6 +178,9 @@ export class HomeComponent {
       if (location) {
         this.searchLatitude = location.coords.latitude;
         this.searchLongitude = location.coords.longitude;
+      } else {
+        this.searchLatitude = 50.937531;
+        this.searchLongitude = 6.9602786;
       }
 
       switch (near) {
@@ -204,14 +213,14 @@ export class HomeComponent {
           mapZoom = 17;
           break;
         default:
-          mapZoom = 10;
+          mapZoom = 5;
           break;
       }
 
       this.map = L.map('map', {
         attributionControl: false,
         center: [this.searchLatitude, this.searchLongitude],
-        zoom: mapZoom || 10,
+        zoom: mapZoom || 5,
       });
 
       const googleStreets = L.tileLayer(
@@ -222,14 +231,16 @@ export class HomeComponent {
         }
       );
 
-      if (this.searchQueryParamsClone.address.length) {
+      if (this.searchQueryParamsClone.address.trim().length > 0) {
         const marker = L.marker([this.searchLatitude, this.searchLongitude]);
         marker.setIcon(iconSelectedLocation);
         this.map.addLayer(marker);
+
+        this.markerService.makeMarkers(this.map);
       }
 
       googleStreets.addTo(this.map);
-      this.markerService.makeMarkers(this.map);
+
       this.map.zoomControl.setPosition('bottomright');
       L.control.scale({ position: 'bottomright' }).addTo(this.map);
       this.cdr.detectChanges();

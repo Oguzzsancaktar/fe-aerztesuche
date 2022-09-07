@@ -29,6 +29,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent {
   @Input() map: any;
+  @Input() isAddressEmpty: boolean = true;
 
   mapLoadingState$: Observable<boolean> = this._store.pipe(
     select(selectIsMapLoading)

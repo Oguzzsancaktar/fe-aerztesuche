@@ -19,6 +19,7 @@ export class DirectionListComponent {
   @Input() totalPlaceCount: number = 0;
   @Input() isPlacesLoading: boolean = true;
   @Input() pageNumber: number = 1;
+  @Input() isAddressEmpty: boolean = true;
 
   @ViewChild('scrollArea') scrollArea!: ElementRef<HTMLInputElement>;
 

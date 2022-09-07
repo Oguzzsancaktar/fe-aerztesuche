@@ -1,9 +1,14 @@
 <div class="map-container">
   <div class="map-frame">
-    <div class="map-loading-spinner " [ngClass]="(mapLoadingState$|async) ? 'show':''">
+    <div class="map-loading-spinner " [ngClass]="(mapWillLoadState$ |async) && (mapLoadingState$|async) ? 'show':''">
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <div class="map-wont-load" *ngIf="!(mapWillLoadState$ |async)">
+
+    <div class="map-wont-load" *ngIf=" isAddressEmpty">
+      <app-empty-adress></app-empty-adress>
+    </div>
+
+    <div class="map-wont-load" *ngIf="!(mapWillLoadState$ |async) && !isAddressEmpty">
       <app-icon-circle-exclamation-mark></app-icon-circle-exclamation-mark>
       <p class="wont-text">
         Die Karte wird nicht angezeigt, weil Sie die Cookies nicht akzeptiert haben.

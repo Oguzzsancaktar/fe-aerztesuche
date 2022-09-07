@@ -1,3 +1,4 @@
+import { EmptyAdressComponent } from './../components/empty-adress/empty-adress.component';
 import { SingleMapLocationComponent } from './../components/single-map-location/single-map-location.component';
 import { IconCircleExclamationMarkComponent } from './../components/icons/icon-circle-exclamation-mark/icon-circle-exclamation-mark.component';
 import { LoadingSpinnerComponent } from './../components/loading-spinner/loading-spinner.component';
@@ -94,6 +95,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     TableSkeletonComponent,
     NoDataComponent,
     SingleMapLocationComponent,
+    EmptyAdressComponent,
   ],
   exports: [
     IconSearchComponent,
@@ -131,6 +133,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     TableSkeletonComponent,
     NoDataComponent,
     SingleMapLocationComponent,
+    EmptyAdressComponent,
   ],
 })
 export class SharedModule {}
