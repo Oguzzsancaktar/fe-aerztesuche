@@ -20,6 +20,7 @@ export default interface IPlace {
   fax: IDoctorFax[];
   geschlectTitle: string;
   zwischentitel: string;
+  hausnummer: string;
   vortitel: string;
   vorname: string;
   nachname: string;

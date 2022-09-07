@@ -49,44 +49,50 @@ export class MarkerService {
         this.getPlaceListForMapSubscription.unsubscribe();
       }
 
-      this.getPlaceListForMapSubscription = this._placeService
-        .getPlaceListForMap(queryParams)
-        .data.subscribe(
-          (res: any) => {
-            this.removeMarkers(map);
+      if (queryParams.address.trim().length > 0) {
+        this.getPlaceListForMapSubscription = this._placeService
+          .getPlaceListForMap(queryParams)
+          .data.subscribe(
+            (res: any) => {
+              this.removeMarkers(map);
 
-            let markers = L.markerClusterGroup();
+              let markers = L.markerClusterGroup();
 
-            for (const mapPlace of res.body) {
-              const lon = mapPlace.longitute;
-              const lat = mapPlace.latitude;
-              const marker = L.marker([lat, lon]);
+              for (const mapPlace of res.body) {
+                const lon = mapPlace.longitute;
+                const lat = mapPlace.latitude;
+                const marker = L.marker([lat, lon]);
 
-              marker.on('click', () => {
-                this._doctorDetailModalService.openDoctorDetailModal(
-                  mapPlace.personId,
-                  map,
-                  lat,
-                  lon
-                );
+                marker.on('click', () => {
+                  this._doctorDetailModalService.openDoctorDetailModal(
+                    mapPlace.personId,
+                    map,
+                    lat,
+                    lon
+                  );
 
-                this._placeService.findPlaceWithLonLat(
-                  lon,
-                  lat,
-                  this.searchQueryParamsClone.address
-                );
-              });
-              markers.addLayer(marker);
+                  this._placeService.findPlaceWithLonLat(
+                    lon,
+                    lat,
+                    this.searchQueryParamsClone.address
+                  );
+                });
+                markers.addLayer(marker);
+              }
+              markers.addTo(map);
+            },
+            (err) => {
+              console.log('err==>', err);
+            },
+            () => {
+              this._store.dispatch(new ChangeMapLoadingState(false));
             }
-            markers.addTo(map);
-          },
-          (err) => {
-            console.log('err==>', err);
-          },
-          () => {
-            this._store.dispatch(new ChangeMapLoadingState(false));
-          }
-        );
+          );
+      } else {
+        console.log('aasdfee222');
+        this.removeMarkers(map);
+        this._store.dispatch(new ChangeMapLoadingState(false));
+      }
     });
   }
 }

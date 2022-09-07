@@ -71,7 +71,6 @@ export class SearchbarComponent {
       this._store.dispatch(new SetPlaceNearQueryParams(5));
       this.allowNearOptionSelect = true;
     } else {
-      this._store.dispatch(new SetPlaceNearQueryParams(1000));
       this.allowNearOptionSelect = false;
     }
 
