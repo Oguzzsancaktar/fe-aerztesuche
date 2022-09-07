@@ -17,13 +17,13 @@
 
       <div class="column" *ngIf="!isModalLoading">
         <div class="detail-modal-item">
-          <app-direction-item [isForModal]="true" [place]="doctorDetailModalSelectedPlace$ | async">
+          <app-direction-item [isForModal]="true" [place]="selectedPlace">
           </app-direction-item>
         </div>
 
         <div class="detail-modal-item">
           <div class="section">
-            <app-single-map-location [coords]="(doctorDetailModalSelectedPlace$ | async)?.place">
+            <app-single-map-location [coords]="selectedPlace?.place">
             </app-single-map-location>
           </div>
         </div>

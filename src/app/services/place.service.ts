@@ -13,7 +13,7 @@ import { initialPlaceQueryParamsState } from '../store/state/place-query-params.
 export class PlaceService {
   placeList: IPlaceApiResult['personList'] = [];
   mapPlaceList: IMapPlaceApiResult['placeList'] = [];
-  selectedPlace: IPlace | undefined;
+  selectedPlace: IPlace[] | undefined;
 
   constructor(private http: HttpClient) {
     this.http
@@ -72,7 +72,7 @@ export class PlaceService {
 
   findPlaceWithLonLat(lon: number, lat: number, address: string = '') {
     const request = this.http
-      .get<IPlace>(
+      .get<IPlace[]>(
         `${environment.baseUrl}/places/${lat}/${lon}?address=${address}`
       )
       .pipe(

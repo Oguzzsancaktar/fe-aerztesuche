@@ -1,6 +1,8 @@
 @use "src/variables" as c;
 
 .distance-item {
+  cursor: pointer;
+
   .distance__column {
     .distance__icon {
       margin-bottom: 15px;
