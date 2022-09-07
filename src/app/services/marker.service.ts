@@ -89,7 +89,6 @@ export class MarkerService {
             }
           );
       } else {
-        console.log('aasdfee222');
         this.removeMarkers(map);
         this._store.dispatch(new ChangeMapLoadingState(false));
       }
