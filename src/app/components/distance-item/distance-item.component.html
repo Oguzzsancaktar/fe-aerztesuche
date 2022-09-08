@@ -2,7 +2,8 @@
   [popperPlacement]="'auto'" [popper]="distancePopup" [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
   [popperHideOnScroll]="true" [popperPlacement]="'bottom'" [popperStyles]="{
   boxShadow:'none',
-  padding:0
+  padding:0,
+  zIndex:999999999999999
 }">
   <div class=" distance__column">
     <div class="distance__icon" *ngIf="!isActive">
