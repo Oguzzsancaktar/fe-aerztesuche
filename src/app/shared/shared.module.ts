@@ -45,6 +45,7 @@ import { IconMailComponent } from '../components/icons/icon-mail/icon-mail.compo
 import { ActivityAreaListComponent } from '../components/areas-of-activity-list/activity-area-list.component';
 import { AccessibilityListComponent } from '../components/accessibility-list/accessibility-list.component';
 import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
+import { NgxPopperModule } from 'ngx-popper';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { ScrollTrackerDirective } from '../directives/scroll-tracker.directive';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    NgxPopperModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
   ],

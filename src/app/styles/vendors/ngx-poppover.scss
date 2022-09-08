@@ -1,0 +1,6 @@
+@use "src/variables" as c;
+
+.ngxp__container.ngxp__animation {
+  color: c.$white !important;
+  background-color: c.$blue-bayoux !important;
+}

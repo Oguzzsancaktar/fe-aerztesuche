@@ -1,5 +1,10 @@
-<div class="distance-item" (click)="openLocationOnGoogleMaps(coordinates.latitude,coordinates.longitute)">
-  <div class="distance__column">
+<div class="distance-item" (click)="openLocationOnGoogleMaps(coordinates.latitude,coordinates.longitute)"
+  [popperPlacement]="'auto'" [popper]="distancePopup" [popperTrigger]="'hover'" [popperHideOnClickOutside]="true"
+  [popperHideOnScroll]="true" [popperPlacement]="'bottom'" [popperStyles]="{
+  boxShadow:'none',
+  padding:0
+}">
+  <div class=" distance__column">
     <div class="distance__icon" *ngIf="!isActive">
       <app-icon-direction></app-icon-direction>
     </div>
@@ -10,4 +15,10 @@
       {{distance}}
     </div>
   </div>
+
+  <popper-content #distancePopup>
+    <div class="get-distance-tooltip">
+      Route berechnen
+    </div>
+  </popper-content>
 </div>
