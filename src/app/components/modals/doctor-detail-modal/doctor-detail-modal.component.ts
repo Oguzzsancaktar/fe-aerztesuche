@@ -12,7 +12,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IDoctorDetail, IDoctorDetailModalState, IPlace } from 'src/app/models';
 import { IAppState } from 'src/app/store/state/app.state';
 import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.service';
@@ -25,6 +25,10 @@ import { DoctorDetailModalService } from 'src/app/services/doctor-detail-modal.s
 export class DoctorDetailModalComponent implements OnInit {
   @Input() map: any;
   @ViewChild('doctorDetailModal') doctorDetailModal: ElementRef | undefined;
+
+  getDoctorDetailSubscription: Subscription = new Subscription();
+  getDoctorDetailModalSubscription: Subscription = new Subscription();
+  getDoctorDetailSelectedPlaceSubscription: Subscription = new Subscription();
 
   selectedPlace!: IPlace;
   isModalLoading: boolean = true;
@@ -60,6 +64,30 @@ export class DoctorDetailModalComponent implements OnInit {
     this.doctorDetailModalSelectedPlace$ = this._store.pipe(
       select(selectDoctorDetailModalPlace)
     );
+
+    this.getDoctorDetailSubscription =
+      this.doctorDetailModalDoctorId$.subscribe((doctorId) => {
+        if (doctorId) {
+          this.getDoctorDetailModalSubscription = this._doctorDetailModalService
+            .getDoctorDetailById(doctorId)
+            .subscribe((doctorDetail) => {
+              this.doctorDetail = doctorDetail.body;
+
+              this.isModalLoading = false;
+            });
+
+          this.getDoctorDetailSelectedPlaceSubscription =
+            this.doctorDetailModalSelectedPlace$.subscribe((places) => {
+              const resultPlace = places?.find(
+                (place) => place.id === doctorId
+              );
+
+              if (resultPlace) {
+                this.selectedPlace = resultPlace;
+              }
+            });
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -70,28 +98,12 @@ export class DoctorDetailModalComponent implements OnInit {
     });
 
     this.isModalLoading = true;
-
-    this.doctorDetailModalDoctorId$.subscribe((doctorId) => {
-      console.log(doctorId);
-      if (doctorId) {
-        this._doctorDetailModalService
-          .getDoctorDetailById(doctorId)
-          .subscribe((doctorDetail) => {
-            this.doctorDetail = doctorDetail.body;
-            this.isModalLoading = false;
-          });
-
-        this.doctorDetailModalSelectedPlace$.subscribe((places) => {
-          const resultPlace = places?.find((place) => place.id === doctorId);
-          if (resultPlace) {
-            this.selectedPlace = resultPlace;
-          }
-        });
-      }
-    });
   }
 
   close() {
     this._doctorDetailModalService.closeDoctorDetailModal(this.map);
+    this.getDoctorDetailSubscription.unsubscribe();
+    this.getDoctorDetailModalSubscription.unsubscribe();
+    this.getDoctorDetailSelectedPlaceSubscription.unsubscribe();
   }
 }

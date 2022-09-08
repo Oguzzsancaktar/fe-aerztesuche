@@ -43,8 +43,8 @@ export class HomeComponent {
   public map!: L.Map;
   getPlacesForListSubscription: Subscription = new Subscription();
   showFilterSection: boolean = false;
-  searchLatitude: IPlaceApiResult['searchLatitude'] = 50.937531;
-  searchLongitude: IPlaceApiResult['searchLongitude'] = 6.9602786;
+  searchLatitude: IPlaceApiResult['searchLatitude'] = 51.095123;
+  searchLongitude: IPlaceApiResult['searchLongitude'] = 10.271483;
   filterList: IFilter[] = [];
   placeList: IPlace[] = [];
   totalPlaceCount: number = 0;
@@ -80,7 +80,7 @@ export class HomeComponent {
       this.isPlacesLoading = true;
       this.searchQueryParamsClone = queryParams;
 
-      if (queryParams.address.trim().length > 0) {
+      if (queryParams.address.trim().length > 3) {
         this.onScrollingFinished(undefined, queryParams.near);
         this.isAddressEmpty = false;
         this._store.dispatch(new ChangeMapLoadingState(true));
@@ -157,8 +157,23 @@ export class HomeComponent {
         page: this.pageNumber,
       })
       .subscribe((data) => {
-        this.searchLatitude = data.searchLatitude;
-        this.searchLongitude = data.searchLongitude;
+        let tempNear = near;
+
+        if (data.searchLatitude) {
+          this.searchLatitude = data.searchLatitude;
+        } else {
+          tempNear = 1000;
+        }
+        if (data.searchLongitude) {
+          this.searchLongitude = data.searchLongitude;
+        } else {
+          tempNear = 1000;
+        }
+
+        if (!near) {
+          tempNear = 1000;
+        }
+
         this.filterList = data.filterList;
         this.placeList = this.placeList.concat(data.personList);
         this.totalPlaceCount = data.totalCount;
@@ -168,11 +183,11 @@ export class HomeComponent {
           this.initMap(
             {
               coords: {
-                latitude: data.searchLatitude,
-                longitude: data.searchLongitude,
+                latitude: this.searchLatitude,
+                longitude: this.searchLongitude,
               },
             },
-            near
+            tempNear
           );
         }
       });
@@ -206,7 +221,7 @@ export class HomeComponent {
 
       switch (near) {
         case 1000:
-          mapZoom = 10;
+          mapZoom = 7;
           break;
         case 200:
           mapZoom = 11;

@@ -16,16 +16,14 @@
   <div class="content-section">
 
 
-    <div class="content-section__item" *ngIf=" ((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche).length > 0">
-      <app-activity-area-list [activityAreaList]="((doctorDetail.taetigkeiten||[])[0].taetigkeitsBereiche)">
+    <div class="content-section__item" *ngIf="selectedTaetigkeitsBereiche.length > 0">
+      <app-activity-area-list [activityAreaList]="selectedTaetigkeitsBereiche ">
       </app-activity-area-list>
     </div>
 
 
-    <div class="content-section__item"
-      *ngIf=" (((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit.length > 0">
-      <app-accessibility-list
-        [accessibilityList]="(((doctorDetail.taetigkeiten||[])[0].taetigkeitAnLeistungsorten || [])[activeSlideNumber] || []).barrierefreiheit">
+    <div class="content-section__item" *ngIf=" selectedAccesibilityList.length > 0">
+      <app-accessibility-list [accessibilityList]="selectedAccesibilityList">
       </app-accessibility-list>
     </div>
 
