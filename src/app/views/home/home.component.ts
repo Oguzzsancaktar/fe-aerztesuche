@@ -133,8 +133,8 @@ export class HomeComponent {
     this.isPlacesLoading = false;
     this._store.dispatch(new ChangeMapLoadingState(false));
 
-    this._store.dispatch(new SetPlaceNearQueryParams(1000));
-    this._store.dispatch(new SetPlaceAddressQueryParams(''));
+    // this._store.dispatch(new SetPlaceNearQueryParams(1000));
+    // this._store.dispatch(new SetPlaceAddressQueryParams(''));
   }
 
   onScrollingFinished(
@@ -163,13 +163,34 @@ export class HomeComponent {
         this.placeList = this.placeList.concat(data.personList);
         this.totalPlaceCount = data.totalCount;
         this.isPlacesLoading = false;
-        this.initMap(undefined, near);
+
+        if (this.pageNumber === 1) {
+          this.initMap(
+            {
+              coords: {
+                latitude: data.searchLatitude,
+                longitude: data.searchLongitude,
+              },
+            },
+            near
+          );
+        }
       });
   }
 
-  private initMap(location?: GeolocationPosition, near?: number): void {
+  private initMap(
+    location?:
+      | GeolocationPosition
+      | {
+          coords: {
+            latitude: number;
+            longitude: number;
+          };
+        },
+    near?: number
+  ): void {
     const isMapWillLoad = this.router.url.includes('consent=true');
-    let mapZoom = 5;
+    let mapZoom = 10;
     if (isMapWillLoad) {
       if (this.map) {
         this.map?.remove();
@@ -211,9 +232,6 @@ export class HomeComponent {
           break;
         case 1:
           mapZoom = 17;
-          break;
-        default:
-          mapZoom = 5;
           break;
       }
 
