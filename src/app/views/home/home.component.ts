@@ -4,7 +4,12 @@ import {
   ChangeMapWillLoadState,
 } from './../../store/actions/map-state.actions';
 import { IAppState } from './../../store/state/app.state';
-import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as L from 'leaflet';
 import { MarkerService } from '../../services/marker.service';
@@ -39,12 +44,12 @@ const iconSelectedLocation = L.icon({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   public map!: L.Map;
   getPlacesForListSubscription: Subscription = new Subscription();
   showFilterSection: boolean = false;
-  searchLatitude: IPlaceApiResult['searchLatitude'] = 51.095123;
-  searchLongitude: IPlaceApiResult['searchLongitude'] = 10.271483;
+  searchLatitude: IPlaceApiResult['searchLatitude'] = 51.25119;
+  searchLongitude: IPlaceApiResult['searchLongitude'] = 6.76428;
   filterList: IFilter[] = [];
   placeList: IPlace[] = [];
   totalPlaceCount: number = 0;
@@ -132,9 +137,6 @@ export class HomeComponent {
   private positionDenied() {
     this.isPlacesLoading = false;
     this._store.dispatch(new ChangeMapLoadingState(false));
-
-    // this._store.dispatch(new SetPlaceNearQueryParams(1000));
-    // this._store.dispatch(new SetPlaceAddressQueryParams(''));
   }
 
   onScrollingFinished(
@@ -215,8 +217,8 @@ export class HomeComponent {
         this.searchLatitude = location.coords.latitude;
         this.searchLongitude = location.coords.longitude;
       } else {
-        this.searchLatitude = 50.937531;
-        this.searchLongitude = 6.9602786;
+        this.searchLatitude = 51.25119;
+        this.searchLongitude = 6.76428;
       }
 
       switch (near) {
@@ -286,5 +288,9 @@ export class HomeComponent {
 
   handleFilterSection(show: boolean) {
     this.showFilterSection = show;
+  }
+
+  ngAfterViewInit(): void {
+    this.initMap(undefined, 1000);
   }
 }

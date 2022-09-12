@@ -72,6 +72,10 @@
 
             margin: 2.5px 0;
 
+            &.address-column {
+              display: flex;
+              flex-direction: column;
+            }
             .icon {
               margin-right: 5px;
             }

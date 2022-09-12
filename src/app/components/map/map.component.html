@@ -4,11 +4,9 @@
       <app-loading-spinner></app-loading-spinner>
     </div>
 
-    <div class="map-wont-load" *ngIf=" isAddressEmpty">
-      <app-empty-adress></app-empty-adress>
-    </div>
 
-    <div class="map-wont-load" *ngIf="!(mapWillLoadState$ |async) && !isAddressEmpty">
+
+    <div class="map-wont-load" *ngIf="!(mapWillLoadState$ |async) ">
       <app-icon-circle-exclamation-mark></app-icon-circle-exclamation-mark>
       <p class="wont-text">
         Die Karte wird nicht angezeigt, weil Sie die Cookies nicht akzeptiert haben.

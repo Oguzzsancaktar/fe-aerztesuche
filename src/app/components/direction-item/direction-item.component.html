@@ -14,10 +14,13 @@
               {{findGender()}} {{place.title}} {{ place.vorname }} {{ place.nachname }}
             </h3>
           </div>
-          <div class="column__item">
+          <div class="column__item address-column">
             <p class="address">
 
-              {{ place.strasse}} {{place.hausnummer}} {{ place.plz}} {{ place.ort}}
+              {{ place.strasse}} {{place.hausnummer}}
+            </p>
+            <p class="address">
+              {{ place.plz}} {{ place.ort}}
             </p>
           </div>
         </div>

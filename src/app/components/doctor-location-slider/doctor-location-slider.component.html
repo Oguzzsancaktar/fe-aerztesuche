@@ -7,7 +7,13 @@
     <ul class="location-list">
       <li class="location-list__item" *ngFor="let location of taetigkeitAnLeistungsortenList; let i = index"
         (click)="handleSlideChange(i)" [ngClass]="i === activeSlideNumber ? 'active' : ''">
-        {{location.strasse}} {{location.hausnummer}} {{location.plz}} {{location.ort}}
+        <div class="address">
+          {{location.strasse}} {{location.hausnummer}}
+        </div>
+
+        <div class="address">
+          {{location.plz}} {{location.ort}}
+        </div>
         <div class="paddy"></div>
       </li>
     </ul>
