@@ -11,10 +11,11 @@
         align-items: center;
         display: flex;
         padding: 0 10px;
-        background: red;
 
         &.search-icon {
           padding: 0;
+
+          display: none;
 
           cursor: pointer;
           margin-right: 10px;
@@ -24,14 +25,14 @@
         &.search-input {
           cursor: pointer;
           margin-right: 10px;
-          width: calc((100% - 185px - 20px - 120px) / 2);
+          width: calc((100% - 10px - 120px) / 2);
           background: c.$white;
           color: c.$gray;
         }
 
         &.search-location {
           cursor: pointer;
-          width: calc((100% - 185px - 20px - 120px) / 2);
+          width: calc((100% - 10px - 120px) / 2);
           background: c.$white;
           color: c.$gray;
         }
@@ -45,6 +46,8 @@
           align-items: center;
           justify-content: center;
           padding: 0;
+
+          height: 60px;
 
           .searchbar__dropdown {
             width: 100%;
