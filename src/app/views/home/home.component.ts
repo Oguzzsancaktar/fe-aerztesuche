@@ -111,16 +111,18 @@ export class HomeComponent implements AfterViewInit {
   }
 
   private handlePermission() {
-    navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-      if (result.state === 'granted') {
-        this.getGeoLocationCurrentPosition();
-      } else if (result.state === 'prompt') {
-        this.getGeoLocationCurrentPosition();
-      } else if (result.state === 'denied') {
-        this.positionDenied();
-      }
-      result.addEventListener('change', () => {});
-    });
+    if (navigator?.permissions && navigator?.permissions?.query) {
+      navigator?.permissions?.query({ name: 'geolocation' }).then((result) => {
+        if (result?.state === 'granted') {
+          this.getGeoLocationCurrentPosition();
+        } else if (result?.state === 'prompt') {
+          this.getGeoLocationCurrentPosition();
+        } else if (result?.state === 'denied') {
+          this.positionDenied();
+        }
+        result?.addEventListener('change', () => {});
+      });
+    }
   }
 
   private revealPosition(position: GeolocationPosition) {
@@ -259,7 +261,7 @@ export class HomeComponent implements AfterViewInit {
       });
 
       const googleStreets = L.tileLayer(
-        'http://{s}.google.com/vt/lyrs=m&hl=de&x={x}&y={y}&z={z}',
+        'https://{s}.google.com/vt/lyrs=m&hl=de&x={x}&y={y}&z={z}',
         {
           maxZoom: 20,
           subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
